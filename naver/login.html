@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>네이버 로그인 화면</title>
+    <link rel="stylesheet" href="../font/css/pretendardvariable.css">
+    <link rel="stylesheet" href="../css/default.css">
+    <style>
+        :root {
+            --font: "Pretendard Variable", sans-serif;
+            --naver: #03C75A;
+            --naver-dark: #03A94D;
+            --text: #424242;
+            --sub-text: #545454;
+            --placeholder: #808080;
+            --line: #EBEBEB;
+            --soft-bg: #F5F5F5;
+            --icon: #A0A2A0;
+            --white: #FFFFFF;
+            --black: #000000;
+        }
+        html { font-size: 62.5%; }
+        body {
+            font-family: var(--font);
+            font-size: 1.6rem;
+            color: var(--text);
+            background-color: var(--white);
+        }
+        #wrap {
+            width: 100%;
+            max-width: 1024px;
+            min-width: 360px;
+            min-height: 100dvh;
+            margin: 0 auto;
+            background-color: var(--white);
+        }
+        header { position: relative; height: 8rem; }
+        .back_btn {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 4.8rem;
+            height: 4.8rem;
+            background: url(img/back_icon.svg) no-repeat center / 4.8rem;
+        }
+        main { padding: 0 2rem 6rem; }
+        .logo {
+            margin-top: 8.4rem;
+            text-align: center;
+            font-size: 3.6rem;
+            line-height: 1;
+            font-weight: 900;
+            letter-spacing: -0.12rem;
+            color: var(--naver);
+        }
+        .login_form { margin-top: 8.9rem; }
+        .login_form fieldset { min-width: 0; }
+        .input_box {
+            position: relative;
+            height: 5rem;
+            border-bottom: 0.1rem solid var(--line);
+        }
+        .input_box + .input_box { margin-top: 1rem; }
+        .input_box input {
+            width: 100%;
+            height: 100%;
+            padding: 0 5.6rem 0 2rem;
+            font-size: 1.6rem;
+            color: var(--text);
+            background-color: var(--white);
+            border: 0;
+        }
+        .input_box input::placeholder { color: var(--placeholder); }
+        .pw_btn {
+            position: absolute;
+            right: 1.2rem;
+            top: 1.2rem;
+            width: 2.6rem;
+            height: 2.6rem;
+            background: url(img/eye_icon.svg) no-repeat center / 2.6rem;
+        }
+        .login_option {
+            display: flex;
+            align-items: center;
+            column-gap: 3rem;
+            margin-top: 1.2rem;
+            height: 3rem;
+        }
+        .login_option label {
+            display: inline-flex;
+            align-items: center;
+            column-gap: 0.6rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--sub-text);
+        }
+        .check_box {
+            position: relative;
+            width: 3rem;
+            height: 3rem;
+            border: 0.1rem solid #D5D5D5;
+            border-radius: 0.5rem;
+            background-color: var(--white);
+        }
+        .check:checked + .check_box {
+            border-color: var(--naver);
+            background-color: var(--naver);
+        }
+        .check:checked + .check_box::after {
+            content: "";
+            position: absolute;
+            left: 0.9rem;
+            top: 0.7rem;
+            width: 0.8rem;
+            height: 1.4rem;
+            border-right: 0.2rem solid var(--white);
+            border-bottom: 0.2rem solid var(--white);
+            transform: rotate(45deg);
+        }
+        .login_btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 5rem;
+            margin-top: 2rem;
+            border-radius: 1rem;
+            background-color: var(--naver-dark);
+            color: var(--white);
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+        .login_link {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            column-gap: 1.2rem;
+            margin-top: 2rem;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #737373;
+        }
+        .login_link .divider {
+            width: 0.1rem;
+            height: 1.2rem;
+            background-color: var(--line);
+        }
+        .login_link a:last-child { color: #1BAE5E; }
+        .sns_login { margin-top: 11.6rem; }
+        .sns_title {
+            display: flex;
+            align-items: center;
+            column-gap: 1.2rem;
+            color: #766053;
+            font-size: 1.3rem;
+            white-space: nowrap;
+        }
+        .sns_title::before,
+        .sns_title::after {
+            content: "";
+            flex: 1;
+            height: 0.1rem;
+            background-color: var(--line);
+        }
+        .sns_list {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            column-gap: 2rem;
+            margin-top: 2rem;
+        }
+        .sns_list a {
+            display: block;
+            width: 4.5rem;
+            height: 4.5rem;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 4.5rem;
+        }
+        .sns_list .kakao { background-image: url(img/KakaoLoginIcon.svg); }
+        .sns_list .apple { background-image: url(img/AppleLoginIcon.svg); }
+        .sns_list .samsung { background-image: url(img/SamsungLoginIcon.svg); }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <header>
+            <button type="button" class="back_btn">
+                <span class="sr-only">이전 페이지</span>
+            </button>
+        </header>
+        <main>
+            <h1 class="logo">NAVER</h1>
+            <form class="login_form" action="">
+                <fieldset>
+                    <legend class="sr-only">네이버 로그인</legend>
+                    <div class="input_box">
+                        <label class="sr-only" for="naver_id">아이디(이메일)</label>
+                        <input type="email" id="naver_id" name="naver_id" placeholder="아이디(이메일)을 입력해 주세요.">
+                    </div>
+                    <div class="input_box">
+                        <label class="sr-only" for="naver_password">비밀번호</label>
+                        <input type="password" id="naver_password" name="naver_password" placeholder="비밀번호를 입력해 주세요.">
+                        <button type="button" class="pw_btn">
+                            <span class="sr-only">비밀번호 보기</span>
+                        </button>
+                    </div>
+                    <div class="login_option">
+                        <label>
+                            <input class="check sr-only" type="checkbox" checked>
+                            <span class="check_box" aria-hidden="true"></span>
+                            <span>자동 로그인</span>
+                        </label>
+                        <label>
+                            <input class="check sr-only" type="checkbox">
+                            <span class="check_box" aria-hidden="true"></span>
+                            <span>아이디 저장</span>
+                        </label>
+                    </div>
+                    <button type="submit" class="login_btn">로그인</button>
+                </fieldset>
+            </form>
+            <nav class="login_link" aria-label="로그인 관련 메뉴">
+                <a href="#">아이디 찾기</a>
+                <span class="divider" aria-hidden="true"></span>
+                <a href="#">비밀번호 재설정</a>
+                <span class="divider" aria-hidden="true"></span>
+                <a href="#">회원가입</a>
+            </nav>
+            <section class="sns_login">
+                <h2 class="sr-only">SNS 간편 로그인</h2>
+                <p class="sns_title">SNS로 간편하게 로그인</p>
+                <div class="sns_list">
+                    <a href="#" class="kakao"><span class="sr-only">카카오 로그인</span></a>
+                    <a href="#" class="apple"><span class="sr-only">애플 로그인</span></a>
+                    <a href="#" class="samsung"><span class="sr-only">삼성 로그인</span></a>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script>
+        const passwordInput = document.querySelector('#naver_password');
+        const passwordButton = document.querySelector('.pw_btn');
+
+        passwordButton.addEventListener('click', () => {
+            const isPassword = passwordInput.type === 'password';
+            passwordInput.type = isPassword ? 'text' : 'password';
+            passwordButton.querySelector('.sr-only').textContent = isPassword ? '비밀번호 숨기기' : '비밀번호 보기';
+        });
+    </script>
+</body>
+</html>
