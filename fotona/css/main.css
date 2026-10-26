@@ -10,15 +10,10 @@ body {
     object-fit: cover;
 }
 
-/* 높이를 고정하고 싶은 경우 px값 적용
-반응형에 따라 높이값이 점점 줄어들길 원하면 높이값 ㄴㄴ, max-height 정도는 가능 */
+/* 영상 높이는 모든 화면 크기에서 720px로 고정 */
 
 @media (max-width: 1024px) {
     header {
         position: fixed;
-    }
-
-    .hero-sec .hero-video {
-        height: 90dvh;
     }
 }
