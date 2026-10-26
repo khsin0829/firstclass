@@ -6,66 +6,20 @@
     <title>FotonaRenewalPortfolio</title>
     <link rel="stylesheet" href="../css/default.css">
     <link rel="stylesheet" href="../font/css/pretendardvariable.css">
-    <link rel="stylesheet" href="../npm/swiper/swiper-bundle.min.css">
     <link rel="stylesheet" href="css/main.css">
-    <script src="../npm/swiper/swiper-bundle.min.js"></script>
 </head>
 <body>
     <div id="wrap">
         <header>제목공간</header>
         <main>
             <div class="hero-sec">
-                <!-- Slider main container -->
-                <div class="swiper visual">
-                <!-- Additional required wrapper -->
-                    <div class="swiper-wrapper">
-                        <!-- Slides -->
-                        <div class="swiper-slide">
-                            <img src="img/heroEx1.png" alt="Fotona 문구" class="pc">
-                            <img src="img/m_visual01.png" alt="모바일포토나" class="mo">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="img/heroEx2.png" alt="ASP powerdd" class="pc">
-                            <img src="img/m_visual02.png" alt="모바일 ASPpowered" class="mo">
-                        </div>                        
-                    </div>
-                    <!-- If we need pagination -->
-                    <div class="swiper-pagination"></div>
-
-                    <!-- If we need navigation buttons -->
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div>
-
-                    <!-- If we need scrollbar -->
-                    <div class="swiper-scrollbar"></div>
-                </div>
+                <video class="hero-video" autoplay muted loop playsinline>
+                    <source src="img/fotona-video.mp4" type="video/mp4">
+                    현재 브라우저에서는 동영상을 재생할 수 없습니다.
+                </video>
             </div>
         </main>
         <footer>&copy;</footer>
     </div>
-    <script>
-        const swiper = new Swiper('.hero-sec > .swiper', {
-            // Optional parameters
-            direction: 'horizontal',
-            loop: true,
-
-            // If we need pagination
-            pagination: {
-                el: '.swiper-pagination',
-            },
-
-            // Navigation arrows
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-
-            // And if we need scrollbar
-            scrollbar: {
-                el: '.swiper-scrollbar',
-            },
-        });
-    </script>
-    
 </body>
 </html>
