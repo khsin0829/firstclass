@@ -6,14 +6,16 @@ body {
 .hero-sec .hero-video {
     display: block;
     width: 100%;
-    height: 720px;
+    height: 900px;
     object-fit: cover;
 }
-
-/* 영상 높이는 모든 화면 크기에서 720px로 고정 */
 
 @media (max-width: 1024px) {
     header {
         position: fixed;
+    }
+
+    .hero-sec .hero-video {
+        height: 90dvh;
     }
 }
