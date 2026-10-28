@@ -282,6 +282,41 @@ body {
     }
 }
 
+@media (max-width: 380px) {
+    .header-inner {
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 0 8px;
+        padding: 8px 12px 0;
+    }
+
+    .site-logo img {
+        width: 68px;
+    }
+
+    .main-nav {
+        flex: 0 0 100%;
+        width: 100%;
+        margin: 0;
+    }
+
+    .nav-list {
+        justify-content: space-between;
+    }
+
+    .nav-item {
+        flex: 1 1 0;
+        justify-content: center;
+    }
+
+    .nav-item > a {
+        min-height: 42px;
+        padding: 0 3px;
+        font-size: clamp(11px, 3.2vw, 13px);
+        white-space: nowrap;
+    }
+}
+
 
 /* Laser Solutions */
 .laser-solutions {
@@ -534,12 +569,12 @@ body {
     gap: 18px;
     width: calc(100% + 11vw);
     margin-left: -5.5vw;
-    overflow-x: auto;
+    overflow-x: hidden;
     padding: 2px 5.5vw 14px;
-    cursor: grab;
+    cursor: default;
     user-select: none;
-    -webkit-overflow-scrolling: touch;
-    scroll-snap-type: x mandatory;
+    touch-action: pan-y;
+    scroll-snap-type: none;
     scrollbar-width: none;
 }
 .treatment-track::-webkit-scrollbar {
@@ -718,6 +753,8 @@ body {
         gap: 12px;
         padding-right: 20px;
         padding-left: 20px;
+        overflow-x: hidden;
+        touch-action: pan-y;
     }
     .treatment-card {
         flex-basis: clamp(170px, 68vw, 250px);
