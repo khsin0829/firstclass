@@ -287,47 +287,6 @@
                 });
             });
 
-            // 마우스 이동이 8px를 넘으면 드래그로 판단하고 클릭 선택을 취소합니다.
-            let pointerStartX = 0;
-            let startScrollLeft = 0;
-            let isPointerDown = false;
-            let hasDragged = false;
-            let suppressNextClick = false;
-            const dragThreshold = 8;
-
-            track.addEventListener("pointerdown", (event) => {
-                if (event.pointerType !== "mouse" || event.button !== 0) return;
-                isPointerDown = true;
-                hasDragged = false;
-                pointerStartX = event.clientX;
-                startScrollLeft = track.scrollLeft;
-            });
-
-            track.addEventListener("pointermove", (event) => {
-                if (!isPointerDown) return;
-                const distanceX = event.clientX - pointerStartX;
-                if (Math.abs(distanceX) > dragThreshold) {
-                    hasDragged = true;
-                    track.classList.add("is-dragging");
-                    track.scrollLeft = startScrollLeft - distanceX;
-                }
-            });
-
-            function endPointerDrag() {
-                if (!isPointerDown) return;
-                isPointerDown = false;
-                track.classList.remove("is-dragging");
-                if (hasDragged) {
-                    suppressNextClick = true;
-                    window.setTimeout(() => {
-                        suppressNextClick = false;
-                    }, 250);
-                }
-            }
-            track.addEventListener("pointerup", endPointerDrag);
-            track.addEventListener("pointercancel", endPointerDrag);
-            track.addEventListener("pointerleave", endPointerDrag);
-
             track.addEventListener("click", (event) => {
                 const card = event.target.closest(".treatment-card");
                 if (!card) return;
