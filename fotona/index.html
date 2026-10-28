@@ -113,7 +113,7 @@
                     </div>
 
                     <div class="treatment-track" id="treatment-track" aria-label="시술 종류">
-                        <button class="treatment-card is-selected" type="button" data-treatment="toning" aria-pressed="true">
+                        <button class="treatment-card" type="button" data-treatment="toning" aria-pressed="false">
                             <img src="img/pigmented.jpg" alt="" draggable="false">
                             <span class="treatment-card-title">색소 토닝</span>
                             <span class="treatment-card-description">피부 톤 · 잡티 · 색소 고민</span>
@@ -209,7 +209,7 @@
                 consultation: "전문가 상담"
             };
             const defaultTitle = "관련 제품";
-            let selectedTreatment = "toning";
+            let selectedTreatment = null;
 
             function getCards() {
                 return [...track.querySelectorAll(".treatment-card")];
@@ -301,6 +301,16 @@
                         behavior: "smooth"
                     });
                 });
+            });
+
+            // 처음 방문했을 때는 선택된 시술 없이 관련 제품도 숨깁니다.
+            getCards().forEach((card) => {
+                card.classList.remove("is-selected");
+                card.setAttribute("aria-pressed", "false");
+            });
+            productsTitle.textContent = defaultTitle;
+            productCards.forEach((product) => {
+                product.hidden = true;
             });
         })();
     </script>
