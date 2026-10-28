@@ -551,7 +551,7 @@ body {
 }
 .treatment-card {
     position: relative;
-    flex: 0 0 clamp(230px, 27vw, 360px);
+    flex: 0 0 clamp(180px, 24vw, 320px);
     padding: 0;
     overflow: hidden;
     border: 1px solid var(--border-default);
@@ -674,7 +674,7 @@ body {
         padding: 64px 4%;
     }
     .treatment-card {
-        flex-basis: clamp(220px, 38vw, 320px);
+        flex-basis: clamp(190px, 32vw, 280px);
     }
     .treatment-card-title {
         font-size: 21px;
@@ -713,7 +713,7 @@ body {
         padding-left: 20px;
     }
     .treatment-card {
-        flex-basis: 78%;
+        flex-basis: clamp(170px, 68vw, 250px);
     }
     .treatment-card-title {
         padding: 14px 42px 16px 16px;
