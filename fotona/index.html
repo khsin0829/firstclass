@@ -195,11 +195,10 @@
     <script>
         (() => {
             const track = document.querySelector("#treatment-track");
-            const treatmentCards = [...document.querySelectorAll(".treatment-card")];
-            const productCards = [...document.querySelectorAll(".related-product-card")];
             const productsTitle = document.querySelector("#related-products-title");
+            const productCards = [...document.querySelectorAll(".related-product-card")];
             const scrollButtons = document.querySelectorAll("[data-scroll]");
-            if (!track || !treatmentCards.length) return;
+            if (!track) return;
 
             const treatmentNames = {
                 toning: "색소 토닝",
@@ -209,23 +208,86 @@
                 scar: "흉터",
                 consultation: "전문가 상담"
             };
+            const defaultTitle = "시술을 선택해 주세요";
+            let selectedTreatment = "toning";
+
+            function getCards() {
+                return [...track.querySelectorAll(".treatment-card")];
+            }
 
             function selectTreatment(card) {
-                treatmentCards.forEach((item) => {
-                    const selected = item === card;
+                const treatment = card.dataset.treatment;
+                // 이미 선택된 시술을 다시 클릭하면 선택을 해제합니다.
+                selectedTreatment = selectedTreatment === treatment ? null : treatment;
+
+                getCards().forEach((item) => {
+                    const selected = item.dataset.treatment === selectedTreatment;
                     item.classList.toggle("is-selected", selected);
                     item.setAttribute("aria-pressed", String(selected));
                 });
 
-                const treatment = card.dataset.treatment;
-                productsTitle.textContent = treatmentNames[treatment] + " 관련 제품";
+                productsTitle.textContent = selectedTreatment
+                    ? treatmentNames[selectedTreatment] + " 관련 제품"
+                    : defaultTitle;
+
                 productCards.forEach((product) => {
-                    const related = product.dataset.products.split(" ").includes(treatment);
+                    const related = selectedTreatment &&
+                        product.dataset.products.split(" ").includes(selectedTreatment);
                     product.hidden = !related;
                 });
             }
 
-            // 실제 이동 거리가 8px를 넘었을 때만 드래그로 판단해 클릭과 구분합니다.
+            // 카드 세트를 앞뒤에 복제해 마지막 카드 다음에도 자연스럽게 이어지게 합니다.
+            const originalCards = [...track.querySelectorAll(".treatment-card")];
+            originalCards.forEach((card) => {
+                const clone = card.cloneNode(true);
+                clone.classList.add("is-clone");
+                clone.setAttribute("aria-hidden", "true");
+                clone.setAttribute("tabindex", "-1");
+                clone.querySelectorAll("a, button").forEach((item) => item.setAttribute("tabindex", "-1"));
+                track.appendChild(clone);
+            });
+            [...originalCards].reverse().forEach((card) => {
+                const clone = card.cloneNode(true);
+                clone.classList.add("is-clone");
+                clone.setAttribute("aria-hidden", "true");
+                clone.setAttribute("tabindex", "-1");
+                track.insertBefore(clone, track.firstChild);
+            });
+
+            let originalStart = 0;
+            let originalSetWidth = 0;
+            let loopReady = false;
+            function measureLoop() {
+                const cards = getCards();
+                const originals = cards.filter((card) => !card.classList.contains("is-clone"));
+                if (!originals.length) return;
+                originalStart = originals[0].offsetLeft;
+                const last = originals[originals.length - 1];
+                const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+                originalSetWidth = last.offsetLeft + last.offsetWidth + gap - originals[0].offsetLeft;
+                track.scrollLeft = originalStart;
+                loopReady = true;
+            }
+
+            requestAnimationFrame(measureLoop);
+            window.addEventListener("resize", measureLoop);
+
+            let loopFrame = false;
+            track.addEventListener("scroll", () => {
+                if (!loopReady || loopFrame) return;
+                loopFrame = true;
+                requestAnimationFrame(() => {
+                    if (track.scrollLeft < originalStart - 1) {
+                        track.scrollLeft += originalSetWidth;
+                    } else if (track.scrollLeft >= originalStart + originalSetWidth - 1) {
+                        track.scrollLeft -= originalSetWidth;
+                    }
+                    loopFrame = false;
+                });
+            });
+
+            // 마우스 이동이 8px를 넘으면 드래그로 판단하고 클릭 선택을 취소합니다.
             let pointerStartX = 0;
             let startScrollLeft = 0;
             let isPointerDown = false;
@@ -259,15 +321,13 @@
                     suppressNextClick = true;
                     window.setTimeout(() => {
                         suppressNextClick = false;
-                    }, 0);
+                    }, 250);
                 }
             }
-
             track.addEventListener("pointerup", endPointerDrag);
             track.addEventListener("pointercancel", endPointerDrag);
             track.addEventListener("pointerleave", endPointerDrag);
 
-            // 드래그로 끝난 동작에서 발생한 click만 취소하고, 일반 클릭은 선택 기능을 실행합니다.
             track.addEventListener("click", (event) => {
                 const card = event.target.closest(".treatment-card");
                 if (!card) return;
