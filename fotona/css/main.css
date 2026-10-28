@@ -108,7 +108,8 @@ body {
 .submenu {
     position: absolute;
     top: 100%;
-    left: 0;
+    left: 50%;
+    transform: translateX(-50%);
     z-index: 20;
     display: none;
     width: max-content;
@@ -212,8 +213,8 @@ body {
     }
 
     .submenu a {
-        padding: 12px 20px;
-        font-size: 11px;
+        padding: 16px 28px;
+        font-size: 12px;
     }
 
     .hero-copy {
@@ -272,12 +273,14 @@ body {
     }
 
     .submenu {
+        left: 0;
         width: 100%;
         min-width: 0;
+        transform: none;
     }
 
     .submenu a {
-        padding: 8px 6px;
+        padding: 10px 12px;
         font-size: clamp(7px, 1.8vw, 11px);
         line-height: 1.25;
         white-space: normal;
