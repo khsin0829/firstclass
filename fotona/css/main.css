@@ -328,6 +328,16 @@ body {
     border-radius: 6px;
 }
 
+.product-card {
+    transition: border-color 0.2s ease;
+}
+
+.product-card:hover,
+.product-card:focus-within,
+.product-card:active {
+    border-color: var(--border-strong);
+}
+
 .product-image-link {
     display: block;
     margin: 6px 6px 0;
