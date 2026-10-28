@@ -73,24 +73,76 @@ body {
     margin-left: auto;
 }
 
-.main-nav ul {
+.nav-list {
     display: flex;
-    align-items: center;
-    gap: clamp(28px, 3.6vw, 56px);
+    align-items: stretch;
+    gap: 0;
 }
 
-.main-nav a {
-    display: block;
-    padding: 12px 0;
+.nav-item {
+    position: relative;
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-item > a {
+    display: flex;
+    min-height: 72px;
+    align-items: center;
+    justify-content: center;
+    padding: 0 clamp(14px, 1.5vw, 24px);
     color: var(--text-primary);
     font-size: 15px;
     font-weight: 500;
     white-space: nowrap;
-    transition: color 0.2s ease;
+    transition: color 0.2s ease, background-color 0.2s ease;
 }
 
-.main-nav a:hover {
+.nav-item:hover > a,
+.nav-item:focus-within > a {
     color: var(--action-primary);
+    background-color: var(--red-100);
+}
+
+/* 드롭다운 메뉴: 제품 소개 / 시술 안내에 마우스를 올리면 표시 */
+.submenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 20;
+    display: none;
+    width: 100%;
+    min-width: 112px;
+    padding: 4px 0;
+    overflow: hidden;
+    background-color: rgba(255, 255, 255, 0.94);
+    border-radius: 0 0 4px 4px;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+}
+
+.has-submenu:hover > .submenu,
+.has-submenu:focus-within > .submenu {
+    display: block;
+}
+
+.submenu a {
+    display: flex;
+    min-height: 30px;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 10px;
+    color: var(--text-primary);
+    font-size: 12px;
+    line-height: 1.4;
+    text-align: center;
+    white-space: nowrap;
+    transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.submenu a:hover,
+.submenu a:focus-visible {
+    color: var(--action-primary);
+    background-color: var(--red-100);
 }
 
 .hero-sec {
@@ -151,12 +203,15 @@ body {
         width: 88px;
     }
 
-    .main-nav ul {
-        gap: clamp(16px, 3vw, 30px);
+    .nav-item > a {
+        min-height: 64px;
+        padding: 0 clamp(10px, 1.5vw, 16px);
+        font-size: 14px;
     }
 
-    .main-nav a {
-        font-size: 14px;
+    .submenu a {
+        padding: 8px 6px;
+        font-size: 11px;
     }
 
     .hero-copy {
@@ -177,7 +232,7 @@ body {
 @media (max-width: 600px) {
     .header-inner {
         min-height: 64px;
-        padding: 12px 20px;
+        padding: 12px 20px 0;
         align-items: flex-start;
         flex-direction: column;
         gap: 8px;
@@ -192,13 +247,29 @@ body {
         margin-left: 0;
     }
 
-    .main-nav ul {
+    .nav-list {
+        width: 100%;
         justify-content: space-between;
-        gap: 12px;
     }
 
-    .main-nav a {
-        padding: 6px 0;
+    .nav-item {
+        flex: 1 1 auto;
+    }
+
+    .nav-item > a {
+        width: 100%;
+        min-height: 40px;
+        padding: 0 6px;
         font-size: 12px;
+    }
+
+    .submenu {
+        min-width: 0;
+    }
+
+    .submenu a {
+        padding: 8px 2px;
+        font-size: 10px;
+        white-space: normal;
     }
 }
