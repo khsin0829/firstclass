@@ -147,7 +147,9 @@ body {
 
 .hero-sec {
     position: relative;
-    min-height: 720px;
+    height: 44.8vw;
+    min-height: 360px;
+    max-height: 860px;
     overflow: hidden;
 }
 
@@ -191,7 +193,7 @@ body {
     line-height: 1.5;
 }
 
-/* 영상 높이는 모든 화면 크기에서 720px로 고정 */
+/* 히어로 영상 높이는 화면 너비에 비례해 조정 */
 @media (max-width: 1024px) {
     .header-inner {
         min-height: 64px;
