@@ -40,6 +40,59 @@ body {
     font-family: "Pretendard Variable", Pretendard, sans-serif;
 }
 
+/* Header */
+.site-header {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    background-color: var(--surface-default);
+}
+
+.header-inner {
+    width: 100%;
+    min-height: 72px;
+    padding: 0 6.8%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+}
+
+.site-logo {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+}
+
+.site-logo img {
+    width: 100px;
+    height: auto;
+}
+
+.main-nav {
+    margin-left: auto;
+}
+
+.main-nav ul {
+    display: flex;
+    align-items: center;
+    gap: clamp(28px, 3.6vw, 56px);
+}
+
+.main-nav a {
+    display: block;
+    padding: 12px 0;
+    color: var(--text-primary);
+    font-size: 15px;
+    font-weight: 500;
+    white-space: nowrap;
+    transition: color 0.2s ease;
+}
+
+.main-nav a:hover {
+    color: var(--action-primary);
+}
+
 .hero-sec {
     position: relative;
     min-height: 720px;
@@ -87,12 +140,23 @@ body {
 }
 
 /* 영상 높이는 모든 화면 크기에서 720px로 고정 */
-
 @media (max-width: 1024px) {
-    header {
-        position: sticky;
-        top: 0;
-        z-index: 10;
+    .header-inner {
+        min-height: 64px;
+        padding: 0 24px;
+        gap: 20px;
+    }
+
+    .site-logo img {
+        width: 88px;
+    }
+
+    .main-nav ul {
+        gap: clamp(16px, 3vw, 30px);
+    }
+
+    .main-nav a {
+        font-size: 14px;
     }
 
     .hero-copy {
@@ -107,5 +171,34 @@ body {
     .hero-description {
         font-size: clamp(16px, 2.4vw, 22px);
         line-height: 1.5;
+    }
+}
+
+@media (max-width: 600px) {
+    .header-inner {
+        min-height: 64px;
+        padding: 12px 20px;
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .site-logo img {
+        width: 82px;
+    }
+
+    .main-nav {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .main-nav ul {
+        justify-content: space-between;
+        gap: 12px;
+    }
+
+    .main-nav a {
+        padding: 6px 0;
+        font-size: 12px;
     }
 }
