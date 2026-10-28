@@ -424,27 +424,29 @@ body {
     }
 
     .product-grid {
-        grid-template-columns: 1fr;
-        gap: 18px;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
     }
 
     .product-image-link img {
-        aspect-ratio: 1.6 / 1;
+        aspect-ratio: 1.2 / 1;
     }
 
     .product-card-content {
-        padding: 18px 16px 20px;
+        padding: 12px 10px 14px;
     }
 
     .product-name {
-        font-size: 24px;
+        font-size: clamp(13px, 3vw, 24px);
+        line-height: 1.15;
     }
 
     .product-description {
-        font-size: 16px;
+        font-size: clamp(10px, 1.8vw, 16px);
+        line-height: 1.35;
     }
 
     .product-detail-link {
-        font-size: 15px;
+        font-size: clamp(10px, 1.6vw, 15px);
     }
 }
