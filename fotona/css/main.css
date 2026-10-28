@@ -532,8 +532,10 @@ body {
 .treatment-track {
     display: flex;
     gap: 18px;
+    width: calc(100% + 11vw);
+    margin-left: -5.5vw;
     overflow-x: auto;
-    padding: 2px 2px 14px;
+    padding: 2px 5.5vw 14px;
     cursor: grab;
     user-select: none;
     -webkit-overflow-scrolling: touch;
@@ -704,7 +706,11 @@ body {
         font-size: 20px;
     }
     .treatment-track {
+        width: calc(100% + 40px);
+        margin-left: -20px;
         gap: 12px;
+        padding-right: 20px;
+        padding-left: 20px;
     }
     .treatment-card {
         flex-basis: 78%;
