@@ -104,6 +104,6 @@ body {
 
     .hero-description {
         font-size: clamp(16px, 2.4vw, 22px);
-        line-height: 1.25;
+        line-height: 1.5;
     }
 }
