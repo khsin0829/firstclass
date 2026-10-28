@@ -444,20 +444,33 @@ body {
 
 @media (max-width: 700px) {
     .treatments-heading {
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
-        gap: 18px;
+        justify-content: space-between;
+        gap: 12px;
         margin-bottom: 28px;
     }
 
     .treatments-heading > div:first-child {
-        text-align: center;
+        min-width: 0;
+        text-align: left;
+    }
+
+    .treatments-heading .section-title {
+        font-size: clamp(20px, 5.5vw, 32px);
     }
 
     .treatments-controls {
         align-self: center;
         justify-content: center;
+        gap: 6px;
         padding-bottom: 0;
+    }
+
+    .treatment-arrow {
+        width: clamp(32px, 9vw, 44px);
+        height: clamp(32px, 9vw, 44px);
+        font-size: clamp(18px, 5vw, 22px);
     }
 
     .laser-solutions {
@@ -516,7 +529,7 @@ body {
 }
 .treatments-heading {
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     justify-content: space-between;
     gap: 24px;
     margin-bottom: 36px;
