@@ -553,7 +553,7 @@ body {
 }
 .treatment-card {
     position: relative;
-    flex: 0 0 clamp(180px, 24vw, 320px);
+    flex: 0 0 clamp(160px, 23vw, 320px);
     padding: 0;
     overflow: hidden;
     border: 1px solid var(--border-default);
@@ -575,22 +575,17 @@ body {
 }
 .treatment-card-title {
     display: block;
-    padding: 18px 52px 6px 20px;
-    font-size: 24px;
+    padding: 18px 20px 6px;
+    font-size: clamp(17px, 1.8vw, 24px);
     font-weight: 500;
 }
 .treatment-card-description {
     display: block;
     padding: 0 20px 20px;
     color: var(--text-secondary);
-    font-size: clamp(14px, 1.4vw, 20px);
+    font-size: clamp(12px, 1.35vw, 20px);
     line-height: 1.45;
-}
-.treatment-card-arrow {
-    position: absolute;
-    right: 20px;
-    bottom: 20px;
-    font-size: 22px;
+    overflow-wrap: anywhere;
 }
 .treatment-card:hover,
 .treatment-card:focus-visible,
@@ -683,10 +678,14 @@ body {
         padding: 64px 4%;
     }
     .treatment-card {
-        flex-basis: clamp(190px, 32vw, 280px);
+        flex-basis: clamp(170px, 29vw, 280px);
     }
     .treatment-card-title {
-        font-size: 21px;
+        font-size: clamp(16px, 2.2vw, 21px);
+    }
+    .treatment-card-description {
+        padding-right: 16px;
+        padding-left: 16px;
     }
     .related-product-grid {
         gap: 14px;
@@ -724,19 +723,15 @@ body {
         touch-action: pan-y;
     }
     .treatment-card {
-        flex-basis: clamp(170px, 68vw, 250px);
+        flex-basis: clamp(145px, 62vw, 250px);
     }
     .treatment-card-title {
-        padding: 14px 42px 6px 16px;
-        font-size: 20px;
+        padding: 12px 12px 6px;
+        font-size: clamp(15px, 4vw, 20px);
     }
     .treatment-card-description {
-        padding: 0 16px 16px;
-        font-size: clamp(12px, 3.2vw, 18px);
-    }
-    .treatment-card-arrow {
-        right: 16px;
-        bottom: 16px;
+        padding: 0 12px 14px;
+        font-size: clamp(11px, 2.8vw, 16px);
     }
     .related-products {
         padding-top: 44px;
