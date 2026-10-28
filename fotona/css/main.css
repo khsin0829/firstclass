@@ -146,6 +146,14 @@ body {
     background-color: var(--red-100);
 }
 
+/* 1920px급 넓은 화면에서는 드롭다운 좌우 여백을 30px로 조정 */
+@media (min-width: 1600px) {
+    .submenu a {
+        padding-right: 30px;
+        padding-left: 30px;
+    }
+}
+
 .hero-sec {
     position: relative;
     height: 44.8vw;
