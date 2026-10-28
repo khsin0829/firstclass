@@ -290,12 +290,6 @@
             track.addEventListener("click", (event) => {
                 const card = event.target.closest(".treatment-card");
                 if (!card) return;
-                if (suppressNextClick) {
-                    event.preventDefault();
-                    event.stopPropagation();
-                    suppressNextClick = false;
-                    return;
-                }
                 selectTreatment(card);
             }, true);
 
