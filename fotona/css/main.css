@@ -276,8 +276,9 @@ body {
     }
 
     .submenu a {
-        padding: 8px 2px;
-        font-size: clamp(8px, 2.2vw, 11px);
+        padding: 6px 2px;
+        font-size: clamp(7px, 1.8vw, 11px);
+        line-height: 1.25;
         white-space: normal;
     }
 }
