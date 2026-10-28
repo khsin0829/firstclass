@@ -273,3 +273,178 @@ body {
         white-space: normal;
     }
 }
+
+
+/* Laser Solutions */
+.laser-solutions {
+    padding: 80px 5%;
+    background-color: var(--background-page);
+}
+
+.laser-solutions-inner {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+.section-eyebrow {
+    margin: 0 0 12px;
+    color: var(--text-secondary);
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1;
+}
+
+.section-title {
+    margin: 0 0 36px;
+    color: var(--text-primary);
+    font-size: 50px;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -0.03em;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+}
+
+.product-card {
+    min-width: 0;
+    overflow: hidden;
+    background-color: var(--surface-default);
+    border: 1px solid var(--border-default);
+    border-radius: 6px;
+}
+
+.product-image-link {
+    display: block;
+    margin: 6px 6px 0;
+    overflow: hidden;
+    background-color: #EEEEEE;
+}
+
+.product-image-link img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1.5 / 1;
+    object-fit: cover;
+    transition: transform 0.35s ease;
+}
+
+.product-image-link:hover img {
+    transform: scale(1.04);
+}
+
+.product-card-content {
+    padding: 20px 20px 24px;
+}
+
+.product-name {
+    margin: 0 0 8px;
+    color: var(--text-primary);
+    font-size: 30px;
+    font-weight: 500;
+    line-height: 1;
+}
+
+.product-description {
+    margin: 0 0 16px;
+    color: var(--text-secondary);
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.4;
+}
+
+.product-detail-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    color: var(--text-secondary);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1;
+    transition: color 0.2s ease;
+}
+
+.product-detail-link:hover,
+.product-detail-link:focus-visible {
+    color: var(--action-primary);
+}
+
+@media (max-width: 1024px) {
+    .laser-solutions {
+        padding: 64px 4%;
+    }
+
+    .section-eyebrow {
+        font-size: 20px;
+    }
+
+    .section-title {
+        font-size: clamp(34px, 4.5vw, 46px);
+        line-height: 1.08;
+    }
+
+    .product-grid {
+        gap: 16px;
+    }
+
+    .product-card-content {
+        padding: 18px 14px 20px;
+    }
+
+    .product-name {
+        font-size: 24px;
+    }
+
+    .product-description {
+        font-size: 16px;
+    }
+
+    .product-detail-link {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 700px) {
+    .laser-solutions {
+        padding: 48px 20px;
+    }
+
+    .section-eyebrow {
+        font-size: 16px;
+    }
+
+    .section-title {
+        margin-bottom: 24px;
+        font-size: clamp(28px, 7vw, 38px);
+        line-height: 1.1;
+    }
+
+    .product-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .product-image-link img {
+        aspect-ratio: 1.6 / 1;
+    }
+
+    .product-card-content {
+        padding: 18px 16px 20px;
+    }
+
+    .product-name {
+        font-size: 24px;
+    }
+
+    .product-description {
+        font-size: 16px;
+    }
+
+    .product-detail-link {
+        font-size: 15px;
+    }
+}
