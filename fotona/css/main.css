@@ -276,7 +276,7 @@ body {
     .nav-item > a {
         width: 100%;
         min-height: 48px;
-        padding: 0 clamp(2px, 0.9vw, 6px);
+        padding: 0 clamp(5px, 1.5vw, 10px);
         font-size: clamp(9px, 2.4vw, 12px);
     }
 
@@ -288,7 +288,7 @@ body {
     }
 
     .submenu a {
-        padding: 10px 12px;
+        padding: 10px clamp(14px, 3vw, 20px);
         font-size: clamp(7px, 1.6vw, 10px);
         line-height: 1.25;
         white-space: normal;
