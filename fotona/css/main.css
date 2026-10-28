@@ -1,6 +1,43 @@
+:root {
+    /* Primitives: 원본 컬러 */
+    --red-500: #EF1C26;
+    --red-700: #C9151E;
+    --red-100: #FCEBEC;
+
+    --gray-800: #414141;
+    --gray-600: #818384;
+    --gray-50: #F6F7F8;
+    --gray-200: #E4E6E8;
+
+    --white-100: #FFFFFF;
+    --black-100: #000000;
+
+    /* Semantic: 사용 목적에 따른 컬러 */
+    --background-page: var(--gray-50);
+    --background-subtle: var(--red-100);
+    --background-black: var(--black-100);
+
+    --surface-default: var(--white-100);
+    --surface-brand-subtle: var(--red-100);
+
+    --text-primary: var(--gray-800);
+    --text-secondary: var(--gray-600);
+    --text-inverse: var(--white-100);
+
+    --border-default: var(--gray-200);
+    --border-strong: var(--gray-800);
+
+    --action-primary: var(--red-500);
+    --action-primary-hover: var(--red-700);
+    --action-secondary: var(--gray-800);
+    --action-disabled: var(--gray-600);
+    --action-default: var(--red-500);
+    --action-subtle: var(--red-100);
+}
+
 body {
-    background-color: yellow;
-    font-family: "Pretendard Variable", sans-serif;
+    background-color: var(--background-page);
+    font-family: "Pretendard Variable", Pretendard, sans-serif;
 }
 
 .hero-sec .hero-video {
