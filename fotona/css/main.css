@@ -482,3 +482,270 @@ body {
         font-size: clamp(10px, 1.6vw, 15px);
     }
 }
+
+
+/* Treatments */
+.treatments-section {
+    padding: 7.5% 5%;
+    overflow: hidden;
+    background: var(--surface-default);
+}
+.treatments-inner {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+}
+.treatments-heading {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 36px;
+}
+.treatments-heading .section-title {
+    margin-bottom: 0;
+}
+.treatments-controls {
+    display: flex;
+    flex: 0 0 auto;
+    gap: 10px;
+    padding-bottom: 4px;
+}
+.treatment-arrow {
+    display: grid;
+    width: 48px;
+    height: 48px;
+    place-items: center;
+    border: 1px solid var(--border-default);
+    border-radius: 50%;
+    background: var(--surface-default);
+    color: var(--text-primary);
+    font-size: 24px;
+    cursor: pointer;
+    transition: color .2s ease, background-color .2s ease, border-color .2s ease;
+}
+.treatment-arrow:hover,
+.treatment-arrow:focus-visible {
+    border-color: var(--border-strong);
+    background: var(--background-page);
+}
+.treatment-track {
+    display: flex;
+    gap: 18px;
+    overflow-x: auto;
+    padding: 2px 2px 14px;
+    cursor: grab;
+    user-select: none;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+}
+.treatment-track::-webkit-scrollbar {
+    display: none;
+}
+.treatment-track.is-dragging {
+    cursor: grabbing;
+    scroll-snap-type: none;
+}
+.treatment-card {
+    position: relative;
+    flex: 0 0 clamp(230px, 27vw, 360px);
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid var(--border-default);
+    border-radius: 6px;
+    background: var(--surface-default);
+    color: var(--text-primary);
+    text-align: left;
+    cursor: pointer;
+    scroll-snap-align: start;
+    transition: border-color .2s ease, transform .2s ease;
+}
+.treatment-card img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1.2 / 1;
+    object-fit: cover;
+    pointer-events: none;
+    -webkit-user-drag: none;
+}
+.treatment-card-title {
+    display: block;
+    padding: 18px 52px 20px 20px;
+    font-size: 24px;
+    font-weight: 500;
+}
+.treatment-card-arrow {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    font-size: 22px;
+}
+.treatment-card:hover,
+.treatment-card:focus-visible,
+.treatment-card.is-selected {
+    border-color: var(--border-strong);
+}
+.treatment-card.is-selected {
+    box-shadow: inset 0 0 0 1px var(--border-strong);
+}
+.related-products {
+    padding-top: 64px;
+}
+.related-products-heading {
+    margin-bottom: 24px;
+}
+.related-products-heading .section-eyebrow {
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+.related-products-heading h3 {
+    margin: 0;
+    color: var(--text-primary);
+    font-size: clamp(26px, 3vw, 38px);
+    font-weight: 500;
+    line-height: 1.2;
+}
+.related-product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+.related-product-card {
+    min-width: 0;
+    overflow: hidden;
+    border: 1px solid var(--border-default);
+    border-radius: 6px;
+    background: var(--surface-default);
+    transition: border-color .2s ease;
+}
+.related-product-card[hidden] {
+    display: none;
+}
+.related-product-card:hover,
+.related-product-card:focus-within {
+    border-color: var(--border-strong);
+}
+.related-product-image {
+    display: block;
+    margin: 6px 6px 0;
+    overflow: hidden;
+    background: var(--gray-50);
+}
+.related-product-image img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1.5 / 1;
+    object-fit: cover;
+    pointer-events: none;
+}
+.related-product-content {
+    display: flex;
+    min-height: 170px;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 18px 20px 22px;
+}
+.related-product-content h4 {
+    margin: 0 0 8px;
+    color: var(--text-primary);
+    font-size: 26px;
+    font-weight: 500;
+}
+.related-product-content p {
+    margin: 0 0 18px;
+    color: var(--text-secondary);
+    font-size: 16px;
+    line-height: 1.5;
+}
+.related-product-link {
+    margin-top: auto;
+    color: var(--text-secondary);
+    font-size: 15px;
+}
+.related-product-link:hover,
+.related-product-link:focus-visible {
+    color: var(--action-primary);
+}
+@media (max-width: 1024px) {
+    .treatments-section {
+        padding: 64px 4%;
+    }
+    .treatment-card {
+        flex-basis: clamp(220px, 38vw, 320px);
+    }
+    .treatment-card-title {
+        font-size: 21px;
+    }
+    .related-product-grid {
+        gap: 14px;
+    }
+    .related-product-content {
+        padding: 16px 14px 18px;
+    }
+    .related-product-content h4 {
+        font-size: 22px;
+    }
+}
+@media (max-width: 700px) {
+    .treatments-section {
+        padding: 48px 20px;
+    }
+    .treatments-heading {
+        align-items: flex-start;
+        margin-bottom: 24px;
+    }
+    .treatments-controls {
+        gap: 6px;
+    }
+    .treatment-arrow {
+        width: 38px;
+        height: 38px;
+        font-size: 20px;
+    }
+    .treatment-track {
+        gap: 12px;
+    }
+    .treatment-card {
+        flex-basis: 78%;
+    }
+    .treatment-card-title {
+        padding: 14px 42px 16px 16px;
+        font-size: 20px;
+    }
+    .treatment-card-arrow {
+        right: 16px;
+        bottom: 16px;
+    }
+    .related-products {
+        padding-top: 44px;
+    }
+    .related-product-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+    .related-product-card {
+        display: grid;
+        grid-template-columns: minmax(0, 0.9fr) minmax(0, 1fr);
+        align-items: stretch;
+    }
+    .related-product-image {
+        display: flex;
+        align-items: center;
+        margin: 6px;
+    }
+    .related-product-image img {
+        aspect-ratio: 1 / 1;
+    }
+    .related-product-content {
+        min-height: 0;
+        padding: 14px 12px 16px 8px;
+    }
+    .related-product-content h4 {
+        font-size: 19px;
+    }
+    .related-product-content p,
+    .related-product-link {
+        font-size: 13px;
+    }
+}
