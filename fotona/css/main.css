@@ -311,6 +311,8 @@ body {
 }
 
 .product-card {
+    display: flex;
+    flex-direction: column;
     min-width: 0;
     overflow: hidden;
     background-color: var(--surface-default);
@@ -338,6 +340,10 @@ body {
 }
 
 .product-card-content {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: flex-start;
     padding: 20px 20px 24px;
 }
 
@@ -350,6 +356,7 @@ body {
 }
 
 .product-description {
+    min-height: 2.8em;
     margin: 0 0 16px;
     color: var(--text-secondary);
     font-size: 20px;
@@ -361,11 +368,18 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 4px;
+    margin-top: auto;
     color: var(--text-secondary);
     font-size: 18px;
     font-weight: 400;
     line-height: 1;
     transition: color 0.2s ease;
+}
+
+.product-detail-link span {
+    display: inline-block;
+    line-height: 1;
+    transform: translateY(-1px);
 }
 
 .product-detail-link:hover,
