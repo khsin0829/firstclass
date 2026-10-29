@@ -582,7 +582,7 @@ body {
 .treatment-track {
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     gap: 18px;
     width: 90%;
     max-width: 1440px;
