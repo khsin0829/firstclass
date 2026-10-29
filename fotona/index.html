@@ -366,6 +366,9 @@
             resultsList.addEventListener("click", (event) => {
                 const button = event.target.closest("[data-clinic-id]");
                 if (!button) return;
+                document.querySelectorAll(".clinic-result-button").forEach((item) => {
+                    item.classList.toggle("is-selected", item === button);
+                });
                 const clinic = clinics.find((item) => item.id === button.dataset.clinicId);
                 if (clinic) showClinicOnMap(clinic);
             });
