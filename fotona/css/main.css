@@ -581,7 +581,6 @@ body {
 }
 .treatment-track {
     display: flex;
-    scroll-behavior: smooth;
     gap: 18px;
     width: calc(100% + 11vw);
     margin-left: -5.5vw;
@@ -589,7 +588,7 @@ body {
     padding: 2px 5.5vw 14px;
     cursor: grab;
     user-select: none;
-    touch-action: pan-x;
+    touch-action: pan-y;
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
     overscroll-behavior-x: contain;
