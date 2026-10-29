@@ -202,46 +202,15 @@
                 scar: "흉터"
             };
             const defaultTitle = "관련 제품";
-            const originalCards = [...track.querySelectorAll(".treatment-card")];
-            const cardCount = originalCards.length;
+            const cards = [...track.querySelectorAll(".treatment-card")];
             let activeTreatment = null;
-            let loopWidth = 0;
             let scrollFrame = false;
             let pointerStartX = 0;
             let pointerStartScroll = 0;
             let isPointerDown = false;
-
-            // 앞뒤에 카드 세트를 복제해 마지막 카드 이후에도 자연스럽게 순환시킵니다.
-            const prependFragment = document.createDocumentFragment();
-            originalCards.forEach((card) => {
-                const clone = card.cloneNode(true);
-                clone.classList.add("is-clone");
-                clone.setAttribute("aria-hidden", "true");
-                clone.tabIndex = -1;
-                prependFragment.appendChild(clone);
-            });
-            track.insertBefore(prependFragment, track.firstChild);
-
-            const appendFragment = document.createDocumentFragment();
-            originalCards.forEach((card) => {
-                const clone = card.cloneNode(true);
-                clone.classList.add("is-clone");
-                clone.setAttribute("aria-hidden", "true");
-                clone.tabIndex = -1;
-                appendFragment.appendChild(clone);
-            });
-            track.appendChild(appendFragment);
-
-            function getCards() {
-                return [...track.querySelectorAll(".treatment-card")];
-            }
-
-            function getLoopWidth() {
-                const cards = getCards();
-                const firstOriginal = cards[cardCount];
-                const nextSetFirst = cards[cardCount * 2];
-                return nextSetFirst.offsetLeft - firstOriginal.offsetLeft;
-            }
+            let hasDragged = false;
+            let suppressClick = false;
+            const dragThreshold = 6;
 
             function setActiveCard(card) {
                 if (!card) return;
@@ -249,8 +218,8 @@
                 if (!treatment || treatment === activeTreatment) return;
                 activeTreatment = treatment;
 
-                getCards().forEach((item) => {
-                    const selected = item.dataset.treatment === treatment;
+                cards.forEach((item) => {
+                    const selected = item === card;
                     item.classList.toggle("is-selected", selected);
                     item.setAttribute("aria-pressed", String(selected));
                 });
@@ -267,7 +236,7 @@
                 let nearestCard = null;
                 let nearestDistance = Infinity;
 
-                getCards().forEach((card) => {
+                cards.forEach((card) => {
                     const rect = card.getBoundingClientRect();
                     const distance = Math.abs(rect.left + rect.width / 2 - centerX);
                     if (distance < nearestDistance) {
@@ -279,54 +248,20 @@
                 return nearestCard;
             }
 
-            function updateActiveCard() {
-                setActiveCard(findNearestCard());
-            }
-
-            function normalizeLoopPosition() {
-                if (!loopWidth) return;
-
-                const cards = getCards();
-                const nearestCard = findNearestCard();
-                if (!nearestCard) return;
-
-                const index = cards.indexOf(nearestCard);
-
-                // 스크롤이 멈춘 뒤에만 같은 카드가 있는 원본 세트로 순간 이동합니다.
-                // 이동 중에는 위치를 보정하지 않아 스크롤 방향이 뒤집히는 현상을 방지합니다.
-                if (index < cardCount) {
-                    track.scrollLeft += loopWidth;
-                } else if (index >= cardCount * 2) {
-                    track.scrollLeft -= loopWidth;
-                }
-
-                updateActiveCard();
-            }
-
-            function measureAndInitialize() {
-                loopWidth = getLoopWidth();
-                const cards = getCards();
-                const firstOriginal = cards[cardCount];
-                track.scrollLeft = firstOriginal.offsetLeft - track.offsetLeft;
-                // 초기에는 원본 카드 세트에서 시작합니다.
-                requestAnimationFrame(updateActiveCard);
-            }
-
             track.addEventListener("scroll", () => {
                 if (scrollFrame) return;
                 scrollFrame = true;
                 requestAnimationFrame(() => {
-                    updateActiveCard();
+                    setActiveCard(findNearestCard());
                     scrollFrame = false;
                 });
             });
 
-            track.addEventListener("scrollend", normalizeLoopPosition);
-
-            // 마우스로도 드래그할 수 있고, 모바일에서는 기본 터치 스와이프를 사용합니다.
+            // 포인터가 6px 이상 움직였을 때만 드래그로 처리합니다.
             track.addEventListener("pointerdown", (event) => {
-                if (event.pointerType === "touch") return;
+                if (event.pointerType === "mouse" && event.button !== 0) return;
                 isPointerDown = true;
+                hasDragged = false;
                 pointerStartX = event.clientX;
                 pointerStartScroll = track.scrollLeft;
                 track.classList.add("is-dragging");
@@ -335,39 +270,54 @@
 
             track.addEventListener("pointermove", (event) => {
                 if (!isPointerDown) return;
-                track.scrollLeft = pointerStartScroll - (event.clientX - pointerStartX);
+                const deltaX = event.clientX - pointerStartX;
+
+                if (Math.abs(deltaX) >= dragThreshold) {
+                    hasDragged = true;
+                }
+
+                if (hasDragged) {
+                    event.preventDefault();
+                    track.scrollLeft = pointerStartScroll - deltaX;
+                }
             });
 
             function endPointerDrag() {
+                if (!isPointerDown) return;
                 isPointerDown = false;
                 track.classList.remove("is-dragging");
+
+                if (hasDragged) {
+                    suppressClick = true;
+                    window.setTimeout(() => {
+                        suppressClick = false;
+                    }, 0);
+                    setActiveCard(findNearestCard());
+                }
             }
+
             track.addEventListener("pointerup", endPointerDrag);
             track.addEventListener("pointercancel", endPointerDrag);
             track.addEventListener("lostpointercapture", endPointerDrag);
 
-            // 카드를 클릭하면 해당 카드가 중앙에 오도록 이동합니다.
+            // 짧게 눌렀다면 선택만 하고, 드래그했다면 클릭 동작을 막습니다.
             track.addEventListener("click", (event) => {
-                const card = event.target.closest(".treatment-card");
-                if (!card || isPointerDown) return;
-                const trackRect = track.getBoundingClientRect();
-                const cardRect = card.getBoundingClientRect();
-                const distanceToCenter =
-                    cardRect.left + cardRect.width / 2 -
-                    (trackRect.left + trackRect.width / 2);
+                if (suppressClick) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    suppressClick = false;
+                    return;
+                }
 
-                track.scrollTo({
-                    left: track.scrollLeft + distanceToCenter,
-                    behavior: "smooth"
-                });
+                const card = event.target.closest(".treatment-card");
+                if (card) setActiveCard(card);
             });
 
-            window.addEventListener("resize", measureAndInitialize);
             productsTitle.textContent = defaultTitle;
             productCards.forEach((product) => {
                 product.hidden = true;
             });
-            measureAndInitialize();
+            setActiveCard(cards[0]);
         })();
     </script>
 
