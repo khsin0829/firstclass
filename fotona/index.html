@@ -213,7 +213,7 @@
 
             // 앞뒤에 카드 세트를 복제해 마지막 카드 이후에도 자연스럽게 순환시킵니다.
             const prependFragment = document.createDocumentFragment();
-            [...originalCards].reverse().forEach((card) => {
+            originalCards.forEach((card) => {
                 const clone = card.cloneNode(true);
                 clone.classList.add("is-clone");
                 clone.setAttribute("aria-hidden", "true");
