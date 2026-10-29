@@ -532,7 +532,7 @@ body {
 
 /* Treatments */
 .treatments-section {
-    padding: 7.5% 5%;
+    padding: 7.5% 0;
     overflow: hidden;
     background: var(--surface-default);
 }
@@ -723,7 +723,7 @@ body {
 }
 @media (max-width: 1024px) {
     .treatments-section {
-        padding: 64px 4%;
+        padding: 64px 0;
     }
     .treatment-card {
         flex-basis: clamp(170px, 29vw, 280px);
@@ -747,7 +747,7 @@ body {
 }
 @media (max-width: 700px) {
     .treatments-section {
-        padding: 48px 20px;
+        padding: 48px 0;
     }
     .treatments-heading {
         align-items: flex-start;
