@@ -570,5 +570,38 @@
 
 
 
+
+    <script>
+        (() => {
+            const preview = document.querySelector("#demo-preview");
+            const previewImage = document.querySelector("#demo-preview-image");
+            const productCards = [...document.querySelectorAll(".demo-product-card")];
+            const demoForm = document.querySelector("#demo-request-form");
+            const message = document.querySelector("#demo-form-message");
+
+            if (!preview || !previewImage || !demoForm) return;
+
+            productCards.forEach((card) => {
+                card.addEventListener("click", () => {
+                    previewImage.src = card.dataset.demoImage;
+                    previewImage.alt = card.querySelector("span").textContent + " 장비 사진";
+                    preview.classList.add("has-product");
+
+                    productCards.forEach((item) => {
+                        const selected = item === card;
+                        item.classList.toggle("is-selected", selected);
+                        item.setAttribute("aria-pressed", String(selected));
+                    });
+                });
+            });
+
+            demoForm.addEventListener("submit", (event) => {
+                event.preventDefault();
+                message.textContent = "입력이 완료되었습니다. 현재 시안에서는 신청 내용이 실제로 전송되지 않습니다.";
+            });
+        })();
+    </script>
+
+
 </body>
 </html>
