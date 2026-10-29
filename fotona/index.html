@@ -204,13 +204,6 @@
             const defaultTitle = "관련 제품";
             const cards = [...track.querySelectorAll(".treatment-card")];
             let activeTreatment = null;
-            let scrollFrame = false;
-            let pointerStartX = 0;
-            let pointerStartScroll = 0;
-            let isPointerDown = false;
-            let hasDragged = false;
-            let suppressClick = false;
-            const dragThreshold = 6;
 
             function setActiveCard(card) {
                 if (!card) return;
@@ -230,85 +223,8 @@
                 });
             }
 
-            function findNearestCard() {
-                const trackRect = track.getBoundingClientRect();
-                const centerX = trackRect.left + trackRect.width / 2;
-                let nearestCard = null;
-                let nearestDistance = Infinity;
-
-                cards.forEach((card) => {
-                    const rect = card.getBoundingClientRect();
-                    const distance = Math.abs(rect.left + rect.width / 2 - centerX);
-                    if (distance < nearestDistance) {
-                        nearestDistance = distance;
-                        nearestCard = card;
-                    }
-                });
-
-                return nearestCard;
-            }
-
-            track.addEventListener("scroll", () => {
-                if (scrollFrame) return;
-                scrollFrame = true;
-                requestAnimationFrame(() => {
-                    setActiveCard(findNearestCard());
-                    scrollFrame = false;
-                });
-            });
-
-            // 포인터가 6px 이상 움직였을 때만 드래그로 처리합니다.
-            track.addEventListener("pointerdown", (event) => {
-                if (event.pointerType === "mouse" && event.button !== 0) return;
-                isPointerDown = true;
-                hasDragged = false;
-                pointerStartX = event.clientX;
-                pointerStartScroll = track.scrollLeft;
-                track.classList.add("is-dragging");
-                track.setPointerCapture(event.pointerId);
-            });
-
-            track.addEventListener("pointermove", (event) => {
-                if (!isPointerDown) return;
-                const deltaX = event.clientX - pointerStartX;
-
-                if (Math.abs(deltaX) >= dragThreshold) {
-                    hasDragged = true;
-                }
-
-                if (hasDragged) {
-                    event.preventDefault();
-                    track.scrollLeft = pointerStartScroll - deltaX;
-                }
-            });
-
-            function endPointerDrag() {
-                if (!isPointerDown) return;
-                isPointerDown = false;
-                track.classList.remove("is-dragging");
-
-                if (hasDragged) {
-                    suppressClick = true;
-                    window.setTimeout(() => {
-                        suppressClick = false;
-                    }, 0);
-                    setActiveCard(findNearestCard());
-                }
-            }
-
-            track.addEventListener("pointerup", endPointerDrag);
-            track.addEventListener("pointercancel", endPointerDrag);
-            track.addEventListener("lostpointercapture", endPointerDrag);
-
-            // 짧게 눌렀다면 선택만 하고, 드래그했다면 클릭 동작을 막습니다.
+            // 카드를 클릭하면 선택 시술과 관련 제품만 변경합니다.
             track.addEventListener("click", (event) => {
-                if (suppressClick) {
-                    event.preventDefault();
-                    event.stopPropagation();
-                    suppressClick = false;
-                    return;
-                }
-
                 const card = event.target.closest(".treatment-card");
                 if (card) setActiveCard(card);
             });
