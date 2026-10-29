@@ -582,27 +582,28 @@ body {
 .treatment-track {
     display: flex;
     gap: 18px;
-    width: calc(100% + 11vw);
-    margin-left: -5.5vw;
-    overflow-x: hidden;
-    padding: 2px 5.5vw 14px;
-    cursor: default;
+    width: 90%;
+    max-width: 1440px;
+    margin: 0 auto;
+    overflow-x: auto;
+    padding: 2px 0 14px;
+    cursor: grab;
     user-select: none;
-    touch-action: pan-y;
-    scroll-snap-type: none;
+    touch-action: pan-x;
+    scroll-snap-type: x mandatory;
     scrollbar-width: none;
+    overscroll-behavior-x: contain;
 }
 .treatment-track::-webkit-scrollbar {
     display: none;
 }
 .treatment-track.is-dragging {
     cursor: grabbing;
-    scroll-snap-type: none;
 }
-/* 시술 카드 크기는 화면 너비에 따라 반응형으로 조절합니다. */
+/* 한 화면에 카드 5개가 보이도록 너비를 계산합니다. */
 .treatment-card {
     position: relative;
-    flex: 0 0 clamp(160px, 23vw, 320px);
+    flex: 0 0 calc((100% - 72px) / 5);
     padding: 0;
     overflow: hidden;
     border: 1px solid var(--border-default);
@@ -611,7 +612,7 @@ body {
     color: var(--text-primary);
     text-align: left;
     cursor: pointer;
-    scroll-snap-align: start;
+    scroll-snap-align: center;
     transition: border-color .2s ease, transform .2s ease;
 }
 .treatment-card img {
@@ -642,7 +643,9 @@ body {
     border-color: var(--border-strong);
 }
 .treatment-card.is-selected {
-    box-shadow: inset 0 0 0 1px var(--border-strong);
+    border-color: var(--action-primary);
+    box-shadow: inset 0 0 0 1px var(--action-primary);
+    transform: translateY(-3px);
 }
 .related-products {
     width: 90%;
@@ -733,8 +736,12 @@ body {
     .related-products {
         width: 92%;
     }
+    .treatment-track {
+        width: 92%;
+        gap: 12px;
+    }
     .treatment-card {
-        flex-basis: clamp(170px, 29vw, 280px);
+        flex-basis: calc((100% - 48px) / 5);
     }
     .treatment-card-title {
         font-size: clamp(16px, 2.2vw, 21px);
@@ -765,33 +772,21 @@ body {
         align-items: flex-start;
         margin-bottom: 24px;
     }
-    .treatments-controls {
+    .treatment-track {
+        width: calc(100% - 40px);
         gap: 6px;
     }
-    .treatment-arrow {
-        width: 38px;
-        height: 38px;
-        font-size: 20px;
-    }
-    .treatment-track {
-        width: calc(100% + 40px);
-        margin-left: -20px;
-        gap: 12px;
-        padding-right: 20px;
-        padding-left: 20px;
-        overflow-x: hidden;
-        touch-action: pan-y;
-    }
     .treatment-card {
-        flex-basis: clamp(145px, 62vw, 250px);
+        flex-basis: calc((100% - 24px) / 5);
     }
     .treatment-card-title {
-        padding: 12px 12px 6px;
-        font-size: clamp(15px, 4vw, 20px);
+        padding: 8px 5px 4px;
+        font-size: clamp(9px, 2.5vw, 15px);
     }
     .treatment-card-description {
-        padding: 0 12px 14px;
-        font-size: clamp(11px, 2.8vw, 16px);
+        padding: 0 5px 8px;
+        font-size: clamp(7px, 1.7vw, 11px);
+        line-height: 1.3;
     }
     .related-products {
         padding-top: 44px;
