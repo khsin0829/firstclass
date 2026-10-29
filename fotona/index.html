@@ -228,7 +228,20 @@
                 const card = event.target.closest(".treatment-card");
                 if (!card) return;
 
-                setActiveCard(card);
+                if (card.dataset.treatment === activeTreatment) {
+                    // 선택된 카드를 다시 클릭하면 선택을 취소합니다.
+                    activeTreatment = null;
+                    cards.forEach((item) => {
+                        item.classList.remove("is-selected");
+                        item.setAttribute("aria-pressed", "false");
+                    });
+                    productsTitle.textContent = defaultTitle;
+                    productCards.forEach((product) => {
+                        product.hidden = true;
+                    });
+                } else {
+                    setActiveCard(card);
+                }
 
                 const trackCenter = track.getBoundingClientRect().left +
                     track.clientLeft + track.clientWidth / 2;
