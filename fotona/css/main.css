@@ -275,7 +275,9 @@ body {
 
     .nav-item > a {
         width: 100%;
-        min-height: 48px;
+        height: 64px;
+        min-height: 64px;
+        box-sizing: border-box;
         padding: 0 clamp(5px, 1.5vw, 10px);
         font-size: clamp(9px, 2.4vw, 12px);
     }
