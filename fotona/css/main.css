@@ -278,7 +278,7 @@ body {
         height: 64px;
         min-height: 64px;
         box-sizing: border-box;
-        padding: 0 clamp(5px, 1.5vw, 10px);
+        padding: 0 clamp(8px, 2vw, 14px);
         font-size: clamp(9px, 2.4vw, 12px);
     }
 
@@ -290,7 +290,7 @@ body {
     }
 
     .submenu a {
-        padding: 10px clamp(14px, 3vw, 20px);
+        padding: 10px clamp(18px, 4vw, 26px);
         font-size: clamp(7px, 1.6vw, 10px);
         line-height: 1.25;
         white-space: normal;
