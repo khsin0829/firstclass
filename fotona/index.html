@@ -559,5 +559,39 @@
 
 
 
+    <script>
+        (() => {
+            const preview = document.querySelector("#demo-preview");
+            const previewImage = document.querySelector("#demo-preview-image");
+            const productCards = [...document.querySelectorAll(".demo-product-card")];
+            const demoForm = document.querySelector("#demo-request-form");
+            const message = document.querySelector("#demo-form-message");
+
+            productCards.forEach((card) => {
+                card.addEventListener("click", () => {
+                    const image = card.querySelector("img");
+                    if (!image) return;
+
+                    previewImage.src = image.src;
+                    previewImage.alt = card.querySelector("span").textContent + " 레이저 장비";
+                    preview.classList.add("has-product");
+
+                    productCards.forEach((item) => {
+                        const selected = item === card;
+                        item.classList.toggle("is-selected", selected);
+                        item.setAttribute("aria-pressed", String(selected));
+                    });
+                });
+            });
+
+            demoForm.addEventListener("submit", (event) => {
+                event.preventDefault();
+                message.textContent = "입력 내용이 확인되었습니다. 현재 포트폴리오 시안에서는 실제 신청이 전송되지 않습니다.";
+            });
+        })();
+    </script>
+
+
+
 </body>
 </html>
