@@ -202,60 +202,7 @@
 
 
 
-            <section class="demo-request" id="demo" aria-labelledby="demo-title">
-                <div class="demo-request-inner">
-                    <p class="section-eyebrow">04/ Demo Request</p>
-                    <h2 class="section-title">Experience the difference.</h2>
-
-                    <div class="demo-request-content">
-                        <div class="demo-preview" id="demo-preview" aria-live="polite">
-                            <img class="demo-preview-image" id="demo-preview-image" src="img/logoBlack.png" alt="Fotona 로고">
-                            <img class="demo-preview-logo" src="img/logoBlack.png" alt="" aria-hidden="true">
-                        </div>
-
-                        <div class="demo-form-area">
-                            <div class="demo-heading">
-                                <h3 id="demo-title">데모 예약</h3>
-                                <p>포토나의 레이저 기술을 직접 경험해 보세요.</p>
-                            </div>
-
-                            <div class="demo-product-options" role="group" aria-label="데모 제품 선택">
-                                <button class="demo-product-card" type="button" data-demo-product="avalanche" aria-pressed="false">
-                                    <img src="img/AvalancheLase.jpg" alt="">
-                                    <span>AvalancheLase</span>
-                                </button>
-                                <button class="demo-product-card" type="button" data-demo-product="dynamis" aria-pressed="false">
-                                    <img src="img/xsdynamis.jpg" alt="">
-                                    <span>XS Dynamis</span>
-                                </button>
-                                <button class="demo-product-card" type="button" data-demo-product="starwalker" aria-pressed="false">
-                                    <img src="img/starwalkerQX.jpg" alt="">
-                                    <span>StarWalker QX</span>
-                                </button>
-                            </div>
-
-                            <form class="demo-request-form" id="demo-request-form">
-                                <div class="demo-input-row">
-                                    <label class="visually-hidden" for="demo-manager">담당자명</label>
-                                    <input id="demo-manager" name="manager" type="text" placeholder="담당자명" required>
-                                    <label class="visually-hidden" for="demo-phone">연락처</label>
-                                    <input id="demo-phone" name="phone" type="tel" placeholder="연락처" required>
-                                </div>
-                                <div class="demo-input-row">
-                                    <label class="visually-hidden" for="demo-clinic">병원명</label>
-                                    <input id="demo-clinic" name="clinic" type="text" placeholder="병원명" required>
-                                    <label class="visually-hidden" for="demo-date">데모 희망 날짜</label>
-                                    <input id="demo-date" name="date" type="date" aria-label="데모 희망 날짜" required>
-                                </div>
-                                <label class="visually-hidden" for="demo-address">병원 상세 주소</label>
-                                <input id="demo-address" name="address" type="text" placeholder="병원 상세 주소" required>
-                                <button type="submit" class="demo-submit">데모 신청 하기</button>
-                                <p class="demo-form-message" id="demo-form-message" role="status"></p>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            
 
             <section class="clinic-finder" id="clinics" aria-labelledby="clinic-finder-title">
                 <div class="clinic-finder-inner">
@@ -559,37 +506,7 @@
 
 
 
-    <script>
-        (() => {
-            const preview = document.querySelector("#demo-preview");
-            const previewImage = document.querySelector("#demo-preview-image");
-            const productCards = [...document.querySelectorAll(".demo-product-card")];
-            const demoForm = document.querySelector("#demo-request-form");
-            const message = document.querySelector("#demo-form-message");
 
-            productCards.forEach((card) => {
-                card.addEventListener("click", () => {
-                    const image = card.querySelector("img");
-                    if (!image) return;
-
-                    previewImage.src = image.src;
-                    previewImage.alt = card.querySelector("span").textContent + " 레이저 장비";
-                    preview.classList.add("has-product");
-
-                    productCards.forEach((item) => {
-                        const selected = item === card;
-                        item.classList.toggle("is-selected", selected);
-                        item.setAttribute("aria-pressed", String(selected));
-                    });
-                });
-            });
-
-            demoForm.addEventListener("submit", (event) => {
-                event.preventDefault();
-                message.textContent = "입력 내용이 확인되었습니다. 현재 포트폴리오 시안에서는 실제 신청이 전송되지 않습니다.";
-            });
-        })();
-    </script>
 
 
 
