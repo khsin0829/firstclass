@@ -812,6 +812,81 @@ body {
     }
 }
 
+
+.clinic-result {
+    padding: 0;
+    overflow: hidden;
+}
+.clinic-result-button {
+    display: block;
+    width: 100%;
+    padding: 12px 14px;
+    border: 0;
+    background: var(--surface-default);
+    color: inherit;
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+    transition: background-color .2s ease;
+}
+.clinic-result-button:hover,
+.clinic-result-button:focus-visible {
+    background: var(--red-100);
+    outline: none;
+}
+.clinic-result-button h4 {
+    margin: 0 0 5px;
+    color: var(--text-primary);
+    font-size: 15px;
+    font-weight: 600;
+}
+.clinic-result-button p {
+    margin: 0 0 6px;
+    color: var(--text-secondary);
+    font-size: 12px;
+    line-height: 1.45;
+}
+.clinic-result-button span {
+    display: block;
+    color: var(--action-primary);
+    font-size: 12px;
+    line-height: 1.4;
+}
+.clinic-pagination {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 14px;
+}
+.clinic-page-button {
+    display: grid;
+    width: 34px;
+    height: 34px;
+    place-items: center;
+    border: 1px solid var(--border-default);
+    border-radius: 4px;
+    background: var(--surface-default);
+    color: var(--text-primary);
+    font: inherit;
+    font-size: 13px;
+    cursor: pointer;
+}
+.clinic-page-button:hover,
+.clinic-page-button:focus-visible,
+.clinic-page-button.is-current {
+    border-color: var(--action-primary);
+    background: var(--action-primary);
+    color: var(--text-inverse);
+}
+.clinic-map-info {
+    padding: 8px 10px;
+    color: var(--text-primary);
+    font-size: 12px;
+    line-height: 1.5;
+    white-space: nowrap;
+}
+
 /* Clinic Finder */
 .clinic-finder {
     padding: 7.5% 5%;
