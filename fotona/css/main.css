@@ -284,8 +284,8 @@ body {
 
     .submenu {
         left: 0;
-        width: 100%;
-        min-width: 0;
+        width: max-content;
+        min-width: 100%;
         transform: none;
     }
 
@@ -293,7 +293,7 @@ body {
         padding: 10px clamp(18px, 4vw, 26px);
         font-size: clamp(7px, 1.6vw, 10px);
         line-height: 1.25;
-        white-space: normal;
+        white-space: nowrap;
     }
 }
 
