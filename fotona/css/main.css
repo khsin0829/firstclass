@@ -283,10 +283,10 @@ body {
     }
 
     .submenu {
-        left: 0;
+        left: 50%;
         width: max-content;
         min-width: 100%;
-        transform: none;
+        transform: translateX(-50%);
     }
 
     .submenu a {
