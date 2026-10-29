@@ -588,6 +588,12 @@ body {
     max-width: 1440px;
     margin: 0 auto;
     padding: 2px 0 14px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    overscroll-behavior-x: contain;
+}
+.treatment-track::-webkit-scrollbar {
+    display: none;
 }
 /* 시술 카드 크기는 기존처럼 화면 너비에 따라 반응형으로 조절합니다. */
 .treatment-card {
