@@ -581,23 +581,13 @@ body {
 }
 .treatment-track {
     display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
     gap: 18px;
-    width: calc(100% + 11vw);
-    margin-left: -5.5vw;
-    overflow-x: auto;
-    padding: 2px 5.5vw 14px;
-    cursor: grab;
-    user-select: none;
-    touch-action: pan-y;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: none;
-    overscroll-behavior-x: contain;
-}
-.treatment-track::-webkit-scrollbar {
-    display: none;
-}
-.treatment-track.is-dragging {
-    cursor: grabbing;
+    width: 90%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 2px 0 14px;
 }
 /* 시술 카드 크기는 기존처럼 화면 너비에 따라 반응형으로 조절합니다. */
 .treatment-card {
@@ -611,7 +601,6 @@ body {
     color: var(--text-primary);
     text-align: left;
     cursor: pointer;
-    scroll-snap-align: center;
     transition: border-color .2s ease, transform .2s ease;
 }
 .treatment-card img {
@@ -736,11 +725,8 @@ body {
         width: 92%;
     }
     .treatment-track {
-        width: calc(100% + 8vw);
-        margin-left: -4vw;
+        width: 92%;
         gap: 12px;
-        padding-right: 4vw;
-        padding-left: 4vw;
     }
     .treatment-card {
         flex-basis: clamp(170px, 29vw, 280px);
@@ -775,11 +761,8 @@ body {
         margin-bottom: 24px;
     }
     .treatment-track {
-        width: calc(100% + 40px);
-        margin-left: -20px;
+        width: calc(100% - 40px);
         gap: 12px;
-        padding-right: 20px;
-        padding-left: 20px;
     }
     .treatment-card {
         flex-basis: clamp(145px, 62vw, 250px);
