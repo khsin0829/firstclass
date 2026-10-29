@@ -223,10 +223,22 @@
                 });
             }
 
-            // 카드를 클릭하면 선택 시술과 관련 제품만 변경합니다.
+            // 카드를 클릭하면 해당 카드가 가로 중앙에 오도록 이동하고 관련 제품을 변경합니다.
             track.addEventListener("click", (event) => {
                 const card = event.target.closest(".treatment-card");
-                if (card) setActiveCard(card);
+                if (!card) return;
+
+                setActiveCard(card);
+
+                const trackRect = track.getBoundingClientRect();
+                const cardRect = card.getBoundingClientRect();
+                const offset = cardRect.left + cardRect.width / 2 -
+                    (trackRect.left + trackRect.width / 2);
+
+                track.scrollTo({
+                    left: track.scrollLeft + offset,
+                    behavior: "smooth"
+                });
             });
 
             productsTitle.textContent = defaultTitle;
