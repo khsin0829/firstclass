@@ -1070,3 +1070,202 @@ body {
     }
 }
 
+
+/* Demo Request */
+.demo-request {
+    padding: 7.5% 5%;
+    background: var(--background-page);
+}
+.demo-request-inner {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+}
+.demo-request .section-eyebrow {
+    margin-bottom: 12px;
+    font-size: 16px;
+}
+.demo-request .section-title {
+    margin-bottom: 36px;
+    font-size: clamp(32px, 3.5vw, 50px);
+}
+.demo-request-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+    width: 100%;
+}
+.demo-preview {
+    position: relative;
+    display: flex;
+    flex: 0 1 280px;
+    align-items: center;
+    justify-content: center;
+    min-width: 220px;
+    max-width: 280px;
+    aspect-ratio: 0.64 / 1;
+    overflow: hidden;
+    border: 1px solid var(--border-default);
+    border-radius: 8px;
+    background: var(--surface-default);
+}
+.demo-preview-image {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity .25s ease;
+}
+.demo-preview.has-product .demo-preview-image {
+    opacity: 1;
+}
+.demo-preview-logo {
+    position: relative;
+    z-index: 1;
+    width: 52%;
+    height: auto;
+    padding: 10px;
+    background: rgba(255, 255, 255, .88);
+    border-radius: 4px;
+}
+.demo-form-area {
+    display: flex;
+    flex: 0 1 560px;
+    min-width: 0;
+    flex-direction: column;
+    gap: 14px;
+}
+.demo-heading h3 {
+    margin: 0 0 5px;
+    color: var(--text-primary);
+    font-size: 24px;
+    font-weight: 500;
+}
+.demo-heading p {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 13px;
+    line-height: 1.5;
+}
+.demo-product-options {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+}
+.demo-product-card {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    gap: 7px;
+    padding: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border-default);
+    border-radius: 7px;
+    background: var(--surface-default);
+    color: var(--text-secondary);
+    font: inherit;
+    cursor: pointer;
+    transition: border-color .2s ease, background-color .2s ease, box-shadow .2s ease;
+}
+.demo-product-card img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1.45 / 1;
+    object-fit: cover;
+    border-radius: 3px;
+}
+.demo-product-card span {
+    display: block;
+    font-size: 12px;
+    line-height: 1.25;
+    text-align: center;
+    overflow-wrap: anywhere;
+}
+.demo-product-card:hover,
+.demo-product-card:focus-visible,
+.demo-product-card.is-selected {
+    border-color: var(--action-primary);
+    background: var(--red-100);
+    box-shadow: inset 0 0 0 1px var(--action-primary);
+    outline: none;
+}
+.demo-request-form {
+    display: grid;
+    gap: 8px;
+}
+.demo-input-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+}
+.demo-request-form input {
+    width: 100%;
+    min-width: 0;
+    height: 36px;
+    box-sizing: border-box;
+    padding: 0 10px;
+    border: 1px solid var(--border-default);
+    border-radius: 6px;
+    background: var(--surface-default);
+    color: var(--text-primary);
+    font: inherit;
+    font-size: 12px;
+}
+.demo-request-form input:focus-visible {
+    border-color: var(--action-primary);
+    outline: 2px solid var(--red-100);
+}
+.demo-submit {
+    min-height: 38px;
+    border: 0;
+    border-radius: 6px;
+    background: var(--action-primary);
+    color: var(--text-inverse);
+    font: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color .2s ease;
+}
+.demo-submit:hover,
+.demo-submit:focus-visible {
+    background: var(--action-primary-hover);
+}
+.demo-form-message {
+    min-height: 0;
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 12px;
+    line-height: 1.4;
+}
+.demo-form-message:not(:empty) {
+    margin-top: 2px;
+}
+@media (max-width: 700px) {
+    .demo-request {
+        padding: 48px 20px;
+    }
+    .demo-request .section-title {
+        margin-bottom: 24px;
+    }
+    .demo-request-content {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 24px;
+    }
+    .demo-preview {
+        flex: none;
+        width: min(100%, 260px);
+        min-width: 0;
+        margin: 0 auto;
+        aspect-ratio: 1 / 1.05;
+    }
+    .demo-form-area {
+        flex: none;
+        width: 100%;
+    }
+}
