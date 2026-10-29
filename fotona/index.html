@@ -379,17 +379,23 @@
                 map.setZoomable(true);
                 geocoder = new kakao.maps.services.Geocoder();
 
+                const bounds = new kakao.maps.LatLngBounds();
+                let completedLookups = 0;
                 clinics.forEach((clinic) => {
                     geocoder.addressSearch(clinic.address, (result, status) => {
                         if (status !== kakao.maps.services.Status.OK || !result[0]) {
                             console.warn("주소를 찾지 못했습니다:", clinic.name, clinic.address);
-                            return;
+                        } else {
+                            clinic.position = new kakao.maps.LatLng(Number(result[0].y), Number(result[0].x));
+                            const marker = new kakao.maps.Marker({ map, position: clinic.position, title: clinic.name });
+                            markers.set(clinic.id, marker);
+                            bounds.extend(clinic.position);
+                            kakao.maps.event.addListener(marker, "click", () => showClinicOnMap(clinic));
                         }
-                        clinic.position = new kakao.maps.LatLng(Number(result[0].y), Number(result[0].x));
-                        const marker = new kakao.maps.Marker({ map, position: clinic.position, title: clinic.name });
-                        markers.set(clinic.id, marker);
-                        kakao.maps.event.addListener(marker, "click", () => showClinicOnMap(clinic));
-                        if (markers.size === 1) map.setCenter(clinic.position);
+                        completedLookups += 1;
+                        if (completedLookups === clinics.length && markers.size > 0) {
+                            map.setBounds(bounds);
+                        }
                     });
                 });
             }
@@ -493,22 +499,6 @@
     </script>
 
 
-    <script>
-        (() => {
-            const mapContainer = document.querySelector("#clinic-map");
-            if (!mapContainer || !window.kakao || !kakao.maps) return;
-
-            const mapOptions = {
-                center: new kakao.maps.LatLng(37.5665, 126.9780),
-                level: 8
-            };
-            const map = new kakao.maps.Map(mapContainer, mapOptions);
-
-            // 지도 이동과 확대/축소는 카카오맵 기본 조작을 사용합니다.
-            map.setDraggable(true);
-            map.setZoomable(true);
-        })();
-    </script>
 
 </body>
 </html>
