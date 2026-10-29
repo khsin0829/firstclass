@@ -545,6 +545,7 @@ body {
     align-items: center;
     justify-content: space-between;
     gap: 24px;
+    width: 90%;
     max-width: 1440px;
     margin: 0 auto 40px;
 }
@@ -644,6 +645,9 @@ body {
     box-shadow: inset 0 0 0 1px var(--border-strong);
 }
 .related-products {
+    width: 90%;
+    max-width: 1440px;
+    margin: 0 auto;
     padding-top: 64px;
 }
 .related-products-heading {
@@ -725,6 +729,10 @@ body {
     .treatments-section {
         padding: 64px 0;
     }
+    .treatments-heading,
+    .related-products {
+        width: 92%;
+    }
     .treatment-card {
         flex-basis: clamp(170px, 29vw, 280px);
     }
@@ -748,6 +756,10 @@ body {
 @media (max-width: 700px) {
     .treatments-section {
         padding: 48px 0;
+    }
+    .treatments-heading,
+    .related-products {
+        width: calc(100% - 40px);
     }
     .treatments-heading {
         align-items: flex-start;
