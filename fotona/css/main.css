@@ -816,10 +816,14 @@ body {
 .clinic-result {
     padding: 0;
     overflow: hidden;
+    border: 1px solid #ECEDEF;
+    border-radius: 6px;
+    background: var(--surface-default);
 }
 .clinic-result-button {
     display: block;
     width: 100%;
+    box-sizing: border-box;
     padding: 12px 14px;
     border: 0;
     background: var(--surface-default);
@@ -830,7 +834,8 @@ body {
     transition: background-color .2s ease;
 }
 .clinic-result-button:hover,
-.clinic-result-button:focus-visible {
+.clinic-result-button:focus-visible,
+.clinic-result-button.is-selected {
     background: var(--red-100);
     outline: none;
 }
@@ -911,7 +916,8 @@ body {
     background: var(--surface-default);
 }
 .clinic-map-placeholder {
-    min-height: 360px;
+    height: 100%;
+    min-height: 520px;
     overflow: hidden;
     border-radius: 4px;
     background: #F0F1F2;
@@ -978,12 +984,6 @@ body {
     margin: 0;
     padding: 0;
     list-style: none;
-}
-.clinic-result {
-    padding: 12px 14px;
-    border: 1px solid #ECEDEF;
-    border-radius: 6px;
-    background: var(--surface-default);
 }
 .clinic-result[hidden],
 .clinic-no-results[hidden] {
