@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../font/css/pretendardvariable.css">
     <link rel="stylesheet" href="../npm/swiper/swiper-bundle.min.css">
     <link rel="stylesheet" href="css/main.css">
+    <script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=2839e1ca1ee942829c58089a81fcb056"></script>
     <script src="../npm/swiper/swiper-bundle.min.js"></script>
 </head>
 <body>
@@ -206,8 +207,7 @@
                     <h2 class="section-title" id="clinic-finder-title">Closer to your location.</h2>
 
                     <div class="clinic-finder-panel">
-                        <div class="clinic-map-placeholder" role="img" aria-label="병원 위치 지도 영역">
-                            <!-- 지도 이미지는 추후 추가 예정 -->
+                        <div id="clinic-map" class="clinic-map-placeholder" role="region" aria-label="병원 위치 지도">
                         </div>
 
                         <div class="clinic-search">
@@ -395,6 +395,24 @@
                 product.hidden = true;
             });
             setActiveCard(cards[0]);
+        })();
+    </script>
+
+
+    <script>
+        (() => {
+            const mapContainer = document.querySelector("#clinic-map");
+            if (!mapContainer || !window.kakao || !kakao.maps) return;
+
+            const mapOptions = {
+                center: new kakao.maps.LatLng(37.5665, 126.9780),
+                level: 8
+            };
+            const map = new kakao.maps.Map(mapContainer, mapOptions);
+
+            // 지도 이동과 확대/축소는 카카오맵 기본 조작을 사용합니다.
+            map.setDraggable(true);
+            map.setZoomable(true);
         })();
     </script>
 
