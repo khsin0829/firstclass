@@ -261,14 +261,13 @@
                 });
             }
 
-            function centerNearestCard() {
+            function findNearestCard() {
                 const trackRect = track.getBoundingClientRect();
                 const centerX = trackRect.left + trackRect.width / 2;
-                const cards = getCards();
                 let nearestCard = null;
                 let nearestDistance = Infinity;
 
-                cards.forEach((card) => {
+                getCards().forEach((card) => {
                     const rect = card.getBoundingClientRect();
                     const distance = Math.abs(rect.left + rect.width / 2 - centerX);
                     if (distance < nearestDistance) {
@@ -277,20 +276,31 @@
                     }
                 });
 
+                return nearestCard;
+            }
+
+            function updateActiveCard() {
+                setActiveCard(findNearestCard());
+            }
+
+            function normalizeLoopPosition() {
+                if (!loopWidth) return;
+
+                const cards = getCards();
+                const nearestCard = findNearestCard();
                 if (!nearestCard) return;
 
-                // 복제 카드 영역에 도달하면 같은 위치의 원본 세트로 이동해 무한 반복합니다.
-                const allCards = getCards();
-                const index = allCards.indexOf(nearestCard);
+                const index = cards.indexOf(nearestCard);
+
+                // 스크롤이 멈춘 뒤에만 같은 카드가 있는 원본 세트로 순간 이동합니다.
+                // 이동 중에는 위치를 보정하지 않아 스크롤 방향이 뒤집히는 현상을 방지합니다.
                 if (index < cardCount) {
                     track.scrollLeft += loopWidth;
-                    nearestCard = allCards[index + cardCount];
                 } else if (index >= cardCount * 2) {
                     track.scrollLeft -= loopWidth;
-                    nearestCard = allCards[index - cardCount];
                 }
 
-                setActiveCard(nearestCard);
+                updateActiveCard();
             }
 
             function measureAndInitialize() {
@@ -298,18 +308,20 @@
                 const cards = getCards();
                 const firstOriginal = cards[cardCount];
                 track.scrollLeft = firstOriginal.offsetLeft - track.offsetLeft;
-                // 초기에는 가운데 카드(세 번째 시술)를 선택합니다.
-                requestAnimationFrame(centerNearestCard);
+                // 초기에는 원본 카드 세트에서 시작합니다.
+                requestAnimationFrame(updateActiveCard);
             }
 
             track.addEventListener("scroll", () => {
                 if (scrollFrame) return;
                 scrollFrame = true;
                 requestAnimationFrame(() => {
-                    centerNearestCard();
+                    updateActiveCard();
                     scrollFrame = false;
                 });
             });
+
+            track.addEventListener("scrollend", normalizeLoopPosition);
 
             // 마우스로도 드래그할 수 있고, 모바일에서는 기본 터치 스와이프를 사용합니다.
             track.addEventListener("pointerdown", (event) => {
@@ -337,11 +349,15 @@
             // 카드를 클릭하면 해당 카드가 중앙에 오도록 이동합니다.
             track.addEventListener("click", (event) => {
                 const card = event.target.closest(".treatment-card");
-                if (!card || card.classList.contains("is-clone")) return;
+                if (!card || isPointerDown) return;
                 const trackRect = track.getBoundingClientRect();
                 const cardRect = card.getBoundingClientRect();
-                track.scrollBy({
-                    left: cardRect.left + cardRect.width / 2 - (trackRect.left + trackRect.width / 2),
+                const distanceToCenter =
+                    cardRect.left + cardRect.width / 2 -
+                    (trackRect.left + trackRect.width / 2);
+
+                track.scrollTo({
+                    left: track.scrollLeft + distanceToCenter,
                     behavior: "smooth"
                 });
             });
