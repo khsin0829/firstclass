@@ -1148,7 +1148,9 @@ body {
 }
 .demo-form-area {
     display: flex;
-    flex: 0 1 1010px;
+    flex: 0 0 666px;
+    width: 666px;
+    max-width: 100%;
     min-width: 0;
     flex-direction: column;
     justify-content: center;
@@ -1304,7 +1306,8 @@ body {
         aspect-ratio: 380 / 590;
     }
     .demo-form-area {
-        flex: 1 1 0;
+        flex: 0 1 666px;
+        width: 666px;
         gap: 18px;
     }
     .demo-heading h3 {
