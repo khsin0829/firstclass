@@ -146,6 +146,13 @@
                                     <span class="treatment-card-description">여드름 흉터 · 피부 결</span>
                                 </button>
                             </div>
+                            <div class="swiper-slide">
+                                <button class="treatment-card" type="button" data-treatment="wart" aria-pressed="false">
+                                    <img src="img/acne_scar.jpg" alt="" draggable="false">
+                                    <span class="treatment-card-title">사마귀</span>
+                                    <span class="treatment-card-description">사마귀 · 피부 병변 · 피부 고민</span>
+                                </button>
+                            </div>
                         </div>
                     </div>
 
@@ -177,7 +184,7 @@
                                     <a href="#starwalker-qx" class="related-product-link">제품 자세히 보기 <span aria-hidden="true">↗</span></a>
                                 </div>
                             </article>
-                            <article class="related-product-card" data-products="toning hair acne">
+                            <article class="related-product-card" data-products="toning hair acne wart">
                                 <a class="related-product-image" href="#avalanche-lase" tabindex="0">
                                     <img src="img/AvalancheLase.jpg" alt="AvalancheLase 레이저 장비" draggable="false">
                                 </a>
@@ -208,7 +215,8 @@
                 hair: "제모",
                 acne: "여드름",
                 tattoo: "문신",
-                scar: "흉터"
+                scar: "흉터",
+                wart: "사마귀"
             };
             const defaultTitle = "관련 제품";
             const cards = [...track.querySelectorAll(".treatment-card")];
