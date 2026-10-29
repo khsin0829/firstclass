@@ -242,18 +242,22 @@
 
             // 학습한 swiper.html의 구조와 옵션을 적용해 시술 카드를 슬라이더로 만듭니다.
             const treatmentSwiper = new Swiper("#treatment-track", {
-                slidesPerView: 2.5,
-                spaceBetween: 18,
-                centeredSlides: true,
+                slidesPerView: 1,
+                spaceBetween: 12,
+                centeredSlides: false,
                 loop: false,
                 breakpoints: {
+                    600: {
+                        slidesPerView: 2,
+                        spaceBetween: 16
+                    },
                     760: {
-                        slidesPerView: 3.5,
+                        slidesPerView: 3,
                         spaceBetween: 18
                     },
                     1024: {
-                        slidesPerView: 4.5,
-                        spaceBetween: 18
+                        slidesPerView: 5,
+                        spaceBetween: 20
                     }
                 }
             });
