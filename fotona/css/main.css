@@ -579,26 +579,26 @@ body {
     border-color: var(--border-strong);
     background: var(--background-page);
 }
-.treatment-track {
-    display: flex;
-    justify-content: flex-start;
-    flex-wrap: nowrap;
-    gap: 18px;
+.treatment-track.swiper {
     width: 90%;
     max-width: 1440px;
     margin: 0 auto;
     padding: 2px 0 14px;
-    overflow-x: auto;
-    scrollbar-width: none;
-    overscroll-behavior-x: contain;
+    overflow: hidden;
 }
-.treatment-track::-webkit-scrollbar {
-    display: none;
+.treatment-track .swiper-wrapper {
+    align-items: stretch;
 }
-/* 시술 카드 크기는 기존처럼 화면 너비에 따라 반응형으로 조절합니다. */
+.treatment-track .swiper-slide {
+    display: flex;
+    height: auto;
+}
+/* Swiper가 슬라이드 너비를 계산하므로 카드가 각 슬라이드 너비를 채우게 합니다. */
 .treatment-card {
     position: relative;
-    flex: 0 0 clamp(160px, 23vw, 320px);
+    width: 100%;
+    height: 100%;
+    flex: 0 0 auto;
     padding: 0;
     overflow: hidden;
     border: 1px solid var(--border-default);
@@ -734,9 +734,6 @@ body {
         width: 92%;
         gap: 12px;
     }
-    .treatment-card {
-        flex-basis: clamp(170px, 29vw, 280px);
-    }
     .treatment-card-title {
         font-size: clamp(16px, 2.2vw, 21px);
     }
@@ -769,9 +766,6 @@ body {
     .treatment-track {
         width: calc(100% - 40px);
         gap: 12px;
-    }
-    .treatment-card {
-        flex-basis: clamp(145px, 62vw, 250px);
     }
     .treatment-card-title {
         padding: 12px 12px 6px;
