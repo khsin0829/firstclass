@@ -140,10 +140,6 @@
                         </button>
                     </div>
 
-                        <div class="treatments-controls" aria-label="시술 카드 이동">
-                            <button class="treatment-arrow" type="button" data-scroll="prev" aria-label="이전 시술 보기">←</button>
-                            <button class="treatment-arrow" type="button" data-scroll="next" aria-label="다음 시술 보기">→</button>
-                        </div>
                     <div class="related-products" aria-live="polite" aria-labelledby="related-products-title">
                         <div class="related-products-heading">
                             <div>
@@ -196,121 +192,166 @@
             const track = document.querySelector("#treatment-track");
             const productsTitle = document.querySelector("#related-products-title");
             const productCards = [...document.querySelectorAll(".related-product-card")];
-            const scrollButtons = document.querySelectorAll("[data-scroll]");
-            if (!track) return;
+            if (!track || !productsTitle) return;
 
             const treatmentNames = {
                 toning: "색소 토닝",
                 hair: "제모",
                 acne: "여드름",
                 tattoo: "문신",
-                scar: "흉터",
-                consultation: "전문가 상담"
+                scar: "흉터"
             };
             const defaultTitle = "관련 제품";
-            let selectedTreatment = null;
+            const originalCards = [...track.querySelectorAll(".treatment-card")];
+            const cardCount = originalCards.length;
+            let activeTreatment = null;
+            let loopWidth = 0;
+            let scrollFrame = false;
+            let pointerStartX = 0;
+            let pointerStartScroll = 0;
+            let isPointerDown = false;
+
+            // 앞뒤에 카드 세트를 복제해 마지막 카드 이후에도 자연스럽게 순환시킵니다.
+            const prependFragment = document.createDocumentFragment();
+            [...originalCards].reverse().forEach((card) => {
+                const clone = card.cloneNode(true);
+                clone.classList.add("is-clone");
+                clone.setAttribute("aria-hidden", "true");
+                clone.tabIndex = -1;
+                prependFragment.appendChild(clone);
+            });
+            track.insertBefore(prependFragment, track.firstChild);
+
+            const appendFragment = document.createDocumentFragment();
+            originalCards.forEach((card) => {
+                const clone = card.cloneNode(true);
+                clone.classList.add("is-clone");
+                clone.setAttribute("aria-hidden", "true");
+                clone.tabIndex = -1;
+                appendFragment.appendChild(clone);
+            });
+            track.appendChild(appendFragment);
 
             function getCards() {
                 return [...track.querySelectorAll(".treatment-card")];
             }
 
-            function selectTreatment(card) {
+            function getLoopWidth() {
+                const cards = getCards();
+                const firstOriginal = cards[cardCount];
+                const nextSetFirst = cards[cardCount * 2];
+                return nextSetFirst.offsetLeft - firstOriginal.offsetLeft;
+            }
+
+            function setActiveCard(card) {
+                if (!card) return;
                 const treatment = card.dataset.treatment;
-                // 이미 선택된 시술을 다시 클릭하면 선택을 해제합니다.
-                selectedTreatment = selectedTreatment === treatment ? null : treatment;
+                if (!treatment || treatment === activeTreatment) return;
+                activeTreatment = treatment;
 
                 getCards().forEach((item) => {
-                    const selected = item.dataset.treatment === selectedTreatment;
+                    const selected = item.dataset.treatment === treatment;
                     item.classList.toggle("is-selected", selected);
                     item.setAttribute("aria-pressed", String(selected));
                 });
 
-                productsTitle.textContent = selectedTreatment
-                    ? treatmentNames[selectedTreatment] + " 관련 제품"
-                    : defaultTitle;
-
+                productsTitle.textContent = treatmentNames[treatment] + " 관련 제품";
                 productCards.forEach((product) => {
-                    const related = selectedTreatment &&
-                        product.dataset.products.split(" ").includes(selectedTreatment);
-                    product.hidden = !related;
+                    product.hidden = !product.dataset.products.split(" ").includes(treatment);
                 });
             }
 
-            // 카드 세트를 앞뒤에 복제해 마지막 카드 다음에도 자연스럽게 이어지게 합니다.
-            const originalCards = [...track.querySelectorAll(".treatment-card")];
-            originalCards.forEach((card) => {
-                const clone = card.cloneNode(true);
-                clone.classList.add("is-clone");
-                clone.setAttribute("aria-hidden", "true");
-                clone.setAttribute("tabindex", "-1");
-                clone.querySelectorAll("a, button").forEach((item) => item.setAttribute("tabindex", "-1"));
-                track.appendChild(clone);
-            });
-            [...originalCards].reverse().forEach((card) => {
-                const clone = card.cloneNode(true);
-                clone.classList.add("is-clone");
-                clone.setAttribute("aria-hidden", "true");
-                clone.setAttribute("tabindex", "-1");
-                track.insertBefore(clone, track.firstChild);
-            });
-
-            let originalStart = 0;
-            let originalSetWidth = 0;
-            let loopReady = false;
-            function measureLoop() {
+            function centerNearestCard() {
+                const trackRect = track.getBoundingClientRect();
+                const centerX = trackRect.left + trackRect.width / 2;
                 const cards = getCards();
-                const originals = cards.filter((card) => !card.classList.contains("is-clone"));
-                if (!originals.length) return;
-                originalStart = originals[0].offsetLeft;
-                const last = originals[originals.length - 1];
-                const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
-                originalSetWidth = last.offsetLeft + last.offsetWidth + gap - originals[0].offsetLeft;
-                track.scrollLeft = originalStart;
-                loopReady = true;
+                let nearestCard = null;
+                let nearestDistance = Infinity;
+
+                cards.forEach((card) => {
+                    const rect = card.getBoundingClientRect();
+                    const distance = Math.abs(rect.left + rect.width / 2 - centerX);
+                    if (distance < nearestDistance) {
+                        nearestDistance = distance;
+                        nearestCard = card;
+                    }
+                });
+
+                if (!nearestCard) return;
+
+                // 복제 카드 영역에 도달하면 같은 위치의 원본 세트로 이동해 무한 반복합니다.
+                const allCards = getCards();
+                const index = allCards.indexOf(nearestCard);
+                if (index < cardCount) {
+                    track.scrollLeft += loopWidth;
+                    nearestCard = allCards[index + cardCount];
+                } else if (index >= cardCount * 2) {
+                    track.scrollLeft -= loopWidth;
+                    nearestCard = allCards[index - cardCount];
+                }
+
+                setActiveCard(nearestCard);
             }
 
-            requestAnimationFrame(measureLoop);
-            window.addEventListener("resize", measureLoop);
+            function measureAndInitialize() {
+                loopWidth = getLoopWidth();
+                const cards = getCards();
+                const firstOriginal = cards[cardCount];
+                track.scrollLeft = firstOriginal.offsetLeft - track.offsetLeft;
+                // 초기에는 가운데 카드(세 번째 시술)를 선택합니다.
+                requestAnimationFrame(centerNearestCard);
+            }
 
-            let loopFrame = false;
             track.addEventListener("scroll", () => {
-                if (!loopReady || loopFrame) return;
-                loopFrame = true;
+                if (scrollFrame) return;
+                scrollFrame = true;
                 requestAnimationFrame(() => {
-                    if (track.scrollLeft < originalStart - 1) {
-                        track.scrollLeft += originalSetWidth;
-                    } else if (track.scrollLeft >= originalStart + originalSetWidth - 1) {
-                        track.scrollLeft -= originalSetWidth;
-                    }
-                    loopFrame = false;
+                    centerNearestCard();
+                    scrollFrame = false;
                 });
             });
 
+            // 마우스로도 드래그할 수 있고, 모바일에서는 기본 터치 스와이프를 사용합니다.
+            track.addEventListener("pointerdown", (event) => {
+                if (event.pointerType === "touch") return;
+                isPointerDown = true;
+                pointerStartX = event.clientX;
+                pointerStartScroll = track.scrollLeft;
+                track.classList.add("is-dragging");
+                track.setPointerCapture(event.pointerId);
+            });
+
+            track.addEventListener("pointermove", (event) => {
+                if (!isPointerDown) return;
+                track.scrollLeft = pointerStartScroll - (event.clientX - pointerStartX);
+            });
+
+            function endPointerDrag() {
+                isPointerDown = false;
+                track.classList.remove("is-dragging");
+            }
+            track.addEventListener("pointerup", endPointerDrag);
+            track.addEventListener("pointercancel", endPointerDrag);
+            track.addEventListener("lostpointercapture", endPointerDrag);
+
+            // 카드를 클릭하면 해당 카드가 중앙에 오도록 이동합니다.
             track.addEventListener("click", (event) => {
                 const card = event.target.closest(".treatment-card");
-                if (!card) return;
-                selectTreatment(card);
-            }, true);
-
-            scrollButtons.forEach((button) => {
-                button.addEventListener("click", () => {
-                    const direction = button.dataset.scroll === "next" ? 1 : -1;
-                    track.scrollBy({
-                        left: direction * track.clientWidth * 0.75,
-                        behavior: "smooth"
-                    });
+                if (!card || card.classList.contains("is-clone")) return;
+                const trackRect = track.getBoundingClientRect();
+                const cardRect = card.getBoundingClientRect();
+                track.scrollBy({
+                    left: cardRect.left + cardRect.width / 2 - (trackRect.left + trackRect.width / 2),
+                    behavior: "smooth"
                 });
             });
 
-            // 처음 방문했을 때는 선택된 시술 없이 관련 제품도 숨깁니다.
-            getCards().forEach((card) => {
-                card.classList.remove("is-selected");
-                card.setAttribute("aria-pressed", "false");
-            });
+            window.addEventListener("resize", measureAndInitialize);
             productsTitle.textContent = defaultTitle;
             productCards.forEach((product) => {
                 product.hidden = true;
             });
+            measureAndInitialize();
         })();
     </script>
 
