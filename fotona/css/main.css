@@ -581,6 +581,7 @@ body {
 }
 .treatment-track {
     display: flex;
+    scroll-behavior: smooth;
     gap: 18px;
     width: calc(100% + 11vw);
     margin-left: -5.5vw;
