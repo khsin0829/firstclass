@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../font/css/pretendardvariable.css">
     <link rel="stylesheet" href="../npm/swiper/swiper-bundle.min.css">
     <link rel="stylesheet" href="css/main.css">
-    <script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=2839e1ca1ee942829c58089a81fcb056"></script>
+    <script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=2839e1ca1ee942829c58089a81fcb056&libraries=services"></script>
     <script src="../npm/swiper/swiper-bundle.min.js"></script>
 </head>
 <body>
@@ -224,6 +224,8 @@
                                         <option value="서울">서울</option>
                                         <option value="경기">경기</option>
                                         <option value="인천">인천</option>
+                                        <option value="전남">전남</option>
+                                        <option value="충남">충남</option>
                                     </select>
 
                                     <label class="visually-hidden" for="clinic-device">장비 선택</label>
@@ -240,26 +242,8 @@
                                 <button type="submit">조건에 맞는 병원 찾기</button>
                             </form>
 
-                            <ul class="clinic-results" id="clinic-results" aria-live="polite">
-                                <li class="clinic-result" data-region="서울" data-devices="AvalancheLase XS Dynamis">
-                                    <h4>서울 포토나 체험 클리닉 A</h4>
-                                    <p>서울특별시 · 강남구</p>
-                                    <span>AvalancheLase, XS Dynamis</span>
-                                </li>
-                                <li class="clinic-result" data-region="경기" data-devices="StarWalker QX">
-                                    <h4>경기 포토나 체험 클리닉 B</h4>
-                                    <p>경기도 · 성남시</p>
-                                    <span>StarWalker QX</span>
-                                </li>
-                                <li class="clinic-result" data-region="인천" data-devices="XS Dynamis StarWalker QX">
-                                    <h4>인천 포토나 체험 클리닉 C</h4>
-                                    <p>인천광역시 · 연수구</p>
-                                    <span>XS Dynamis, StarWalker QX</span>
-                                </li>
-                                <li class="clinic-no-results" id="clinic-no-results" hidden>
-                                    조건에 맞는 병원이 없습니다. 검색 조건을 변경해 주세요.
-                                </li>
-                            </ul>
+                            <ul class="clinic-results" id="clinic-results" aria-live="polite"></ul>
+                            <div class="clinic-pagination" id="clinic-pagination" aria-label="병원 목록 페이지"></div>
                         </div>
                     </div>
                 </div>
@@ -276,31 +260,141 @@
             const regionSelect = document.querySelector("#clinic-region");
             const deviceSelect = document.querySelector("#clinic-device");
             const keywordInput = document.querySelector("#clinic-keyword");
-            const results = [...document.querySelectorAll(".clinic-result")];
-            const noResults = document.querySelector("#clinic-no-results");
+            const resultsList = document.querySelector("#clinic-results");
+            const pagination = document.querySelector("#clinic-pagination");
+            const mapContainer = document.querySelector("#clinic-map");
+            const clinics = [
+                { name: "하예의원", address: "서울시 용산구 한남동 273-2, 2층 (유엔빌리지 초입, 파리크라상 옆 건물)", region: "서울", devices: ["AvalancheLase"], products: "아발란체" },
+                { name: "이노벨의원", address: "서울특별시 강남구 선릉로131길 8 노벨빌딩 3층", region: "서울", devices: ["AvalancheLase", "StarWalker QX"], products: "아발란체, 스타워커" },
+                { name: "세라미크의원", address: "서울특별시 강남구 봉은사로2길 29", region: "서울", devices: ["AvalancheLase"], products: "아발란체" },
+                { name: "리나인의원", address: "서울특별시 중구 소공로 116 서울센터빌딩 2층", region: "서울", devices: ["AvalancheLase"], products: "아발란체" },
+                { name: "바라봄피부과", address: "경기도 성남시 수정구 위례동로 153 501-504호", region: "경기", devices: ["XS Dynamis"], products: "다이나미스" },
+                { name: "오라클피부과", address: "전남 무안군 삼향읍 남악3로 50", region: "전남", devices: ["XS Dynamis"], products: "다이나미스" },
+                { name: "타임리스피부과", address: "서울특별시 서대문구 신촌로33길 16 2층", region: "서울", devices: ["XS Dynamis"], products: "다이나미스" },
+                { name: "미엘피부과미사점", address: "경기도 하남시 미사강변대로 228 메디프라자 5층", region: "경기", devices: ["XS Dynamis"], products: "다이나미스" },
+                { name: "데이뷰의원", address: "인천 남동구 인하로489번길 4 6층", region: "인천", devices: ["StarWalker QX"], products: "스타워커" },
+                { name: "THE 아름다운의원", address: "서울특별시 서초구 강남대로 545-12 2층", region: "서울", devices: ["StarWalker QX"], products: "스타워커" },
+                { name: "유앤아이의원", address: "서울 양천구 목동서로 161 2층 (PARK161)", region: "서울", devices: ["XS Dynamis", "StarWalker QX"], products: "다이나미스, 스타워커" },
+                { name: "힐하우스피부과수원점", address: "경기도 수원시 팔달구 매산로 24 3층", region: "경기", devices: ["StarWalker QX"], products: "스타워커" },
+                { name: "뷰티온의원", address: "충청남도 서산시 안견로 300 코오롱레이크뷰 3층", region: "충남", devices: ["StarWalker QX"], products: "스타워커" }
+            ];
 
-            if (!form) return;
+            const pageSize = 3;
+            let currentPage = 1;
+            let filteredClinics = [...clinics];
+            let map = null;
+            let geocoder = null;
+            const markers = new Map();
+            const infoWindow = window.kakao?.maps ? new kakao.maps.InfoWindow({ zIndex: 3 }) : null;
 
-            form.addEventListener("submit", (event) => {
-                event.preventDefault();
+            function escapeHtml(value) {
+                return String(value).replace(/[&<>"']/g, (char) => ({
+                    "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+                })[char]);
+            }
 
+            function renderPage() {
+                const pageCount = Math.max(1, Math.ceil(filteredClinics.length / pageSize));
+                currentPage = Math.min(currentPage, pageCount);
+                const start = (currentPage - 1) * pageSize;
+                const pageClinics = filteredClinics.slice(start, start + pageSize);
+
+                resultsList.innerHTML = "";
+                if (!pageClinics.length) {
+                    resultsList.innerHTML = '<li class="clinic-no-results">조건에 맞는 병원이 없습니다. 검색 조건을 변경해 주세요.</li>';
+                } else {
+                    pageClinics.forEach((clinic) => {
+                        const item = document.createElement("li");
+                        item.className = "clinic-result";
+                        item.innerHTML = `
+                            <button class="clinic-result-button" type="button" data-clinic-id="${clinic.id}">
+                                <h4>${escapeHtml(clinic.name)}</h4>
+                                <p>${escapeHtml(clinic.address)}</p>
+                                <span>사용 제품: ${escapeHtml(clinic.products)}</span>
+                            </button>`;
+                        resultsList.appendChild(item);
+                    });
+                }
+
+                pagination.innerHTML = "";
+                if (pageCount > 1) {
+                    for (let page = 1; page <= pageCount; page += 1) {
+                        const button = document.createElement("button");
+                        button.type = "button";
+                        button.className = "clinic-page-button";
+                        button.textContent = page;
+                        button.setAttribute("aria-label", page + "페이지");
+                        button.setAttribute("aria-current", String(page === currentPage));
+                        button.classList.toggle("is-current", page === currentPage);
+                        button.addEventListener("click", () => {
+                            currentPage = page;
+                            renderPage();
+                        });
+                        pagination.appendChild(button);
+                    }
+                }
+            }
+
+            function showClinicOnMap(clinic) {
+                if (!map || !clinic.position) return;
+                map.panTo(clinic.position);
+                map.setLevel(4);
+                const marker = markers.get(clinic.id);
+                if (marker && infoWindow) {
+                    infoWindow.setContent('<div class="clinic-map-info"><strong>' + escapeHtml(clinic.name) + '</strong><br>' + escapeHtml(clinic.products) + '</div>');
+                    infoWindow.open(map, marker);
+                }
+            }
+
+            function applyFilters(event) {
+                if (event) event.preventDefault();
                 const region = regionSelect.value;
                 const device = deviceSelect.value;
-                const keyword = keywordInput.value.trim().toLowerCase();
-                let visibleCount = 0;
-
-                results.forEach((item) => {
-                    const matchesRegion = !region || item.dataset.region === region;
-                    const matchesDevice = !device || item.dataset.devices.split(" ").includes(device);
-                    const matchesKeyword = !keyword || item.querySelector("h4").textContent.toLowerCase().includes(keyword);
-                    const isVisible = matchesRegion && matchesDevice && matchesKeyword;
-
-                    item.hidden = !isVisible;
-                    if (isVisible) visibleCount += 1;
+                const keyword = keywordInput.value.trim().toLocaleLowerCase("ko-KR");
+                filteredClinics = clinics.filter((clinic) => {
+                    const matchesRegion = !region || clinic.region === region;
+                    const matchesDevice = !device || clinic.devices.includes(device);
+                    const matchesKeyword = !keyword || clinic.name.toLocaleLowerCase("ko-KR").includes(keyword);
+                    return matchesRegion && matchesDevice && matchesKeyword;
                 });
+                currentPage = 1;
+                renderPage();
+            }
 
-                noResults.hidden = visibleCount > 0;
+            clinics.forEach((clinic, index) => { clinic.id = "clinic-" + index; });
+            if (form) form.addEventListener("submit", applyFilters);
+            resultsList.addEventListener("click", (event) => {
+                const button = event.target.closest("[data-clinic-id]");
+                if (!button) return;
+                const clinic = clinics.find((item) => item.id === button.dataset.clinicId);
+                if (clinic) showClinicOnMap(clinic);
             });
+
+            if (mapContainer && window.kakao?.maps?.services) {
+                map = new kakao.maps.Map(mapContainer, {
+                    center: new kakao.maps.LatLng(36.5, 127.8),
+                    level: 13
+                });
+                map.setDraggable(true);
+                map.setZoomable(true);
+                geocoder = new kakao.maps.services.Geocoder();
+
+                clinics.forEach((clinic) => {
+                    geocoder.addressSearch(clinic.address, (result, status) => {
+                        if (status !== kakao.maps.services.Status.OK || !result[0]) {
+                            console.warn("주소를 찾지 못했습니다:", clinic.name, clinic.address);
+                            return;
+                        }
+                        clinic.position = new kakao.maps.LatLng(Number(result[0].y), Number(result[0].x));
+                        const marker = new kakao.maps.Marker({ map, position: clinic.position, title: clinic.name });
+                        markers.set(clinic.id, marker);
+                        kakao.maps.event.addListener(marker, "click", () => showClinicOnMap(clinic));
+                        if (markers.size === 1) map.setCenter(clinic.position);
+                    });
+                });
+            }
+
+            renderPage();
         })();
     </script>
 
