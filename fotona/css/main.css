@@ -580,9 +580,9 @@ body {
     background: var(--background-page);
 }
 .treatment-track.swiper {
-    width: 90%;
-    max-width: 1440px;
-    margin: 0 auto;
+    width: 100%;
+    max-width: none;
+    margin: 0;
     padding: 2px 0 14px;
     overflow: hidden;
 }
@@ -730,10 +730,6 @@ body {
     .related-products {
         width: 92%;
     }
-    .treatment-track {
-        width: 92%;
-        gap: 12px;
-    }
     .treatment-card-title {
         font-size: clamp(16px, 2.2vw, 21px);
     }
@@ -762,10 +758,6 @@ body {
     .treatments-heading {
         align-items: flex-start;
         margin-bottom: 24px;
-    }
-    .treatment-track {
-        width: calc(100% - 40px);
-        gap: 12px;
     }
     .treatment-card-title {
         padding: 12px 12px 6px;
