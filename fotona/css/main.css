@@ -538,7 +538,6 @@ body {
 }
 .treatments-inner {
     width: 100%;
-    max-width: 1440px;
     margin: 0 auto;
 }
 .treatments-heading {
@@ -546,7 +545,8 @@ body {
     align-items: center;
     justify-content: space-between;
     gap: 24px;
-    margin-bottom: 36px;
+    max-width: 1440px;
+    margin: 0 auto 40px;
 }
 .treatments-heading .section-title {
     margin-bottom: 0;
