@@ -264,19 +264,19 @@
             const pagination = document.querySelector("#clinic-pagination");
             const mapContainer = document.querySelector("#clinic-map");
             const clinics = [
-                { name: "하예의원", address: "서울시 용산구 한남동 273-2, 2층 (유엔빌리지 초입, 파리크라상 옆 건물)", region: "서울", devices: ["AvalancheLase"], products: "아발란체" },
-                { name: "이노벨의원", address: "서울특별시 강남구 선릉로131길 8 노벨빌딩 3층", region: "서울", devices: ["AvalancheLase", "StarWalker QX"], products: "아발란체, 스타워커" },
-                { name: "세라미크의원", address: "서울특별시 강남구 봉은사로2길 29", region: "서울", devices: ["AvalancheLase"], products: "아발란체" },
-                { name: "리나인의원", address: "서울특별시 중구 소공로 116 서울센터빌딩 2층", region: "서울", devices: ["AvalancheLase"], products: "아발란체" },
-                { name: "바라봄피부과", address: "경기도 성남시 수정구 위례동로 153 501-504호", region: "경기", devices: ["XS Dynamis"], products: "다이나미스" },
-                { name: "오라클피부과", address: "전남 무안군 삼향읍 남악3로 50", region: "전남", devices: ["XS Dynamis"], products: "다이나미스" },
-                { name: "타임리스피부과", address: "서울특별시 서대문구 신촌로33길 16 2층", region: "서울", devices: ["XS Dynamis"], products: "다이나미스" },
-                { name: "미엘피부과미사점", address: "경기도 하남시 미사강변대로 228 메디프라자 5층", region: "경기", devices: ["XS Dynamis"], products: "다이나미스" },
-                { name: "데이뷰의원", address: "인천 남동구 인하로489번길 4 6층", region: "인천", devices: ["StarWalker QX"], products: "스타워커" },
-                { name: "THE 아름다운의원", address: "서울특별시 서초구 강남대로 545-12 2층", region: "서울", devices: ["StarWalker QX"], products: "스타워커" },
-                { name: "유앤아이의원", address: "서울 양천구 목동서로 161 2층 (PARK161)", region: "서울", devices: ["XS Dynamis", "StarWalker QX"], products: "다이나미스, 스타워커" },
-                { name: "힐하우스피부과수원점", address: "경기도 수원시 팔달구 매산로 24 3층", region: "경기", devices: ["StarWalker QX"], products: "스타워커" },
-                { name: "뷰티온의원", address: "충청남도 서산시 안견로 300 코오롱레이크뷰 3층", region: "충남", devices: ["StarWalker QX"], products: "스타워커" }
+                { name: "하예의원", address: "서울시 용산구 한남동 273-2, 2층 (유엔빌리지 초입, 파리크라상 옆 건물)", region: "서울", devices: ["AvalancheLase"], products: "AvalancheLase" },
+                { name: "이노벨의원", address: "서울특별시 강남구 선릉로131길 8 노벨빌딩 3층", region: "서울", devices: ["AvalancheLase", "StarWalker QX"], products: "AvalancheLase, StarWalker QX" },
+                { name: "세라미크의원", address: "서울특별시 강남구 봉은사로2길 29", region: "서울", devices: ["AvalancheLase"], products: "AvalancheLase" },
+                { name: "리나인의원", address: "서울특별시 중구 소공로 116 서울센터빌딩 2층", region: "서울", devices: ["AvalancheLase"], products: "AvalancheLase" },
+                { name: "바라봄피부과", address: "경기도 성남시 수정구 위례동로 153 501-504호", region: "경기", devices: ["XS Dynamis"], products: "XS Dynamis" },
+                { name: "오라클피부과", address: "전남 무안군 삼향읍 남악3로 50", region: "전남", devices: ["XS Dynamis"], products: "XS Dynamis" },
+                { name: "타임리스피부과", address: "서울특별시 서대문구 신촌로33길 16 2층", region: "서울", devices: ["XS Dynamis"], products: "XS Dynamis" },
+                { name: "미엘피부과미사점", address: "경기도 하남시 미사강변대로 228 메디프라자 5층", region: "경기", devices: ["XS Dynamis"], products: "XS Dynamis" },
+                { name: "데이뷰의원", address: "인천 남동구 인하로489번길 4 6층", region: "인천", devices: ["StarWalker QX"], products: "StarWalker QX" },
+                { name: "THE 아름다운의원", address: "서울특별시 서초구 강남대로 545-12 2층", region: "서울", devices: ["StarWalker QX"], products: "StarWalker QX" },
+                { name: "유앤아이의원", address: "서울 양천구 목동서로 161 2층 (PARK161)", region: "서울", devices: ["XS Dynamis", "StarWalker QX"], products: "XS Dynamis, StarWalker QX" },
+                { name: "힐하우스피부과수원점", address: "경기도 수원시 팔달구 매산로 24 3층", region: "경기", devices: ["StarWalker QX"], products: "StarWalker QX" },
+                { name: "뷰티온의원", address: "충청남도 서산시 안견로 300 코오롱레이크뷰 3층", region: "충남", devices: ["StarWalker QX"], products: "StarWalker QX" }
             ];
 
             const pageSize = 3;
