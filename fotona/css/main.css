@@ -837,6 +837,7 @@ body {
 }
 .clinic-map-placeholder {
     min-height: 360px;
+    overflow: hidden;
     border-radius: 4px;
     background: #F0F1F2;
 }
