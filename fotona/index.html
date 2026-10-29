@@ -230,13 +230,13 @@
 
                 setActiveCard(card);
 
-                const trackRect = track.getBoundingClientRect();
-                const cardRect = card.getBoundingClientRect();
-                const offset = cardRect.left + cardRect.width / 2 -
-                    (trackRect.left + trackRect.width / 2);
+                const trackCenter = track.getBoundingClientRect().left +
+                    track.clientLeft + track.clientWidth / 2;
+                const cardCenter = card.getBoundingClientRect().left +
+                    card.offsetWidth / 2;
 
                 track.scrollTo({
-                    left: track.scrollLeft + offset,
+                    left: track.scrollLeft + cardCenter - trackCenter,
                     behavior: "smooth"
                 });
             });
