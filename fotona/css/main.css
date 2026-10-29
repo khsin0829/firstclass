@@ -581,7 +581,7 @@ body {
 }
 .treatment-track {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     flex-wrap: nowrap;
     gap: 18px;
     width: 90%;
