@@ -199,9 +199,110 @@
                 </div>
             </section>
 
+
+            <section class="clinic-finder" id="clinics" aria-labelledby="clinic-finder-title">
+                <div class="clinic-finder-inner">
+                    <p class="section-eyebrow">03 / Find a Clinic</p>
+                    <h2 class="section-title" id="clinic-finder-title">Closer to your location.</h2>
+
+                    <div class="clinic-finder-panel">
+                        <div class="clinic-map-placeholder" role="img" aria-label="병원 위치 지도 영역">
+                            <!-- 지도 이미지는 추후 추가 예정 -->
+                        </div>
+
+                        <div class="clinic-search">
+                            <div class="clinic-search-heading">
+                                <h3>병원 찾기</h3>
+                                <p>지역 또는 장비를 선택하고 병원명을 검색하세요.</p>
+                            </div>
+
+                            <form class="clinic-search-form" id="clinic-search-form">
+                                <div class="clinic-filter-row">
+                                    <label class="visually-hidden" for="clinic-region">지역 선택</label>
+                                    <select id="clinic-region" name="region">
+                                        <option value="">전체 지역</option>
+                                        <option value="서울">서울</option>
+                                        <option value="경기">경기</option>
+                                        <option value="인천">인천</option>
+                                    </select>
+
+                                    <label class="visually-hidden" for="clinic-device">장비 선택</label>
+                                    <select id="clinic-device" name="device">
+                                        <option value="">전체 장비</option>
+                                        <option value="AvalancheLase">AvalancheLase</option>
+                                        <option value="XS Dynamis">XS Dynamis</option>
+                                        <option value="StarWalker QX">StarWalker QX</option>
+                                    </select>
+                                </div>
+
+                                <label class="visually-hidden" for="clinic-keyword">병원명 검색</label>
+                                <input id="clinic-keyword" name="keyword" type="search" placeholder="병원명 검색">
+                                <button type="submit">조건에 맞는 병원 찾기</button>
+                            </form>
+
+                            <ul class="clinic-results" id="clinic-results" aria-live="polite">
+                                <li class="clinic-result" data-region="서울" data-devices="AvalancheLase XS Dynamis">
+                                    <h4>서울 포토나 체험 클리닉 A</h4>
+                                    <p>서울특별시 · 강남구</p>
+                                    <span>AvalancheLase, XS Dynamis</span>
+                                </li>
+                                <li class="clinic-result" data-region="경기" data-devices="StarWalker QX">
+                                    <h4>경기 포토나 체험 클리닉 B</h4>
+                                    <p>경기도 · 성남시</p>
+                                    <span>StarWalker QX</span>
+                                </li>
+                                <li class="clinic-result" data-region="인천" data-devices="XS Dynamis StarWalker QX">
+                                    <h4>인천 포토나 체험 클리닉 C</h4>
+                                    <p>인천광역시 · 연수구</p>
+                                    <span>XS Dynamis, StarWalker QX</span>
+                                </li>
+                                <li class="clinic-no-results" id="clinic-no-results" hidden>
+                                    조건에 맞는 병원이 없습니다. 검색 조건을 변경해 주세요.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
         </main>
         <footer>&copy;</footer>
     </div>
+
+
+    <script>
+        (() => {
+            const form = document.querySelector("#clinic-search-form");
+            const regionSelect = document.querySelector("#clinic-region");
+            const deviceSelect = document.querySelector("#clinic-device");
+            const keywordInput = document.querySelector("#clinic-keyword");
+            const results = [...document.querySelectorAll(".clinic-result")];
+            const noResults = document.querySelector("#clinic-no-results");
+
+            if (!form) return;
+
+            form.addEventListener("submit", (event) => {
+                event.preventDefault();
+
+                const region = regionSelect.value;
+                const device = deviceSelect.value;
+                const keyword = keywordInput.value.trim().toLowerCase();
+                let visibleCount = 0;
+
+                results.forEach((item) => {
+                    const matchesRegion = !region || item.dataset.region === region;
+                    const matchesDevice = !device || item.dataset.devices.split(" ").includes(device);
+                    const matchesKeyword = !keyword || item.querySelector("h4").textContent.toLowerCase().includes(keyword);
+                    const isVisible = matchesRegion && matchesDevice && matchesKeyword;
+
+                    item.hidden = !isVisible;
+                    if (isVisible) visibleCount += 1;
+                });
+
+                noResults.hidden = visibleCount > 0;
+            });
+        })();
+    </script>
 
     <script>
         (() => {
