@@ -811,3 +811,186 @@ body {
         overflow-wrap: anywhere;
     }
 }
+
+/* Clinic Finder */
+.clinic-finder {
+    padding: 7.5% 5%;
+    background: var(--background-page);
+}
+.clinic-finder-inner {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+}
+.clinic-finder .section-title {
+    margin-bottom: 36px;
+}
+.clinic-finder-panel {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(300px, 1fr);
+    gap: 24px;
+    padding: 16px;
+    overflow: hidden;
+    border: 1px solid #ECEDEF;
+    border-radius: 8px;
+    background: var(--surface-default);
+}
+.clinic-map-placeholder {
+    min-height: 360px;
+    border-radius: 4px;
+    background: #F0F1F2;
+}
+.clinic-search {
+    min-width: 0;
+    padding: 12px 24px 8px 0;
+}
+.clinic-search-heading h3 {
+    margin: 0 0 6px;
+    color: var(--text-primary);
+    font-size: 28px;
+    font-weight: 500;
+}
+.clinic-search-heading p {
+    margin: 0 0 18px;
+    color: var(--text-secondary);
+    font-size: 15px;
+    line-height: 1.45;
+}
+.clinic-search-form {
+    display: grid;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+.clinic-filter-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+}
+.clinic-search-form select,
+.clinic-search-form input {
+    width: 100%;
+    min-width: 0;
+    height: 40px;
+    box-sizing: border-box;
+    padding: 0 12px;
+    border: 1px solid #E7E8EA;
+    border-radius: 6px;
+    background: #F8F8F9;
+    color: var(--text-primary);
+    font: inherit;
+    font-size: 14px;
+}
+.clinic-search-form button {
+    min-height: 40px;
+    border: 0;
+    border-radius: 6px;
+    background: var(--action-primary);
+    color: var(--text-inverse);
+    font: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color .2s ease;
+}
+.clinic-search-form button:hover,
+.clinic-search-form button:focus-visible {
+    background: var(--action-primary-hover);
+}
+.clinic-results {
+    display: grid;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.clinic-result {
+    padding: 12px 14px;
+    border: 1px solid #ECEDEF;
+    border-radius: 6px;
+    background: var(--surface-default);
+}
+.clinic-result[hidden],
+.clinic-no-results[hidden] {
+    display: none;
+}
+.clinic-result h4 {
+    margin: 0 0 5px;
+    color: var(--text-primary);
+    font-size: 15px;
+    font-weight: 500;
+}
+.clinic-result p,
+.clinic-result span {
+    display: block;
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 11px;
+    line-height: 1.45;
+}
+.clinic-no-results {
+    padding: 18px 12px;
+    color: var(--text-secondary);
+    font-size: 14px;
+    text-align: center;
+}
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+@media (max-width: 900px) {
+    .clinic-finder {
+        padding: 64px 4%;
+    }
+    .clinic-finder-panel {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 16px;
+        padding: 12px;
+    }
+    .clinic-map-placeholder {
+        min-height: 400px;
+    }
+    .clinic-search {
+        padding-right: 4px;
+    }
+}
+@media (max-width: 650px) {
+    .clinic-finder {
+        padding: 48px 20px;
+    }
+    .clinic-finder .section-title {
+        margin-bottom: 24px;
+        font-size: clamp(28px, 7vw, 38px);
+        line-height: 1.1;
+    }
+    .clinic-finder-panel {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 18px;
+        padding: 10px;
+    }
+    .clinic-map-placeholder {
+        min-height: 220px;
+    }
+    .clinic-search {
+        padding: 4px 2px 2px;
+    }
+    .clinic-search-heading h3 {
+        font-size: 24px;
+    }
+    .clinic-search-heading p {
+        font-size: 13px;
+    }
+    .clinic-search-form select,
+    .clinic-search-form input,
+    .clinic-search-form button {
+        height: 38px;
+        font-size: 12px;
+    }
+}
+
