@@ -534,7 +534,7 @@ body {
 .treatments-section {
     padding: 7.5% 0;
     overflow: hidden;
-    background: var(--surface-default);
+    background: var(--background-page);
 }
 .treatments-inner {
     width: 100%;
