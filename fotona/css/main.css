@@ -1132,6 +1132,10 @@ body {
 .demo-preview.has-product .demo-preview-image {
     opacity: 1;
 }
+.demo-preview.has-product .demo-preview-logo {
+    opacity: 0;
+    visibility: hidden;
+}
 .demo-preview-logo {
     position: absolute;
     top: 50%;
@@ -1219,9 +1223,14 @@ body {
 .demo-product-card:hover,
 .demo-product-card:focus-visible,
 .demo-product-card.is-selected {
-    border-color: var(--action-primary);
-    background: var(--red-100);
+    background: var(--surface-default);
     outline: none;
+}
+.demo-product-card.is-selected span {
+    color: var(--text-primary);
+}
+.demo-product-card:focus-visible {
+    border-color: var(--action-primary);
 }
 .demo-request-form {
     display: grid;
