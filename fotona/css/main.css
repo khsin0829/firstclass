@@ -592,13 +592,17 @@ body {
 .treatment-track .swiper-slide {
     display: flex;
     height: auto;
+    min-width: 0;
 }
-/* Swiper가 슬라이드 너비를 계산하므로 카드가 각 슬라이드 너비를 채우게 합니다. */
+/* Swiper 슬라이드 너비에 맞춰 카드가 줄어들도록 설정합니다. */
 .treatment-card {
     position: relative;
+    display: block;
     width: 100%;
+    min-width: 0;
     height: 100%;
-    flex: 0 0 auto;
+    box-sizing: border-box;
+    flex: 1 1 auto;
     padding: 0;
     overflow: hidden;
     border: 1px solid var(--border-default);
