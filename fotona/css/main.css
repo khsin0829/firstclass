@@ -1230,7 +1230,7 @@ body {
     padding: 0 12px;
     border: 1px solid #E7E8EA;
     border-radius: 6px;
-    background: #F8F8F9;
+    background: var(--surface-default);
     color: var(--text-primary);
     font-family: inherit;
     font-size: 14px;
