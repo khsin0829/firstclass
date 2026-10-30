@@ -479,7 +479,18 @@
                             console.warn("주소를 찾지 못했습니다:", clinic.name, clinic.address);
                         } else {
                             clinic.position = new kakao.maps.LatLng(Number(result[0].y), Number(result[0].x));
-                            const marker = new kakao.maps.Marker({ map, position: clinic.position, title: clinic.name });
+                            const markerSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="36" height="46" viewBox="0 0 36 46"><path d="M18 1C8.6 1 1 8.6 1 18c0 12.1 17 27 17 27s17-14.9 17-27C35 8.6 27.4 1 18 1Z" fill="#EF1C26" stroke="#FFFFFF" stroke-width="2"/><circle cx="18" cy="17" r="6" fill="#FFFFFF"/></svg>`;
+                            const markerImage = new kakao.maps.MarkerImage(
+                                "data:image/svg+xml;charset=utf-8," + encodeURIComponent(markerSvg),
+                                new kakao.maps.Size(36, 46),
+                                { offset: new kakao.maps.Point(18, 46) }
+                            );
+                            const marker = new kakao.maps.Marker({
+                                map,
+                                position: clinic.position,
+                                title: clinic.name,
+                                image: markerImage
+                            });
                             markers.set(clinic.id, marker);
                             bounds.extend(clinic.position);
                             kakao.maps.event.addListener(marker, "click", () => showClinicOnMap(clinic));
