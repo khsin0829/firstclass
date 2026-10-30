@@ -613,7 +613,7 @@ body {
 .treatment-card img {
     display: block;
     width: 100%;
-    aspect-ratio: 1.2 / 1;
+    aspect-ratio: 1.5 / 1;
     object-fit: cover;
     pointer-events: none;
     -webkit-user-drag: none;
