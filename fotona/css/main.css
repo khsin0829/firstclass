@@ -470,9 +470,6 @@ body {
         text-align: left;
     }
 
-    .treatments-heading .section-title {
-        font-size: clamp(20px, 5.5vw, 32px);
-    }
 
     .treatments-controls {
         justify-content: center;
@@ -902,9 +899,6 @@ body {
     max-width: 1440px;
     margin: 0 auto;
 }
-.clinic-finder .section-title {
-    margin-bottom: 36px;
-}
 .clinic-finder-panel {
     display: grid;
     grid-template-columns: minmax(0, 1.25fr) minmax(300px, 1fr);
@@ -1040,11 +1034,6 @@ body {
     .clinic-finder {
         padding: 48px 20px;
     }
-    .clinic-finder .section-title {
-        margin-bottom: 24px;
-        font-size: clamp(28px, 7vw, 38px);
-        line-height: 1.1;
-    }
     .clinic-finder-panel {
         grid-template-columns: minmax(0, 1fr);
         gap: 18px;
@@ -1087,20 +1076,6 @@ body {
     align-items: flex-start;
     gap: 8px;
     margin-bottom: 50px;
-}
-.demo-request .section-eyebrow {
-    margin: 0;
-    color: var(--text-secondary);
-    font-size: 22px;
-    font-weight: 500;
-    line-height: 1.2;
-}
-.demo-request .section-title {
-    margin: 0;
-    color: var(--text-primary);
-    font-size: 50px;
-    font-weight: 500;
-    line-height: 1.1;
 }
 .demo-request-content {
     display: flex;
@@ -1301,12 +1276,6 @@ body {
     }
     .demo-request-heading {
         margin-bottom: 36px;
-    }
-    .demo-request .section-eyebrow {
-        font-size: 16px;
-    }
-    .demo-request .section-title {
-        font-size: clamp(30px, 4vw, 42px);
     }
     .demo-request-content {
         gap: 32px;
