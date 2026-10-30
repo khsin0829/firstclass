@@ -1099,34 +1099,20 @@ body {
 }
 .demo-preview-image {
     position: absolute;
-    inset: 0;
+    top: 41.99%;
+    left: 24.75%;
     display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    width: 50.42%;
+    height: auto;
+    object-fit: contain;
     opacity: 1;
     transition: opacity .25s ease;
 }
 .demo-preview.has-product .demo-preview-image {
-    opacity: 1;
-}
-.demo-preview.has-product .demo-preview-logo {
-    opacity: 0;
-    visibility: hidden;
-}
-.demo-preview-logo {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    z-index: 1;
-    display: block;
-    width: 50.42%;
-    height: auto;
-    transform: translate(-50%, -50%);
-    padding: 8px;
-    box-sizing: border-box;
-    background: rgba(255, 255, 255, .9);
-    border-radius: 3px;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 .demo-form-area {
     display: flex;
