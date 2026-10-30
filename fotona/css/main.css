@@ -1208,7 +1208,7 @@ body {
     border-color: var(--text-primary);
 }
 .demo-product-card.is-selected span {
-    color: var(--text-primary);
+    color: var(--action-primary);
 }
 .demo-product-card:focus-visible {
     border-color: var(--action-primary);
