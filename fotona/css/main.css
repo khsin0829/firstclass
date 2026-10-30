@@ -65,8 +65,11 @@ body {
 }
 
 .site-logo img {
-    width: 100px;
-    height: auto;
+    display: block;
+    width: auto;
+    height: 32px;
+    max-width: 120px;
+    object-fit: contain;
 }
 
 .main-nav {
@@ -211,7 +214,7 @@ body {
     }
 
     .site-logo img {
-        width: 88px;
+        height: 30px;
     }
 
     .nav-item > a {
@@ -254,7 +257,8 @@ body {
     }
 
     .site-logo img {
-        width: clamp(58px, 16vw, 82px);
+        height: clamp(22px, 6vw, 28px);
+        max-width: 82px;
     }
 
     .main-nav {
@@ -1099,12 +1103,14 @@ body {
 }
 .demo-preview-image {
     position: absolute;
-    top: 41.99%;
-    left: 24.75%;
+    top: 50%;
+    left: 50%;
     display: block;
-    width: 50.42%;
+    width: 50%;
+    max-width: 220px;
     height: auto;
     object-fit: contain;
+    transform: translate(-50%, -50%);
     opacity: 1;
     transition: opacity .25s ease;
 }
