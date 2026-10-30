@@ -1230,7 +1230,7 @@ body {
     background: var(--surface-default);
     color: var(--text-primary);
     font-family: inherit;
-    font-size: 22px;
+    font-size: 14px;
     font-weight: 500;
 }
 .demo-request-form input::placeholder {
@@ -1316,7 +1316,7 @@ body {
     .demo-request-form input {
         height: 44px;
         padding: 10px 12px;
-        font-size: 15px;
+        font-size: 12px;
     }
     .demo-submit {
         min-height: 44px;
@@ -1364,7 +1364,7 @@ body {
         gap: 8px;
     }
     .demo-request-form input {
-        font-size: 13px;
+        font-size: 12px;
         padding: 8px;
     }
     .demo-submit {
