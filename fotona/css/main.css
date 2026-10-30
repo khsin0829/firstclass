@@ -974,7 +974,10 @@ body {
 }
 .clinic-results {
     display: grid;
+    align-content: start;
     gap: 8px;
+    height: 320px;
+    overflow-y: auto;
     margin: 0;
     padding: 0;
     list-style: none;
