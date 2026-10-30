@@ -1427,7 +1427,7 @@ body {
 }
 .footer-privacy {
     color: var(--text-inverse);
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 500;
     line-height: 1;
     text-decoration: none;
@@ -1511,7 +1511,7 @@ body {
         gap: 8px;
     }
     .footer-privacy {
-        font-size: clamp(8px, 1.4vw, 11px);
+        font-size: clamp(11px, 1.8vw, 13px);
     }
     .footer-company-details {
         gap: 4px;
