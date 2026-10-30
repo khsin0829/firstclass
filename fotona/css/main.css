@@ -1515,7 +1515,7 @@ body {
     }
     .footer-company-details p {
         gap: 3px;
-        font-size: clamp(6px, 1.1vw, 9px);
+        font-size: clamp(10px, 1.6vw, 12px);
         line-height: 1.4;
         overflow-wrap: anywhere;
     }
