@@ -1169,8 +1169,8 @@ body {
     height: 200px;
     flex-direction: column;
     align-items: center;
-    gap: 8px;
-    padding: 12px 8px;
+    gap: 6px;
+    padding: 5px 8px 10px;
     box-sizing: border-box;
     overflow: hidden;
     border: 1px solid var(--border-default);
@@ -1184,8 +1184,8 @@ body {
 .demo-product-card img {
     display: block;
     width: 100%;
-    height: 145px;
-    flex: 0 0 145px;
+    height: 155px;
+    flex: 0 0 155px;
     object-fit: cover;
 }
 .demo-product-card span {
