@@ -620,15 +620,25 @@
 
             productCards.forEach((card) => {
                 card.addEventListener("click", () => {
+                    const wasSelected = card.classList.contains("is-selected");
+
+                    productCards.forEach((item) => {
+                        item.classList.remove("is-selected");
+                        item.setAttribute("aria-pressed", "false");
+                    });
+
+                    if (wasSelected) {
+                        previewImage.src = "img/logoBlack.png";
+                        previewImage.alt = "Fotona 로고";
+                        preview.classList.remove("has-product");
+                        return;
+                    }
+
                     previewImage.src = card.dataset.demoImage;
                     previewImage.alt = card.querySelector("span").textContent + " 장비 사진";
                     preview.classList.add("has-product");
-
-                    productCards.forEach((item) => {
-                        const selected = item === card;
-                        item.classList.toggle("is-selected", selected);
-                        item.setAttribute("aria-pressed", String(selected));
-                    });
+                    card.classList.add("is-selected");
+                    card.setAttribute("aria-pressed", "true");
                 });
             });
 
