@@ -66,9 +66,9 @@ body {
 
 .site-logo img {
     display: block;
-    width: auto;
-    height: 32px;
-    max-width: 120px;
+    width: 100px;
+    height: auto;
+    max-width: none;
     object-fit: contain;
 }
 
@@ -213,8 +213,8 @@ body {
         gap: 20px;
     }
 
-    .site-logo img {
-        height: 30px;
+     .site-logo img {
+        width: 100px;
     }
 
     .nav-item > a {
@@ -256,9 +256,8 @@ body {
         flex: 0 0 auto;
     }
 
-    .site-logo img {
-        height: clamp(22px, 6vw, 28px);
-        max-width: 82px;
+     .site-logo img {
+        width: clamp(82px, 16vw, 100px);
     }
 
     .main-nav {
