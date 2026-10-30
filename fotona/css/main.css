@@ -1147,16 +1147,16 @@ body {
 .demo-heading h3 {
     margin: 0;
     color: var(--text-primary);
-    font-size: 40px;
+    font-size: 28px;
     font-weight: 500;
-    line-height: 1.15;
+    line-height: 1.2;
 }
 .demo-heading p {
     margin: 0;
     color: var(--text-secondary);
-    font-size: 24px;
-    font-weight: 500;
-    line-height: 1.35;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.45;
 }
 .demo-product-options {
     display: grid;
@@ -1174,7 +1174,7 @@ body {
     box-sizing: border-box;
     overflow: hidden;
     border: 1px solid var(--border-default);
-    border-radius: 12px;
+    border-radius: 6px;
     background: var(--surface-default);
     color: var(--text-secondary);
     font: inherit;
@@ -1192,7 +1192,7 @@ body {
     display: block;
     width: 100%;
     color: var(--text-secondary);
-    font-size: 22px;
+    font-size: 15px;
     font-weight: 500;
     line-height: 1.2;
     text-align: center;
@@ -1225,12 +1225,12 @@ body {
 .demo-request-form input {
     width: 100%;
     min-width: 0;
-    height: 50px;
+    height: 40px;
     box-sizing: border-box;
-    padding: 14px 20px;
-    border: 1px solid var(--border-default);
-    border-radius: 12px;
-    background: var(--surface-default);
+    padding: 0 12px;
+    border: 1px solid #E7E8EA;
+    border-radius: 6px;
+    background: #F8F8F9;
     color: var(--text-primary);
     font-family: inherit;
     font-size: 14px;
@@ -1247,15 +1247,15 @@ body {
 .demo-submit {
     display: block;
     width: 100%;
-    min-height: 50px;
-    padding: 14px 20px;
-    border: 1px solid var(--border-default);
-    border-radius: 12px;
+    min-height: 40px;
+    padding: 0 12px;
+    border: 0;
+    border-radius: 6px;
     background: var(--action-primary);
     color: var(--text-inverse);
     font-family: inherit;
-    font-size: 22px;
-    font-weight: 600;
+    font-size: 14px;
+    font-weight: 500;
     line-height: 1;
     cursor: pointer;
     transition: background-color .2s ease;
@@ -1295,10 +1295,10 @@ body {
         gap: 18px;
     }
     .demo-heading h3 {
-        font-size: 30px;
+        font-size: 28px;
     }
     .demo-heading p {
-        font-size: 18px;
+        font-size: 15px;
     }
     .demo-product-options {
         gap: 8px;
@@ -1317,14 +1317,14 @@ body {
         font-size: 14px;
     }
     .demo-request-form input {
-        height: 44px;
-        padding: 10px 12px;
-        font-size: 12px;
+        height: 40px;
+        padding: 0 12px;
+        font-size: 14px;
     }
     .demo-submit {
-        min-height: 44px;
-        padding: 10px 12px;
-        font-size: 16px;
+        min-height: 40px;
+        padding: 0 12px;
+        font-size: 14px;
     }
 }
 @media (max-width: 700px) {
@@ -1348,17 +1348,17 @@ body {
         padding: 0;
     }
     .demo-heading h3 {
-        font-size: 26px;
+        font-size: 24px;
     }
     .demo-heading p {
-        font-size: 15px;
+        font-size: 14px;
     }
     .demo-product-options {
         gap: 8px;
     }
     .demo-product-card {
         padding: 8px 6px;
-        border-radius: 8px;
+        border-radius: 6px;
     }
     .demo-product-card span {
         font-size: 11px;
@@ -1367,11 +1367,14 @@ body {
         gap: 8px;
     }
     .demo-request-form input {
+        height: 40px;
         font-size: 12px;
-        padding: 8px;
+        padding: 0 8px;
     }
     .demo-submit {
-        font-size: 15px;
+        min-height: 40px;
+        font-size: 14px;
+        padding: 0 12px;
     }
 }
 
