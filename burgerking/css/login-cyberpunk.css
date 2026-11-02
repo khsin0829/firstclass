@@ -1,0 +1,271 @@
+/* Cyberpunk - Burger King Login */
+:root {
+  --cyber-bg: #080b18;
+  --cyber-panel: #10182b;
+  --cyber-cyan: #00f5ff;
+  --cyber-magenta: #ff2bd6;
+  --cyber-white: #eafcff;
+  --cyber-muted: #8da4bb;
+  --cyber-line: rgba(0, 245, 255, .55);
+  --cyber-glow: 0 0 8px rgba(0,245,255,.8), 0 0 22px rgba(0,245,255,.35);
+}
+html { font-size: 62.5%; }
+body {
+  min-height: 100dvh;
+  color: var(--cyber-white);
+  background:
+    radial-gradient(ellipse at 15% 15%, rgba(255,43,214,.18), transparent 35%),
+    radial-gradient(ellipse at 85% 80%, rgba(0,245,255,.16), transparent 38%),
+    var(--cyber-bg);
+  font-family: var(--font);
+  font-size: 1.6rem;
+}
+#wrap.cyber-login {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  width: 100%;
+  max-width: 520px;
+  min-width: 320px;
+  min-height: 100dvh;
+  margin: 0 auto;
+  background: linear-gradient(145deg, rgba(16,24,43,.98), rgba(8,11,24,.98));
+  border-left: 1px solid var(--cyber-line);
+  border-right: 1px solid rgba(255,43,214,.5);
+  box-shadow: 0 0 35px rgba(0,245,255,.12);
+}
+/* CRT 스캔라인 오버레이 */
+.cyber-login::before {
+  content: "";
+  position: absolute;
+  z-index: 5;
+  inset: 0;
+  pointer-events: none;
+  opacity: .18;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 3px,
+    rgba(0,245,255,.22) 4px
+  );
+}
+.cyber-login header {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 64px;
+  background: rgba(0,245,255,.06);
+  border-bottom: 1px solid var(--cyber-line);
+  box-shadow: 0 3px 18px rgba(0,245,255,.12);
+}
+.cyber-login h1 {
+  color: var(--cyber-cyan);
+  font-family: var(--font-BKR);
+  font-size: 2.2rem;
+  letter-spacing: .16em;
+  text-shadow: var(--cyber-glow);
+}
+.cyber-login .prev_btn {
+  position: absolute;
+  left: 12px;
+  width: 40px;
+  height: 40px;
+  background: rgba(255,43,214,.1) url(../img/back_icon.svg) no-repeat center / 21px;
+  border: 1px solid var(--cyber-magenta);
+  box-shadow: 0 0 10px rgba(255,43,214,.4);
+  clip-path: polygon(0 0, 78% 0, 100% 22%, 100% 100%, 0 100%);
+}
+.cyber-login main {
+  position: relative;
+  z-index: 1;
+  padding: 42px 24px 64px;
+}
+.cyber-login .title {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 7px;
+  margin-bottom: 38px;
+  font-family: var(--font-BKR);
+  line-height: 1.2;
+}
+.cyber-login .title span:first-child {
+  color: var(--cyber-magenta);
+  font-size: 2.4rem;
+  text-shadow: 2px 0 var(--cyber-cyan), -2px 0 rgba(255,43,214,.65), 0 0 14px rgba(255,43,214,.45);
+}
+.cyber-login .title span:last-child {
+  padding: 5px 10px;
+  color: var(--cyber-cyan);
+  background: rgba(0,245,255,.07);
+  border-left: 3px solid var(--cyber-cyan);
+  border-bottom: 1px solid var(--cyber-cyan);
+  font-size: clamp(3rem, 8vw, 4rem);
+  text-shadow: 2px 0 var(--cyber-magenta), 0 0 16px rgba(0,245,255,.55);
+  clip-path: polygon(0 0, 100% 0, 100% 78%, 94% 100%, 0 100%);
+}
+.cyber-login fieldset > label {
+  display: inline-block;
+  margin-bottom: 8px;
+  color: var(--cyber-cyan);
+  font-size: 1.4rem;
+  font-weight: 800;
+  letter-spacing: .08em;
+}
+.cyber-login input[type="email"],
+.cyber-login input[type="password"] {
+  display: block;
+  width: 100%;
+  height: 52px;
+  margin-top: 10px;
+  padding: 0 14px;
+  color: var(--cyber-white);
+  background: rgba(3,8,20,.8);
+  border: 1px solid rgba(0,245,255,.65);
+  border-radius: 0;
+  box-shadow: inset 0 0 12px rgba(0,245,255,.07), 0 0 9px rgba(0,245,255,.12);
+  clip-path: polygon(0 0, 97% 0, 100% 22%, 100% 100%, 0 100%);
+}
+.cyber-login input::placeholder { color: var(--cyber-muted); }
+.cyber-login input:focus {
+  outline: 1px solid var(--cyber-magenta);
+  outline-offset: 3px;
+  box-shadow: 0 0 12px rgba(255,43,214,.35);
+}
+.cyber-login .input_box.rela { position: relative; }
+.cyber-login .pw_btn {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  width: 28px;
+  height: 28px;
+  background: url(../img/eye_icon.svg) no-repeat center / 20px;
+  filter: drop-shadow(0 0 4px var(--cyber-cyan));
+}
+.cyber-login .login_option {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  margin-top: 18px;
+}
+.cyber-login .login_option label { display: inline-block; }
+.cyber-login .login_option span {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--cyber-white);
+  font-size: 1.4rem;
+}
+.cyber-login .login_option .check + span::before {
+  content: "";
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  background: rgba(0,245,255,.05) url(../img/checkBox_disabled.svg) no-repeat center / contain;
+  border: 1px solid var(--cyber-cyan);
+}
+.cyber-login .login_option .check:checked + span::before {
+  background-image: url(../img/checkBox_active.svg);
+  box-shadow: 0 0 9px rgba(0,245,255,.55);
+}
+.cyber-login .login_btn {
+  width: 100%;
+  min-height: 54px;
+  margin-top: 26px;
+  color: var(--cyber-bg);
+  background: var(--cyber-cyan);
+  border: 1px solid var(--cyber-cyan);
+  border-radius: 0;
+  font-family: inherit;
+  font-size: 1.8rem;
+  font-weight: 900;
+  letter-spacing: .18em;
+  text-shadow: none;
+  box-shadow: 0 0 10px rgba(0,245,255,.65), 0 0 25px rgba(0,245,255,.25);
+  clip-path: polygon(0 0, 96% 0, 100% 25%, 100% 100%, 4% 100%, 0 75%);
+  transition: background .2s, color .2s, filter .2s;
+}
+.cyber-login .login_btn:hover {
+  color: var(--cyber-white);
+  background: var(--cyber-magenta);
+  border-color: var(--cyber-magenta);
+  box-shadow: 0 0 12px rgba(255,43,214,.8), 0 0 28px rgba(255,43,214,.35);
+}
+.cyber-login a { color: inherit; text-decoration: none; }
+.cyber-login .login_link {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+  color: var(--cyber-cyan);
+  font-family: var(--font-pre);
+  font-size: 1.3rem;
+  text-align: center;
+}
+.cyber-login .login_link a {
+  padding-bottom: 3px;
+  border-bottom: 1px solid rgba(0,245,255,.55);
+}
+.cyber-login .login_link a::after { display: none; }
+.cyber-login .sns_login { margin-top: 72px; }
+.cyber-login .sns_login > p {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 26px;
+  color: var(--cyber-magenta);
+  font-size: 1.3rem;
+  font-weight: 800;
+  letter-spacing: .08em;
+  white-space: nowrap;
+  text-shadow: 0 0 10px rgba(255,43,214,.5);
+}
+.cyber-login .sns_login > p::before,
+.cyber-login .sns_login > p::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--cyber-magenta));
+}
+.cyber-login .sns_login > p::after {
+  background: linear-gradient(90deg, var(--cyber-magenta), transparent);
+}
+.cyber-login .sns_list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+.cyber-login .sns_list > a {
+  display: block;
+  width: 48px;
+  height: 48px;
+  background-color: rgba(255,255,255,.95);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 34px;
+  border: 1px solid var(--cyber-cyan);
+  box-shadow: 0 0 9px rgba(0,245,255,.28);
+  clip-path: polygon(0 0, 82% 0, 100% 18%, 100% 100%, 0 100%);
+  transition: transform .2s, box-shadow .2s;
+}
+.cyber-login .sns_list > a:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 12px var(--cyber-cyan), 0 0 22px rgba(0,245,255,.35);
+}
+.cyber-login .sns_list > a:first-child { background-image: url(../img/KakaoLoginIcon.svg); }
+.cyber-login .sns_list > a:nth-child(2) { background-image: url(../img/NaverLoginIcon.svg); }
+.cyber-login .sns_list > a:nth-child(3) { background-image: url(../img/AppleLoginIcon.svg); }
+.cyber-login .sns_list > a:last-child { background-image: url(../img/SamsungLoginIcon.svg); }
+@media (max-width: 380px) {
+  .cyber-login main { padding-right: 18px; padding-left: 18px; }
+  .cyber-login .login_link { gap: 8px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cyber-login *,
+  .cyber-login *::before,
+  .cyber-login *::after { transition: none !important; }
+}
