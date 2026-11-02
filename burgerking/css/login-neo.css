@@ -1,0 +1,214 @@
+/* Neo Brutalism - Burger King Login */
+:root {
+  --neo-ink: #171717;
+  --neo-paper: #fff8e8;
+  --neo-yellow: #ffd928;
+  --neo-red: #ef3e24;
+  --neo-blue: #4ec5eb;
+  --neo-pink: #ff83b7;
+  --neo-green: #b7e35b;
+  --neo-shadow: 6px 6px 0 var(--neo-ink);
+}
+
+html { font-size: 62.5%; }
+body {
+  font-family: var(--font);
+  font-size: 1.6rem;
+  color: var(--neo-ink);
+  background: var(--neo-blue);
+}
+#wrap.neo-login {
+  width: 100%;
+  max-width: 520px;
+  min-width: 320px;
+  min-height: 100dvh;
+  margin: 0 auto;
+  background: var(--neo-paper);
+  border-left: 3px solid var(--neo-ink);
+  border-right: 3px solid var(--neo-ink);
+}
+.neo-login header {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 64px;
+  background: var(--neo-yellow);
+  border-bottom: 3px solid var(--neo-ink);
+}
+.neo-login h1 {
+  font-family: var(--font-BKR);
+  font-size: 2.2rem;
+  font-weight: 900;
+}
+.neo-login .prev_btn {
+  position: absolute;
+  left: 10px;
+  width: 42px;
+  height: 42px;
+  border: 3px solid var(--neo-ink);
+  background: var(--neo-paper) url(../img/back_icon.svg) no-repeat center / 22px;
+  box-shadow: 3px 3px 0 var(--neo-ink);
+}
+.neo-login main { padding: 42px 24px 64px; }
+.neo-login .title {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-bottom: 38px;
+  font-family: var(--font-BKR);
+  line-height: 1.2;
+  transform: rotate(-1deg);
+}
+.neo-login .title span:first-child {
+  width: fit-content;
+  padding: 5px 10px;
+  background: var(--neo-pink);
+  border: 3px solid var(--neo-ink);
+  font-size: 2.4rem;
+}
+.neo-login .title span:last-child {
+  width: fit-content;
+  padding: 5px 10px;
+  background: var(--neo-yellow);
+  border: 3px solid var(--neo-ink);
+  font-size: clamp(3rem, 8vw, 4rem);
+  box-shadow: 4px 4px 0 var(--neo-ink);
+}
+.neo-login fieldset > label {
+  display: inline-block;
+  margin-bottom: 8px;
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+.neo-login input[type="email"],
+.neo-login input[type="password"] {
+  display: block;
+  width: 100%;
+  height: 52px;
+  margin-top: 8px;
+  padding: 0 14px;
+  color: var(--neo-ink);
+  background: #fff;
+  border: 3px solid var(--neo-ink);
+  border-radius: 0;
+  box-shadow: 3px 3px 0 var(--neo-ink);
+}
+.neo-login input::placeholder { color: #777; }
+.neo-login input:focus {
+  outline: 3px solid var(--neo-red);
+  outline-offset: 3px;
+}
+.neo-login .input_box.rela { position: relative; }
+.neo-login .pw_btn {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  width: 28px;
+  height: 28px;
+  background: url(../img/eye_icon.svg) no-repeat center / 20px;
+}
+.neo-login .login_option {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  margin-top: 18px;
+}
+.neo-login .login_option label { display: inline-block; }
+.neo-login .login_option span {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+.neo-login .login_option .check + span::before {
+  content: "";
+  display: inline-block;
+  width: 23px;
+  height: 23px;
+  background: #fff url(../img/checkBox_disabled.svg) no-repeat center / contain;
+  border: 2px solid var(--neo-ink);
+}
+.neo-login .login_option .check:checked + span::before {
+  background-image: url(../img/checkBox_active.svg);
+}
+.neo-login .login_btn {
+  width: 100%;
+  min-height: 54px;
+  margin-top: 24px;
+  color: var(--neo-ink);
+  background: var(--neo-red);
+  border: 3px solid var(--neo-ink);
+  border-radius: 0;
+  box-shadow: var(--neo-shadow);
+  font-family: inherit;
+  font-size: 1.8rem;
+  font-weight: 900;
+  opacity: 1;
+  transition: transform .12s, box-shadow .12s;
+}
+.neo-login .login_btn:hover {
+  transform: translate(3px, 3px);
+  box-shadow: 3px 3px 0 var(--neo-ink);
+}
+.neo-login a { color: inherit; text-decoration: none; }
+.neo-login .login_link {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 28px;
+  font-family: var(--font-pre);
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+.neo-login .login_link a {
+  padding: 5px 8px;
+  background: var(--neo-yellow);
+  border: 2px solid var(--neo-ink);
+}
+.neo-login .login_link a::after { display: none; }
+.neo-login .sns_login { margin-top: 72px; }
+.neo-login .sns_login > p {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 24px;
+  color: var(--neo-ink);
+  font-size: 1.4rem;
+  font-weight: 900;
+  white-space: nowrap;
+}
+.neo-login .sns_login > p::before,
+.neo-login .sns_login > p::after {
+  content: "";
+  flex: 1;
+  height: 3px;
+  background: var(--neo-ink);
+}
+.neo-login .sns_list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+.neo-login .sns_list > a {
+  display: block;
+  width: 50px;
+  height: 50px;
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 36px;
+  border: 3px solid var(--neo-ink);
+  box-shadow: 3px 3px 0 var(--neo-ink);
+}
+.neo-login .sns_list > a:first-child { background-image: url(../img/KakaoLoginIcon.svg); }
+.neo-login .sns_list > a:nth-child(2) { background-image: url(../img/NaverLoginIcon.svg); }
+.neo-login .sns_list > a:nth-child(3) { background-image: url(../img/AppleLoginIcon.svg); }
+.neo-login .sns_list > a:last-child { background-image: url(../img/SamsungLoginIcon.svg); }
+@media (max-width: 380px) {
+  .neo-login main { padding-right: 18px; padding-left: 18px; }
+  .neo-login .login_link { gap: 6px; }
+}
