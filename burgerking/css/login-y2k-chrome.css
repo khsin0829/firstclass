@@ -1,0 +1,286 @@
+/* Y2K Chrome - Burger King Login */
+:root {
+  --chrome-ink: #28334a;
+  --chrome-blue: #8edcff;
+  --chrome-pink: #ffb9e6;
+  --chrome-lilac: #c9c5ff;
+  --chrome-silver: #f4f7ff;
+  --chrome-mid: #aab5c9;
+  --chrome-dark: #68758e;
+  --chrome-line: rgba(255,255,255,.9);
+}
+html { font-size: 62.5%; }
+body {
+  min-height: 100dvh;
+  color: var(--chrome-ink);
+  background:
+    radial-gradient(ellipse at 15% 15%, rgba(255,185,230,.7), transparent 32%),
+    radial-gradient(ellipse at 88% 78%, rgba(142,220,255,.8), transparent 35%),
+    linear-gradient(135deg, #d8dfff 0%, #f8eaff 48%, #c9efff 100%);
+  font-family: var(--font);
+  font-size: 1.6rem;
+}
+#wrap.y2k-chrome {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  width: 100%;
+  max-width: 520px;
+  min-width: 320px;
+  min-height: 100dvh;
+  margin: 0 auto;
+  background:
+    radial-gradient(circle at 90% 13%, rgba(255,255,255,.9) 0 2px, transparent 3px),
+    radial-gradient(circle at 12% 34%, rgba(255,255,255,.95) 0 3px, transparent 4px),
+    linear-gradient(145deg, rgba(255,255,255,.94), rgba(232,239,255,.9) 48%, rgba(255,239,250,.94));
+  border-left: 1px solid rgba(255,255,255,.95);
+  border-right: 1px solid rgba(255,255,255,.95);
+  box-shadow: 0 0 45px rgba(103,130,180,.22);
+}
+.y2k-chrome::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  pointer-events: none;
+  opacity: .45;
+  background:
+    radial-gradient(circle at 8% 8%, white 0 2px, transparent 3px),
+    radial-gradient(circle at 92% 30%, white 0 3px, transparent 4px),
+    radial-gradient(circle at 16% 74%, white 0 2px, transparent 3px),
+    radial-gradient(circle at 85% 88%, white 0 2px, transparent 3px);
+}
+.y2k-chrome header {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 64px;
+  background: linear-gradient(180deg, #fff 0%, #e9efff 38%, #c4cfe3 52%, #f9fbff 76%, #dce5f5 100%);
+  border-bottom: 1px solid #aebbd2;
+  box-shadow: 0 3px 12px rgba(91,111,151,.14), inset 0 1px 0 white;
+}
+.y2k-chrome h1 {
+  color: #53617d;
+  font-family: var(--font-BKR);
+  font-size: 2.2rem;
+  letter-spacing: .12em;
+  text-shadow: 0 1px 0 white, 0 2px 3px rgba(82,100,139,.3);
+}
+.y2k-chrome .prev_btn {
+  position: absolute;
+  left: 12px;
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(145deg, #fff 0%, #dce6f8 35%, #9eacc5 52%, #f8fbff 72%, #c7d4e9 100%) url(../img/back_icon.svg) no-repeat center / 21px;
+  border: 1px solid white;
+  border-radius: 12px;
+  box-shadow: 0 2px 5px rgba(74,91,126,.24), inset 0 1px 2px white;
+}
+.y2k-chrome main {
+  position: relative;
+  z-index: 1;
+  padding: 42px 24px 64px;
+}
+.y2k-chrome .title {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 7px;
+  margin-bottom: 38px;
+  font-family: var(--font-BKR);
+  line-height: 1.2;
+}
+.y2k-chrome .title span:first-child {
+  color: #a65f9a;
+  font-size: 2.4rem;
+  text-shadow: 0 1px white, 0 2px 4px rgba(166,95,154,.25);
+}
+.y2k-chrome .title span:last-child {
+  padding: 8px 13px;
+  color: #526783;
+  background: linear-gradient(110deg, #fff 0%, #dce8fa 22%, #fff 38%, #aab9d2 51%, #fdfdff 67%, #d6e5f6 85%, #fff 100%);
+  border: 1px solid white;
+  border-radius: 13px;
+  font-size: clamp(3rem, 8vw, 4rem);
+  letter-spacing: -.04em;
+  text-shadow: 0 1px white, 0 2px 3px rgba(75,96,132,.3);
+  box-shadow: 0 4px 10px rgba(100,119,157,.18), inset 0 1px 2px white, inset 0 -2px 3px rgba(111,132,170,.2);
+}
+.y2k-chrome fieldset > label {
+  display: inline-block;
+  margin-bottom: 8px;
+  color: #687b9b;
+  font-size: 1.4rem;
+  font-weight: 800;
+  letter-spacing: .04em;
+}
+.y2k-chrome input[type="email"],
+.y2k-chrome input[type="password"] {
+  display: block;
+  width: 100%;
+  height: 52px;
+  margin-top: 10px;
+  padding: 0 14px;
+  color: #43516b;
+  background: linear-gradient(180deg, #e3e9f5 0%, #fff 18%, #fff 72%, #e6ecf7 100%);
+  border: 1px solid #fff;
+  border-radius: 13px;
+  box-shadow: inset 0 2px 5px rgba(105,123,158,.16), 0 1px 3px rgba(255,255,255,.9);
+}
+.y2k-chrome input::placeholder { color: #9aa7bd; }
+.y2k-chrome input:focus {
+  outline: 2px solid #a8dfff;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(168,223,255,.22), inset 0 2px 5px rgba(105,123,158,.12);
+}
+.y2k-chrome .input_box.rela { position: relative; }
+.y2k-chrome .pw_btn {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  width: 28px;
+  height: 28px;
+  background: url(../img/eye_icon.svg) no-repeat center / 20px;
+  opacity: .65;
+}
+.y2k-chrome .login_option {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  margin-top: 18px;
+}
+.y2k-chrome .login_option label { display: inline-block; }
+.y2k-chrome .login_option span {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: #65738d;
+  font-size: 1.4rem;
+}
+.y2k-chrome .login_option .check + span::before {
+  content: "";
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  background: linear-gradient(145deg, #fff, #d9e2f2 48%, #fdfdff) url(../img/checkBox_disabled.svg) no-repeat center / contain;
+  border: 1px solid white;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(89,108,145,.2), inset 0 1px 1px white;
+}
+.y2k-chrome .login_option .check:checked + span::before {
+  background-image: url(../img/checkBox_active.svg);
+  box-shadow: 0 0 0 2px rgba(167,220,255,.35), inset 0 1px 2px white;
+}
+.y2k-chrome .login_btn {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  min-height: 56px;
+  margin-top: 26px;
+  color: #53617e;
+  background: linear-gradient(180deg, #fff 0%, #e7f4ff 16%, #a9d9f5 35%, #fefaff 49%, #d8c9ed 66%, #fff 82%, #c8d7ed 100%);
+  border: 1px solid white;
+  border-radius: 15px;
+  font-family: inherit;
+  font-size: 1.8rem;
+  font-weight: 900;
+  letter-spacing: .14em;
+  text-shadow: 0 1px white, 0 1px 2px rgba(80,99,135,.25);
+  box-shadow: 0 4px 0 #aab7ce, 0 6px 12px rgba(94,116,158,.22), inset 0 1px 2px white;
+  transition: transform .18s, box-shadow .18s, filter .18s;
+}
+.y2k-chrome .login_btn::before {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 8%;
+  width: 84%;
+  height: 34%;
+  border-radius: 20px;
+  background: linear-gradient(180deg, rgba(255,255,255,.85), rgba(255,255,255,0));
+  pointer-events: none;
+}
+.y2k-chrome .login_btn:hover {
+  filter: saturate(1.15) brightness(1.03);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 #aab7ce, 0 9px 16px rgba(94,116,158,.25), inset 0 1px 2px white;
+}
+.y2k-chrome .login_btn:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 #aab7ce, 0 3px 7px rgba(94,116,158,.2), inset 0 2px 4px rgba(100,120,160,.15);
+}
+.y2k-chrome a { color: inherit; text-decoration: none; }
+.y2k-chrome .login_link {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+  color: #71809c;
+  font-family: var(--font-pre);
+  font-size: 1.3rem;
+  text-align: center;
+}
+.y2k-chrome .login_link a {
+  padding-bottom: 3px;
+  border-bottom: 1px solid rgba(133,153,188,.55);
+}
+.y2k-chrome .login_link a::after { display: none; }
+.y2k-chrome .sns_login { margin-top: 72px; }
+.y2k-chrome .sns_login > p {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 26px;
+  color: #9a78a9;
+  font-size: 1.3rem;
+  font-weight: 800;
+  letter-spacing: .06em;
+  white-space: nowrap;
+}
+.y2k-chrome .sns_login > p::before,
+.y2k-chrome .sns_login > p::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #b7c5df);
+}
+.y2k-chrome .sns_login > p::after {
+  background: linear-gradient(90deg, #b7c5df, transparent);
+}
+.y2k-chrome .sns_list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+.y2k-chrome .sns_list > a {
+  display: block;
+  width: 48px;
+  height: 48px;
+  background-color: rgba(255,255,255,.95);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 34px;
+  border: 1px solid white;
+  border-radius: 14px;
+  box-shadow: 0 3px 7px rgba(91,112,153,.18), inset 0 1px 2px white;
+  transition: transform .2s, box-shadow .2s;
+}
+.y2k-chrome .sns_list > a:hover {
+  transform: translateY(-4px) rotate(-2deg);
+  box-shadow: 0 5px 10px rgba(91,112,153,.25), inset 0 1px 2px white;
+}
+.y2k-chrome .sns_list > a:first-child { background-image: url(../img/KakaoLoginIcon.svg); }
+.y2k-chrome .sns_list > a:nth-child(2) { background-image: url(../img/NaverLoginIcon.svg); }
+.y2k-chrome .sns_list > a:nth-child(3) { background-image: url(../img/AppleLoginIcon.svg); }
+.y2k-chrome .sns_list > a:last-child { background-image: url(../img/SamsungLoginIcon.svg); }
+@media (max-width: 380px) {
+  .y2k-chrome main { padding-right: 18px; padding-left: 18px; }
+  .y2k-chrome .login_link { gap: 8px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .y2k-chrome *, .y2k-chrome *::before, .y2k-chrome *::after { transition: none !important; }
+}
