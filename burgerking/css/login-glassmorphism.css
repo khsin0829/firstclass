@@ -1,0 +1,237 @@
+/* Glassmorphism - Burger King Login */
+html { font-size: 62.5%; }
+body {
+  min-height: 100dvh;
+  color: #34415e;
+  background:
+    radial-gradient(circle at 12% 18%, rgba(255,255,255,.9), transparent 23%),
+    radial-gradient(circle at 85% 25%, rgba(255,190,220,.75), transparent 28%),
+    radial-gradient(circle at 75% 85%, rgba(127,205,255,.8), transparent 30%),
+    linear-gradient(135deg, #a9d5f3, #d9c8f0 52%, #f5cddd);
+  font-family: var(--font);
+  font-size: 1.6rem;
+}
+#wrap.glass-login {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  width: 100%;
+  max-width: 520px;
+  min-width: 320px;
+  min-height: 100dvh;
+  margin: 0 auto;
+  background: linear-gradient(145deg, rgba(255,255,255,.42), rgba(255,255,255,.16));
+  border: 1px solid rgba(255,255,255,.65);
+  box-shadow: 0 18px 55px rgba(66,86,130,.2);
+  backdrop-filter: blur(22px);
+}
+.glass-login::before, .glass-login::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  filter: blur(2px);
+  pointer-events: none;
+}
+.glass-login::before { top: 170px; right: -115px; background: rgba(255,255,255,.32); }
+.glass-login::after { bottom: 80px; left: -130px; background: rgba(125,204,255,.24); }
+.glass-login header {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 64px;
+  background: rgba(255,255,255,.24);
+  border-bottom: 1px solid rgba(255,255,255,.65);
+  box-shadow: 0 4px 18px rgba(80,101,150,.08);
+  backdrop-filter: blur(18px);
+}
+.glass-login h1 {
+  color: #526482;
+  font-family: var(--font-BKR);
+  font-size: 2.2rem;
+  letter-spacing: .12em;
+  text-shadow: 0 1px 0 rgba(255,255,255,.9);
+}
+.glass-login .prev_btn {
+  position: absolute;
+  left: 12px;
+  width: 40px;
+  height: 40px;
+  background: rgba(255,255,255,.45) url(../img/back_icon.svg) no-repeat center / 21px;
+  border: 1px solid rgba(255,255,255,.8);
+  border-radius: 13px;
+  box-shadow: 0 4px 12px rgba(79,100,145,.12), inset 0 1px 1px white;
+  backdrop-filter: blur(10px);
+}
+.glass-login main {
+  position: relative;
+  z-index: 1;
+  padding: 34px 24px 64px;
+}
+.glass-login .title {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 7px;
+  margin-bottom: 34px;
+  font-family: var(--font-BKR);
+  line-height: 1.2;
+}
+.glass-login .title span:first-child {
+  color: #a06c9c;
+  font-size: 2.4rem;
+  text-shadow: 0 1px 0 white;
+}
+.glass-login .title span:last-child {
+  padding: 9px 14px;
+  color: #526482;
+  background: rgba(255,255,255,.35);
+  border: 1px solid rgba(255,255,255,.8);
+  border-radius: 16px;
+  font-size: clamp(3rem, 8vw, 4rem);
+  box-shadow: 0 8px 22px rgba(82,101,146,.1), inset 0 1px 1px white;
+  backdrop-filter: blur(12px);
+}
+.glass-login fieldset > label {
+  display: inline-block;
+  margin-bottom: 8px;
+  color: #667999;
+  font-size: 1.4rem;
+  font-weight: 800;
+}
+.glass-login input[type="email"], .glass-login input[type="password"] {
+  display: block;
+  width: 100%;
+  height: 52px;
+  margin-top: 10px;
+  padding: 0 14px;
+  color: #43516b;
+  background: rgba(255,255,255,.42);
+  border: 1px solid rgba(255,255,255,.85);
+  border-radius: 14px;
+  box-shadow: inset 0 2px 5px rgba(100,119,157,.06), 0 5px 16px rgba(91,112,153,.08);
+  backdrop-filter: blur(10px);
+}
+.glass-login input::placeholder { color: #8c9bb4; }
+.glass-login input:focus {
+  outline: 2px solid rgba(128,190,245,.85);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 5px rgba(255,255,255,.25);
+}
+.glass-login .input_box.rela { position: relative; }
+.glass-login .pw_btn {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  width: 28px;
+  height: 28px;
+  background: url(../img/eye_icon.svg) no-repeat center / 20px;
+  opacity: .65;
+}
+.glass-login .login_option {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  margin-top: 18px;
+}
+.glass-login .login_option label { display: inline-block; }
+.glass-login .login_option span {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: #5f6f8c;
+  font-size: 1.4rem;
+}
+.glass-login .login_option .check + span::before {
+  content: "";
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  background: rgba(255,255,255,.5) url(../img/checkBox_disabled.svg) no-repeat center / contain;
+  border: 1px solid rgba(255,255,255,.9);
+  border-radius: 7px;
+  box-shadow: 0 2px 7px rgba(91,112,153,.1);
+}
+.glass-login .login_option .check:checked + span::before { background-image: url(../img/checkBox_active.svg); }
+.glass-login .login_btn {
+  width: 100%;
+  min-height: 55px;
+  margin-top: 26px;
+  color: #fff;
+  background: linear-gradient(110deg, rgba(121,170,225,.88), rgba(184,151,213,.88));
+  border: 1px solid rgba(255,255,255,.8);
+  border-radius: 15px;
+  font-family: inherit;
+  font-size: 1.8rem;
+  font-weight: 900;
+  letter-spacing: .12em;
+  box-shadow: 0 8px 20px rgba(92,113,165,.2), inset 0 1px 1px rgba(255,255,255,.75);
+  transition: transform .18s, box-shadow .18s;
+}
+.glass-login .login_btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 11px 24px rgba(92,113,165,.26), inset 0 1px 1px rgba(255,255,255,.8);
+}
+.glass-login a { color: inherit; text-decoration: none; }
+.glass-login .login_link {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 26px;
+  color: #667895;
+  font-family: var(--font-pre);
+  font-size: 1.3rem;
+  text-align: center;
+}
+.glass-login .login_link a { padding-bottom: 3px; border-bottom: 1px solid rgba(111,133,174,.4); }
+.glass-login .login_link a::after { display: none; }
+.glass-login .sns_login { margin-top: 62px; }
+.glass-login .sns_login > p {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+  color: #8d70a3;
+  font-size: 1.3rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+.glass-login .sns_login > p::before, .glass-login .sns_login > p::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(125,145,185,.55));
+}
+.glass-login .sns_login > p::after { background: linear-gradient(90deg, rgba(125,145,185,.55), transparent); }
+.glass-login .sns_list { display: flex; justify-content: center; flex-wrap: wrap; gap: 14px; }
+.glass-login .sns_list > a {
+  display: block;
+  width: 48px;
+  height: 48px;
+  background-color: rgba(255,255,255,.62);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 34px;
+  border: 1px solid rgba(255,255,255,.9);
+  border-radius: 14px;
+  box-shadow: 0 5px 14px rgba(91,112,153,.12), inset 0 1px 1px white;
+  backdrop-filter: blur(10px);
+  transition: transform .2s;
+}
+.glass-login .sns_list > a:hover { transform: translateY(-4px); }
+.glass-login .sns_list > a:first-child { background-image: url(../img/KakaoLoginIcon.svg); }
+.glass-login .sns_list > a:nth-child(2) { background-image: url(../img/NaverLoginIcon.svg); }
+.glass-login .sns_list > a:nth-child(3) { background-image: url(../img/AppleLoginIcon.svg); }
+.glass-login .sns_list > a:last-child { background-image: url(../img/SamsungLoginIcon.svg); }
+@media (max-width: 380px) {
+  .glass-login main { padding-right: 18px; padding-left: 18px; }
+  .glass-login .login_link { gap: 8px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .glass-login *, .glass-login *::before, .glass-login *::after { transition: none !important; }
+}
