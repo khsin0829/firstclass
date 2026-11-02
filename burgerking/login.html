@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../font/css/SDGothicNeoRound.css">
     <link rel="stylesheet" href="../font/css/pretendardvariable.css">
     <link rel="stylesheet" href="../css/default.css">
-    <link rel="stylesheet" href="css/login-y2k-chrome.css">
+    <link rel="stylesheet" id="theme-style" href="css/login-y2k-chrome.css">
 
     
 </head>
@@ -17,6 +17,14 @@
         <header>
             <h1>로그인</h1>
             <button class="prev_btn"><span class="sr-only">이전버튼</span></button>
+            <label class="theme-switcher">
+                <span class="sr-only">디자인 테마 선택</span>
+                <select id="theme-select" aria-label="디자인 테마 선택">
+                    <option value="cyber-login" data-css="login-cyberpunk.css">Cyberpunk</option>
+                    <option value="y2k-chrome" data-css="login-y2k-chrome.css" selected>Y2K Chrome</option>
+                    <option value="neo-login" data-css="login-neo.css">Neo Brutalism</option>
+                </select>
+            </label>
         </header>
         <main>
             <h2 class="title">
@@ -66,5 +74,30 @@
             </div>
         </main>
     </div>
+    <script>
+        // 선택한 테마에 맞춰 CSS 파일과 페이지 클래스를 함께 변경합니다.
+        const themeSelect = document.querySelector("#theme-select");
+        const themeStyle = document.querySelector("#theme-style");
+        const loginWrap = document.querySelector("#wrap");
+        const themeOptions = ["cyber-login", "y2k-chrome", "neo-login"];
+
+        function changeTheme(themeName) {
+            const selectedOption = themeSelect.selectedOptions[0];
+            loginWrap.classList.remove(...themeOptions);
+            loginWrap.classList.add(themeName);
+            themeStyle.href = "css/" + selectedOption.dataset.css;
+            localStorage.setItem("burgerking-login-theme", themeName);
+        }
+
+        const savedTheme = localStorage.getItem("burgerking-login-theme");
+        if (savedTheme && themeOptions.includes(savedTheme)) {
+            themeSelect.value = savedTheme;
+            changeTheme(savedTheme);
+        }
+
+        themeSelect.addEventListener("change", function () {
+            changeTheme(this.value);
+        });
+    </script>
 </body>
 </html>

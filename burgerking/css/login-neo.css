@@ -212,3 +212,16 @@ body {
   .neo-login main { padding-right: 18px; padding-left: 18px; }
   .neo-login .login_link { gap: 6px; }
 }
+
+
+/* Header theme selector */
+.neo-login header { padding: 0 10px; }
+.neo-login .theme-switcher { position: absolute; right: 10px; z-index: 2; }
+.neo-login .theme-switcher select {
+  max-width: 126px; height: 34px; padding: 0 24px 0 9px;
+  color: var(--neo-ink); background: var(--neo-paper);
+  border: 2px solid var(--neo-ink); border-radius: 0;
+  box-shadow: 2px 2px 0 var(--neo-ink);
+  font: 800 1.1rem var(--font-pre); cursor: pointer;
+}
+.neo-login .theme-switcher select:focus { outline: 2px solid var(--neo-red); outline-offset: 2px; }

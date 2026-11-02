@@ -284,3 +284,17 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .y2k-chrome *, .y2k-chrome *::before, .y2k-chrome *::after { transition: none !important; }
 }
+
+
+/* Header theme selector */
+.y2k-chrome header { padding: 0 10px; }
+.y2k-chrome .theme-switcher { position: absolute; right: 10px; z-index: 2; }
+.y2k-chrome .theme-switcher select {
+  max-width: 126px; height: 34px; padding: 0 24px 0 9px;
+  color: #53617d;
+  background: linear-gradient(180deg, #fff 0%, #e5ecf8 42%, #b7c4da 54%, #fff 100%);
+  border: 1px solid white; border-radius: 9px;
+  box-shadow: 0 2px 5px rgba(74,91,126,.2), inset 0 1px 1px white;
+  font: 700 1.1rem var(--font-pre); cursor: pointer;
+}
+.y2k-chrome .theme-switcher select:focus { outline: 2px solid #a8dfff; outline-offset: 2px; }

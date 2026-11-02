@@ -269,3 +269,16 @@ body {
   .cyber-login *::before,
   .cyber-login *::after { transition: none !important; }
 }
+
+
+/* Header theme selector */
+.cyber-login header { padding: 0 10px; }
+.cyber-login .theme-switcher { position: absolute; right: 10px; z-index: 2; }
+.cyber-login .theme-switcher select {
+  max-width: 126px; height: 34px; padding: 0 24px 0 9px;
+  color: var(--cyber-cyan); background: #10182b;
+  border: 1px solid var(--cyber-cyan); border-radius: 0;
+  box-shadow: 0 0 9px rgba(0,245,255,.35);
+  font: 700 1.1rem var(--font-pre); cursor: pointer;
+}
+.cyber-login .theme-switcher select:focus { outline: 2px solid var(--cyber-magenta); outline-offset: 2px; }
