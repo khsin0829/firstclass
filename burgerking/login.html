@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../font/css/pretendardvariable.css">
     <link rel="stylesheet" href="../css/default.css">
     <link rel="stylesheet" id="theme-style" href="css/login-y2k-chrome.css">
+    <link rel="stylesheet" href="css/login-theme-gallery.css">
 
     
 </head>
@@ -17,15 +18,36 @@
         <header>
             <h1>로그인</h1>
             <button class="prev_btn"><span class="sr-only">이전버튼</span></button>
-            <label class="theme-switcher">
-                <span class="sr-only">디자인 테마 선택</span>
-                <select id="theme-select" aria-label="디자인 테마 선택">
-                    <option value="cyber-login" data-css="login-cyberpunk.css">Cyberpunk</option>
-                    <option value="y2k-chrome" data-css="login-y2k-chrome.css" selected>Y2K Chrome</option>
-                    <option value="neo-login" data-css="login-neo.css">Neo Brutalism</option>
-                </select>
-            </label>
+
         </header>
+        <section class="theme-gallery" aria-labelledby="theme-gallery-title">
+            <div class="theme-gallery-heading">
+                <h2 id="theme-gallery-title">DESIGN THEMES</h2>
+                <p>원하는 디자인을 선택해 보세요.</p>
+            </div>
+            <div class="theme-gallery-list">
+                <button type="button" class="theme-card" data-theme="cyber-login" aria-pressed="false">
+                    <span class="theme-preview preview-cyber"><i></i><i></i><i></i></span>
+                    <span class="theme-card-name">Cyberpunk</span>
+                    <span class="theme-card-desc">NEON · FUTURE</span>
+                </button>
+                <button type="button" class="theme-card is-active" data-theme="y2k-chrome" aria-pressed="true">
+                    <span class="theme-preview preview-chrome"><i></i><i></i><i></i></span>
+                    <span class="theme-card-name">Y2K Chrome</span>
+                    <span class="theme-card-desc">SILVER · GLOSSY</span>
+                </button>
+                <button type="button" class="theme-card" data-theme="neo-login" aria-pressed="false">
+                    <span class="theme-preview preview-neo"><i></i><i></i><i></i></span>
+                    <span class="theme-card-name">Neo Brutalism</span>
+                    <span class="theme-card-desc">BOLD · COLOR</span>
+                </button>
+                <button type="button" class="theme-card" data-theme="glass-login" aria-pressed="false">
+                    <span class="theme-preview preview-glass"><i></i><i></i><i></i></span>
+                    <span class="theme-card-name">Glassmorphism</span>
+                    <span class="theme-card-desc">FROSTED · SOFT</span>
+                </button>
+            </div>
+        </section>
         <main>
             <h2 class="title">
                 <span>안녕하세요:)</span>
@@ -75,29 +97,42 @@
         </main>
     </div>
     <script>
-        // 선택한 테마에 맞춰 CSS 파일과 페이지 클래스를 함께 변경합니다.
-        const themeSelect = document.querySelector("#theme-select");
+        // 테마 이름에 따라 적용할 CSS 파일을 연결합니다.
         const themeStyle = document.querySelector("#theme-style");
         const loginWrap = document.querySelector("#wrap");
-        const themeOptions = ["cyber-login", "y2k-chrome", "neo-login"];
+        const themeCards = document.querySelectorAll(".theme-card");
+
+        const themes = {
+            "cyber-login": "login-cyberpunk.css",
+            "y2k-chrome": "login-y2k-chrome.css",
+            "neo-login": "login-neo.css",
+            "glass-login": "login-glassmorphism.css"
+        };
 
         function changeTheme(themeName) {
-            const selectedOption = themeSelect.selectedOptions[0];
-            loginWrap.classList.remove(...themeOptions);
+            if (!themes[themeName]) return;
+
+            loginWrap.classList.remove(...Object.keys(themes));
             loginWrap.classList.add(themeName);
-            themeStyle.href = "css/" + selectedOption.dataset.css;
+            themeStyle.href = "css/" + themes[themeName];
+
+            themeCards.forEach(function (card) {
+                const isSelected = card.dataset.theme === themeName;
+                card.classList.toggle("is-active", isSelected);
+                card.setAttribute("aria-pressed", isSelected);
+            });
+
             localStorage.setItem("burgerking-login-theme", themeName);
         }
 
         const savedTheme = localStorage.getItem("burgerking-login-theme");
-        if (savedTheme && themeOptions.includes(savedTheme)) {
-            themeSelect.value = savedTheme;
-            changeTheme(savedTheme);
-        }
+        changeTheme(savedTheme && themes[savedTheme] ? savedTheme : "y2k-chrome");
 
-        themeSelect.addEventListener("change", function () {
-            changeTheme(this.value);
+        themeCards.forEach(function (card) {
+            card.addEventListener("click", function () {
+                changeTheme(this.dataset.theme);
+            });
         });
-    </script>
+    </script>ipt>
 </body>
 </html>
