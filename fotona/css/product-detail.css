@@ -475,3 +475,64 @@
         white-space: normal;
     }
 }
+
+
+/* Related treatment cards in product details */
+.product-treatment-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
+    gap: 10px;
+    max-width: 680px;
+}
+
+.product-treatment-card {
+    min-width: 0;
+    overflow: hidden;
+    border: 1px solid var(--border-default);
+    border-radius: 6px;
+    background: var(--surface-default);
+}
+
+.product-treatment-card img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1.7 / 1;
+    object-fit: cover;
+}
+
+.product-treatment-card-content {
+    padding: 9px 10px 11px;
+}
+
+.product-treatment-card h4 {
+    margin: 0 0 4px;
+    color: var(--text-primary);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.35;
+}
+
+.product-treatment-card p {
+    color: var(--text-secondary);
+    font-size: 11px;
+    line-height: 1.4;
+}
+
+@media (max-width: 700px) {
+    .product-treatment-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+    }
+
+    .product-treatment-card-content {
+        padding: 8px;
+    }
+
+    .product-treatment-card h4 {
+        font-size: 13px;
+    }
+
+    .product-treatment-card p {
+        font-size: 10px;
+    }
+}
