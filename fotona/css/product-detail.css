@@ -252,30 +252,6 @@
     color: #252a30;
 }
 
-.product-demo-cta::before,
-.product-demo-cta::after {
-    position: absolute;
-    z-index: -1;
-    content: "";
-    border-radius: 50%;
-    background: rgba(110, 120, 132, .08);
-    pointer-events: none;
-}
-
-.product-demo-cta::before {
-    width: 340px;
-    height: 340px;
-    top: -205px;
-    left: 12%;
-}
-
-.product-demo-cta::after {
-    width: 280px;
-    height: 280px;
-    right: 12%;
-    bottom: -190px;
-}
-
 .product-demo-cta-inner {
     display: flex;
     flex-direction: column;
