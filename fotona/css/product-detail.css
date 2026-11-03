@@ -467,13 +467,6 @@
 @media (min-width: 1025px) {
     .product-features-block li {
         white-space: nowrap;
-        font-size: 14px;
-    }
-}
-
-@media (max-width: 1024px) {
-    .product-features-block li {
-        font-size: 13px;
     }
 }
 
