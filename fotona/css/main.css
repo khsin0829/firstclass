@@ -242,22 +242,21 @@ body {
         width: 100px;
     }
 
-    .nav-item > a {
-        min-height: 64px;
-        padding: 0 clamp(10px, 1.5vw, 16px);
-        font-size: 14px;
-    }
-
-    /* 태블릿 드롭다운의 상위 메뉴와 하위 메뉴 너비를 함께 축소 */
-    .has-submenu {
+    /* 태블릿에서는 모든 상위 메뉴와 하위 메뉴 너비를 동일하게 통일 */
+    .nav-item {
         flex: 0 0 clamp(100px, 12vw, 124px);
     }
 
-    .has-submenu > a {
+    .nav-item > a {
         width: 100%;
+        min-height: 64px;
         box-sizing: border-box;
-        padding-right: 10px;
-        padding-left: 10px;
+        padding: 0 10px;
+        font-size: 14px;
+    }
+
+    .has-submenu > .submenu {
+        width: 100%;
     }
 
     .submenu a {
