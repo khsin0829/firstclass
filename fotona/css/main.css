@@ -102,10 +102,16 @@ body {
     transition: color 0.2s ease, background-color 0.2s ease;
 }
 
+/* 상위 메뉴 hover 배경은 li 전체 높이를 채우도록 적용 */
+.nav-item:hover,
+.nav-item:focus-within {
+    background-color: var(--red-100);
+}
+
 .nav-item:hover > a,
 .nav-item:focus-within > a {
     color: var(--action-primary);
-    background-color: var(--red-100);
+    background-color: transparent;
 }
 
 /* 드롭다운 메뉴: 제품 소개 / 시술 안내에 마우스를 올리면 표시 */
