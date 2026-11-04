@@ -220,22 +220,27 @@ body {
         font-size: 14px;
     }
 
-    /* 태블릿에서는 드롭다운 메뉴와 상위 hover 영역을 함께 넓힘 */
+    /* 태블릿: 상위 메뉴와 드롭다운의 가로 폭을 함께 확장 */
     .has-submenu {
-        flex: 0 0 clamp(112px, 14vw, 144px);
+        flex: 0 0 clamp(132px, 17vw, 176px);
     }
 
     .has-submenu > a {
         width: 100%;
         box-sizing: border-box;
-        padding-right: 10px;
-        padding-left: 10px;
+        padding-right: 14px;
+        padding-left: 14px;
+        font-size: 15px;
+    }
+
+    .submenu {
+        width: 100%;
     }
 
     .submenu a {
-        min-height: 40px;
-        padding: 10px 6px;
-        font-size: 12px;
+        min-height: 44px;
+        padding: 11px 12px;
+        font-size: 14px;
     }
 
     .hero-copy {
