@@ -152,6 +152,28 @@ body {
     background-color: var(--red-100);
 }
 
+/* PC에서는 모든 상위 메뉴와 드롭다운의 너비를 동일하게 맞춤 */
+@media (min-width: 1025px) {
+    .nav-item {
+        flex: 0 0 160px;
+    }
+
+    .nav-item > a {
+        width: 100%;
+        padding-right: 16px;
+        padding-left: 16px;
+    }
+
+    .submenu {
+        width: 100%;
+    }
+
+    .submenu a {
+        padding-right: 14px;
+        padding-left: 14px;
+    }
+}
+
 /* 드롭다운 너비는 상위 메뉴와 동일하게 유지 */
 
 .hero-sec {
