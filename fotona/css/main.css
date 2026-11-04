@@ -91,6 +91,7 @@ body {
 .nav-item > a {
     display: flex;
     min-height: 72px;
+    box-sizing: border-box;
     align-items: center;
     justify-content: center;
     padding: 0 clamp(14px, 1.5vw, 24px);
@@ -111,12 +112,13 @@ body {
 .submenu {
     position: absolute;
     top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 0;
+    transform: none;
     z-index: 20;
     display: none;
-    width: max-content;
-    min-width: 100%;
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
     padding: 4px 0;
     overflow: hidden;
     background-color: rgba(255, 255, 255, 0.94);
@@ -131,10 +133,11 @@ body {
 
 .submenu a {
     display: flex;
-    min-height: 30px;
+    min-height: 44px;
+    box-sizing: border-box;
     align-items: center;
     justify-content: center;
-    padding: 20px 50px;
+    padding: 10px 8px;
     color: var(--text-primary);
     font-size: 16px;
     line-height: 1.4;
@@ -149,13 +152,7 @@ body {
     background-color: var(--red-100);
 }
 
-/* 1920px급 넓은 화면에서는 드롭다운 좌우 여백을 30px로 조정 */
-@media (min-width: 1600px) {
-    .submenu a {
-        padding-right: 30px;
-        padding-left: 30px;
-    }
-}
+/* 드롭다운 너비는 상위 메뉴와 동일하게 유지 */
 
 .hero-sec {
     position: relative;
@@ -224,7 +221,8 @@ body {
     }
 
     .submenu a {
-        padding: 16px 28px;
+        min-height: 40px;
+        padding: 10px 6px;
         font-size: 12px;
     }
 
@@ -286,14 +284,15 @@ body {
     }
 
     .submenu {
-        left: 50%;
-        width: max-content;
-        min-width: 100%;
-        transform: translateX(-50%);
+        left: 0;
+        width: 100%;
+        min-width: 0;
+        transform: none;
     }
 
     .submenu a {
-        padding: 10px clamp(18px, 4vw, 26px);
+        min-height: 36px;
+        padding: 8px 4px;
         font-size: clamp(7px, 1.6vw, 10px);
         line-height: 1.25;
         white-space: nowrap;
