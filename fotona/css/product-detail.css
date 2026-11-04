@@ -151,7 +151,7 @@
     position: relative;
     display: flex;
     min-width: 0;
-    min-height: 520px;
+    min-height: 440px;
     align-items: center;
     justify-content: center;
     padding: 0;
@@ -348,12 +348,12 @@
 
     .product-visual,
     .product-visual.is-empty {
-        min-height: 420px;
+        min-height: 360px;
     }
 
     .product-visual img,
     .product-visual.is-empty::before {
-        min-height: 400px;
+        min-height: 340px;
     }
 
     .product-info-block {
