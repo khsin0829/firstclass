@@ -99,7 +99,7 @@
 }
 
 .product-detail-section {
-    padding: 7.5% 5%;
+    padding: 64px 5%;
     background: var(--background-page);
     scroll-margin-top: 80px;
 }
@@ -109,7 +109,7 @@
 }
 
 .product-detail-heading {
-    margin-bottom: 34px;
+    margin-bottom: 24px;
 }
 
 .product-detail-heading .section-eyebrow {
@@ -118,7 +118,7 @@
 
 .product-detail-title {
     color: var(--text-primary);
-    font-size: 50px;
+    font-size: 42px;
     font-weight: 500;
     line-height: 1.08;
     letter-spacing: -.03em;
@@ -134,9 +134,9 @@
 
 .product-detail-layout {
     display: grid;
-    grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     align-items: stretch;
-    gap: 36px;
+    gap: 28px;
 }
 
 .product-detail-layout-reverse .product-visual {
@@ -151,7 +151,7 @@
     position: relative;
     display: flex;
     min-width: 0;
-    min-height: 380px;
+    min-height: 340px;
     align-items: center;
     justify-content: center;
     padding: 0;
@@ -212,31 +212,34 @@
 
 .product-information {
     display: flex;
+    width: 100%;
     min-width: 0;
     flex-direction: column;
     justify-content: center;
-    gap: 12px;
+    gap: 9px;
 }
 
 .product-info-block {
-    padding: 20px 22px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 15px 18px;
     border: 1px solid var(--border-default);
     border-radius: 6px;
     background: var(--surface-default);
 }
 
 .product-info-block h3 {
-    margin-bottom: 10px;
+    margin-bottom: 7px;
     color: var(--text-primary);
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 500;
     line-height: 1.3;
 }
 
 .content-placeholder {
-    min-height: 48px;
+    min-height: 0;
     color: var(--text-secondary);
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 400;
     line-height: 1.55;
 }
@@ -326,7 +329,7 @@
     }
 
     .product-detail-section {
-        padding: 64px 4%;
+        padding: 48px 4%;
     }
 
     .product-detail-heading {
@@ -342,22 +345,22 @@
     }
 
     .product-detail-layout {
-        grid-template-columns: minmax(0, 1fr) minmax(0, .95fr);
-        gap: 20px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
     }
 
     .product-visual,
     .product-visual.is-empty {
-        min-height: 320px;
+        min-height: 280px;
     }
 
     .product-visual img,
     .product-visual.is-empty::before {
-        min-height: 300px;
+        min-height: 260px;
     }
 
     .product-info-block {
-        padding: 16px;
+        padding: 13px 14px;
     }
 
     .product-demo-cta {
@@ -399,7 +402,7 @@
     }
 
     .product-detail-section {
-        padding: 52px 20px;
+        padding: 40px 20px;
         scroll-margin-top: 60px;
     }
 
