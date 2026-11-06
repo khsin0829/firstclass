@@ -229,7 +229,7 @@
 .avalanche-applications .avalanche-section-heading { margin-bottom: 30px; }
 .avalanche-application-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 18px;
 }
 .avalanche-application-card {
@@ -377,7 +377,7 @@
     .avalanche-spec-list dt,
     .avalanche-spec-list dd { font-size: 12px; }
     .avalanche-spec-note { margin-top: -6px; font-size: 10px; }
-    .avalanche-application-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+    .avalanche-application-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
     .application-card-copy { padding: 11px 10px 12px; }
     .application-card-copy h3 { font-size: 14px; }
     .application-card-copy p { font-size: 10px; }
