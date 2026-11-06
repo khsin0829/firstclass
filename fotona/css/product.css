@@ -58,3 +58,11 @@
         margin: 0;
     }
 }
+
+
+/* 통합 제품 페이지의 이미지와 카드 모서리 스타일 통일 */
+.product-hub-page .avalanche-intro-visual,
+.product-hub-page .avalanche-tech-card,
+.product-hub-page .avalanche-application-card {
+    border-radius: 8px;
+}
