@@ -29,3 +29,32 @@
 .product-hub-page .avalanche-intro-visual img {
     object-fit: cover;
 }
+
+
+/* 제품 대표 이미지가 인트로 영역의 위아래 여백까지 채우도록 확장 */
+@media (min-width: 701px) {
+    .product-hub-page .avalanche-intro {
+        align-items: stretch;
+    }
+
+    .product-hub-page .avalanche-intro-visual {
+        align-self: stretch;
+        aspect-ratio: auto;
+        margin-top: -64px;
+        margin-bottom: -100px;
+    }
+}
+
+@media (min-width: 701px) and (max-width: 900px) {
+    .product-hub-page .avalanche-intro-visual {
+        margin-top: -52px;
+        margin-bottom: -76px;
+    }
+}
+
+@media (max-width: 700px) {
+    .product-hub-page .avalanche-intro-visual {
+        aspect-ratio: 1.25 / 1;
+        margin: 0;
+    }
+}
