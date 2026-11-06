@@ -23,3 +23,9 @@
  .avalanche-tech-card h4{margin-top:17px;font-size:17px}
  .application-card-copy h4{font-size:14px}
 }
+
+
+/* 제품 대표 이미지가 이미지 영역을 위아래까지 채우도록 조정 */
+.product-hub-page .avalanche-intro-visual img {
+    object-fit: cover;
+}
