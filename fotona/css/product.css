@@ -1,0 +1,11 @@
+
+.product-anchor-nav{position:sticky;top:0;z-index:20;border-top:1px solid var(--border-default);border-bottom:1px solid var(--border-default);background:rgba(255,255,255,.96);backdrop-filter:blur(12px)}
+.product-anchor-inner{display:flex;justify-content:center;gap:clamp(24px,5vw,72px);width:min(1200px,88%);margin:0 auto}
+.product-anchor-inner a{display:flex;align-items:center;min-height:58px;color:var(--text-secondary);font-size:14px;font-weight:500;white-space:nowrap;transition:color .2s ease}
+.product-anchor-inner a:hover,.product-anchor-inner a:focus-visible{color:var(--action-primary)}
+.avalanche-product-section{scroll-margin-top:60px}
+.avalanche-product-section+.avalanche-product-section{border-top:1px solid var(--border-default)}
+.avalanche-product-section .avalanche-intro{padding-top:76px}
+.avalanche-product-section .avalanche-overview{margin:0}
+.avalanche-product-section .avalanche-tech-card{min-height:190px}
+@media(max-width:700px){.product-anchor-inner{justify-content:flex-start;width:calc(100% - 40px);gap:24px;overflow-x:auto}.product-anchor-inner a{min-height:50px;font-size:12px}.avalanche-product-section{scroll-margin-top:50px}.avalanche-product-section .avalanche-intro{padding-top:44px}}
