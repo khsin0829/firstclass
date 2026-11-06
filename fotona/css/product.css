@@ -9,3 +9,17 @@
 .avalanche-product-section .avalanche-overview{margin:0}
 .avalanche-product-section .avalanche-tech-card{min-height:190px}
 @media(max-width:700px){.product-anchor-inner{justify-content:flex-start;width:calc(100% - 40px);gap:24px;overflow-x:auto}.product-anchor-inner a{min-height:50px;font-size:12px}.avalanche-product-section{scroll-margin-top:50px}.avalanche-product-section .avalanche-intro{padding-top:44px}}
+
+/* Heading levels used by the unified product sections */
+.avalanche-intro h2{margin:0;color:var(--text-primary);font-size:clamp(42px,5vw,68px);font-weight:600;letter-spacing:-.055em;line-height:1.04}
+.avalanche-section-heading h3{margin:0;color:var(--text-primary);font-size:clamp(28px,3.2vw,40px);font-weight:600;letter-spacing:-.045em;line-height:1.22;word-break:keep-all}
+.avalanche-overview-item h4{margin:13px 0 5px;color:var(--text-primary);font-size:14px;font-weight:600}
+.avalanche-tech-card h4{margin:24px 0 10px;color:var(--text-primary);font-size:19px;font-weight:600;letter-spacing:-.02em}
+.application-card-copy h4{margin:0 0 5px;color:var(--text-primary);font-size:16px;font-weight:600}
+@media(max-width:700px){
+ .avalanche-intro h2{font-size:clamp(38px,11vw,52px)}
+ .avalanche-section-heading h3{font-size:29px}
+ .avalanche-overview-item h4{margin:0 0 4px}
+ .avalanche-tech-card h4{margin-top:17px;font-size:17px}
+ .application-card-copy h4{font-size:14px}
+}
