@@ -1579,3 +1579,13 @@ body {
         flex: 0 0 auto;
     }
 }
+
+
+.footer-portfolio-notice {
+    max-width: 300px;
+    margin: 8px 0 0;
+    color: var(--text-secondary);
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 1.5;
+}
