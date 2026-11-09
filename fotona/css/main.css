@@ -43,7 +43,7 @@ body {
 /* Header */
 .site-header {
     position: relative;
-    z-index: 10;
+    z-index: 30;
     width: 100%;
     background-color: var(--surface-default);
 }
