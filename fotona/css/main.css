@@ -366,8 +366,8 @@ body {
     .nav-item.contact-item > a {
         height: auto;
         min-height: 0;
-        padding-top: 4px;
-        padding-bottom: 4px;
+        padding-top: 7px;
+        padding-bottom: 7px;
     }
 
     .submenu {
