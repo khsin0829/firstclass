@@ -1692,3 +1692,27 @@ body {
 .privacy-policy-back:focus-visible {
     opacity: .7;
 }
+
+/* 개인정보 처리방침 모달 */
+body.privacy-modal-open { overflow: hidden; }
+.privacy-modal[hidden] { display: none; }
+.privacy-modal { position: fixed; inset: 0; z-index: 10000; display: grid; place-items: center; padding: 24px; }
+.privacy-modal-backdrop { position: absolute; inset: 0; background: rgba(0, 0, 0, .78); }
+.privacy-modal-dialog { position: relative; width: min(688px, 100%); max-height: min(78vh, 760px); margin-top: 24px; background: #fff; color: #171717; border-radius: 9px; outline: none; }
+.privacy-modal-close { position: absolute; top: -52px; left: 50%; transform: translateX(-50%); width: 44px; height: 44px; border: 0; background: transparent; color: #fff; font-size: 44px; font-weight: 300; line-height: 1; cursor: pointer; }
+.privacy-modal-content { max-height: inherit; overflow-y: auto; padding: 50px 26px 32px; box-sizing: border-box; }
+.privacy-modal-intro { margin-bottom: 34px; padding: 22px 14px; background: #e8e8e8; border-radius: 5px; }
+.privacy-modal-content p { margin: 0; font-size: 13px; line-height: 1.8; }
+.privacy-modal-content h2 { margin: 0 0 22px; font-size: 21px; line-height: 1.45; }
+.privacy-modal-content section { margin-top: 30px; }
+.privacy-modal-content h3 { margin: 0 0 12px; font-size: 16px; line-height: 1.5; }
+@media (max-width: 600px) {
+    .privacy-modal { padding: 18px 14px; }
+    .privacy-modal-dialog { max-height: 78vh; margin-top: 20px; }
+    .privacy-modal-content { padding: 28px 18px 24px; }
+    .privacy-modal-intro { padding: 16px 12px; margin-bottom: 26px; }
+    .privacy-modal-content p { font-size: 12px; }
+    .privacy-modal-content h2 { font-size: 19px; }
+    .privacy-modal-content h3 { font-size: 15px; }
+    .privacy-modal-close { top: -48px; }
+}
