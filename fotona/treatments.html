@@ -53,22 +53,64 @@
     <section class="treatments-list" aria-label="시술 분야">
         <div class="treatments-container">
             <article class="treatment-card" id="toning">
-                <span class="treatment-number">01</span><div><h2>색소 토닝</h2><p>피부 색소 고민과 관련된 레이저 시술 분야를 소개합니다. 피부 상태와 색소 유형에 따라 적합한 접근 방법은 달라질 수 있습니다.</p></div>
+                <button class="treatment-card-toggle" type="button" aria-expanded="false" aria-controls="treatment-details-toning">
+                    <span class="treatment-number">01</span>
+                    <span class="treatment-card-summary"><h2>색소 토닝</h2><p>피부 색소 고민과 관련된 레이저 시술 분야를 소개합니다. 피부 상태와 색소 유형에 따라 적합한 접근 방법은 달라질 수 있습니다.</p></span>
+                    <span class="treatment-card-icon" aria-hidden="true">+</span>
+                </button>
+                <div class="treatment-card-details" id="treatment-details-toning" hidden>
+                    <p>[설명이 들어갈 자리]</p>
+                </div>
             </article>
             <article class="treatment-card" id="removal">
-                <span class="treatment-number">02</span><div><h2>제모</h2><p>모발과 피부 상태를 고려한 레이저 제모 분야를 안내합니다. 시술 전 피부 상태 및 개인별 조건 확인이 필요합니다.</p></div>
+                <button class="treatment-card-toggle" type="button" aria-expanded="false" aria-controls="treatment-details-removal">
+                    <span class="treatment-number">02</span>
+                    <span class="treatment-card-summary"><h2>제모</h2><p>모발과 피부 상태를 고려한 레이저 제모 분야를 안내합니다. 시술 전 피부 상태 및 개인별 조건 확인이 필요합니다.</p></span>
+                    <span class="treatment-card-icon" aria-hidden="true">+</span>
+                </button>
+                <div class="treatment-card-details" id="treatment-details-removal" hidden>
+                    <p>[설명이 들어갈 자리]</p>
+                </div>
             </article>
             <article class="treatment-card" id="acne">
-                <span class="treatment-number">03</span><div><h2>여드름</h2><p>여드름 피부 관리와 관련한 레이저 시술 분야를 살펴봅니다. 정확한 진단과 시술 여부는 의료진 상담을 통해 결정해야 합니다.</p></div>
+                <button class="treatment-card-toggle" type="button" aria-expanded="false" aria-controls="treatment-details-acne">
+                    <span class="treatment-number">03</span>
+                    <span class="treatment-card-summary"><h2>여드름</h2><p>여드름 피부 관리와 관련한 레이저 시술 분야를 살펴봅니다. 정확한 진단과 시술 여부는 의료진 상담을 통해 결정해야 합니다.</p></span>
+                    <span class="treatment-card-icon" aria-hidden="true">+</span>
+                </button>
+                <div class="treatment-card-details" id="treatment-details-acne" hidden>
+                    <p>[설명이 들어갈 자리]</p>
+                </div>
             </article>
             <article class="treatment-card" id="tattoo">
-                <span class="treatment-number">04</span><div><h2>문신</h2><p>문신 제거와 관련된 레이저 시술 분야를 소개합니다. 문신의 색상, 깊이, 피부 상태 등에 따라 시술 계획이 달라질 수 있습니다.</p></div>
+                <button class="treatment-card-toggle" type="button" aria-expanded="false" aria-controls="treatment-details-tattoo">
+                    <span class="treatment-number">04</span>
+                    <span class="treatment-card-summary"><h2>문신</h2><p>문신 제거와 관련된 레이저 시술 분야를 소개합니다. 문신의 색상, 깊이, 피부 상태 등에 따라 시술 계획이 달라질 수 있습니다.</p></span>
+                    <span class="treatment-card-icon" aria-hidden="true">+</span>
+                </button>
+                <div class="treatment-card-details" id="treatment-details-tattoo" hidden>
+                    <p>[설명이 들어갈 자리]</p>
+                </div>
             </article>
             <article class="treatment-card" id="wart">
-                <span class="treatment-number">06</span><div><h2>사마귀</h2><p>사마귀와 관련된 피부 병변 치료 분야를 안내합니다. 병변의 종류와 위치, 피부 상태에 따라 치료 방법이 달라질 수 있으며, 정확한 진단은 의료진 상담을 통해 확인해야 합니다.</p></div>
+                <button class="treatment-card-toggle" type="button" aria-expanded="false" aria-controls="treatment-details-wart">
+                    <span class="treatment-number">05</span>
+                    <span class="treatment-card-summary"><h2>사마귀</h2><p>사마귀와 관련된 피부 병변 치료 분야를 안내합니다. 병변의 종류와 위치, 피부 상태에 따라 치료 방법이 달라질 수 있으며, 정확한 진단은 의료진 상담을 통해 확인해야 합니다.</p></span>
+                    <span class="treatment-card-icon" aria-hidden="true">+</span>
+                </button>
+                <div class="treatment-card-details" id="treatment-details-wart" hidden>
+                    <p>[설명이 들어갈 자리]</p>
+                </div>
             </article>
             <article class="treatment-card" id="scar">
-                <span class="treatment-number">05</span><div><h2>흉터</h2><p>흉터 및 피부결 개선과 관련된 시술 분야를 안내합니다. 흉터 유형과 상태에 따라 적합한 치료 방법은 다를 수 있습니다.</p></div>
+                <button class="treatment-card-toggle" type="button" aria-expanded="false" aria-controls="treatment-details-scar">
+                    <span class="treatment-number">06</span>
+                    <span class="treatment-card-summary"><h2>흉터</h2><p>흉터 및 피부결 개선과 관련된 시술 분야를 안내합니다. 흉터 유형과 상태에 따라 적합한 치료 방법은 다를 수 있습니다.</p></span>
+                    <span class="treatment-card-icon" aria-hidden="true">+</span>
+                </button>
+                <div class="treatment-card-details" id="treatment-details-scar" hidden>
+                    <p>[설명이 들어갈 자리]</p>
+                </div>
             </article>
             <p class="treatments-disclaimer">※ 본 페이지는 포트폴리오용 콘텐츠 시안입니다. 시술 효과를 보장하지 않으며, 실제 시술 여부와 방법은 의료진의 진단 및 상담을 기준으로 결정해야 합니다.</p>
         </div>
