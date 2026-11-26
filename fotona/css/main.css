@@ -1115,14 +1115,11 @@ body {
 }
 .demo-request-inner {
     width: 100%;
-    max-width: 1720px;
+    max-width: 1440px;
     margin: 0 auto;
 }
 .demo-request-heading {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
+    display: block;
     margin-bottom: 50px;
 }
 .demo-request-content {
