@@ -86,3 +86,35 @@
 .product-anchor-inner a[aria-current="page"] {
     color: var(--action-primary);
 }
+
+
+/* XS Dynamis 히어로 이미지를 섹션의 위·아래 경계까지 확장 */
+.xs-dynamis-section .avalanche-intro-visual img {
+    object-fit: cover;
+}
+
+@media (min-width: 701px) {
+    .xs-dynamis-section .avalanche-intro {
+        align-items: stretch;
+    }
+
+    .xs-dynamis-section .avalanche-intro-visual {
+        align-self: stretch;
+        aspect-ratio: auto;
+        margin-top: -76px;
+        margin-bottom: -100px;
+    }
+}
+
+@media (min-width: 701px) and (max-width: 900px) {
+    .xs-dynamis-section .avalanche-intro-visual {
+        margin-bottom: -76px;
+    }
+}
+
+@media (max-width: 700px) {
+    .xs-dynamis-section .avalanche-intro-visual {
+        aspect-ratio: 1.25 / 1;
+        margin: 0;
+    }
+}
