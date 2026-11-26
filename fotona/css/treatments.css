@@ -11,3 +11,86 @@
 .treatment-card p { max-width: 760px; margin: 0; color: #555; font-size: 15px; line-height: 1.9; }
 .treatments-disclaimer { margin: 36px 0 0; color: #777; font-size: 13px; line-height: 1.8; }
 @media (max-width: 600px) { .treatments-container { width: calc(100% - 36px); } .treatments-hero { padding: 76px 0 54px; } .treatments-list { padding: 32px 0 64px; } .treatment-card { grid-template-columns: 36px minmax(0, 1fr); gap: 12px; padding: 30px 0; } .treatment-card p { font-size: 14px; } }
+
+/* 시술 카드 클릭 시 상세 설명 펼치기 */
+.treatment-card {
+    display: block;
+    padding: 0;
+}
+
+.treatment-card-toggle {
+    display: grid;
+    grid-template-columns: 100px minmax(0, 1fr) 28px;
+    align-items: start;
+    gap: 24px;
+    width: 100%;
+    padding: 42px 0;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    text-align: left;
+    cursor: pointer;
+}
+
+.treatment-card-summary h2 {
+    margin: 0 0 14px;
+    font-size: clamp(24px, 3vw, 36px);
+    font-weight: 500;
+}
+
+.treatment-card-summary p {
+    max-width: 760px;
+    margin: 0;
+    color: #555;
+    font-size: 15px;
+    line-height: 1.9;
+}
+
+.treatment-card-icon {
+    justify-self: end;
+    color: #777;
+    font-size: 24px;
+    line-height: 1;
+    transition: transform .2s ease;
+}
+
+.treatment-card-toggle[aria-expanded="true"] .treatment-card-icon {
+    transform: rotate(45deg);
+}
+
+.treatment-card-toggle:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 5px;
+}
+
+.treatment-card-details {
+    padding: 0 52px 36px 124px;
+    color: #555;
+    font-size: 15px;
+    line-height: 1.9;
+}
+
+.treatment-card-details p {
+    margin: 0;
+}
+
+.treatment-card-details[hidden] {
+    display: none;
+}
+
+@media (max-width: 600px) {
+    .treatment-card-toggle {
+        grid-template-columns: 36px minmax(0, 1fr) 20px;
+        gap: 12px;
+        padding: 30px 0;
+    }
+
+    .treatment-card-summary p {
+        font-size: 14px;
+    }
+
+    .treatment-card-details {
+        padding: 0 0 28px 48px;
+        font-size: 14px;
+    }
+}
