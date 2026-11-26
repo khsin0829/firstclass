@@ -180,3 +180,45 @@
 .avalanche-page .avalanche-intro-copy {
     align-self: center;
 }
+
+
+/* 세 제품 상세 페이지의 섹션 간격을 공통 기준으로 통일 */
+.avalanche-page .avalanche-overview {
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+.avalanche-page .avalanche-technology,
+.avalanche-page .avalanche-specs,
+.avalanche-page .avalanche-applications {
+    padding-top: 88px;
+    padding-bottom: 88px;
+}
+
+@media (max-width: 900px) {
+    .avalanche-page .avalanche-overview {
+        padding-top: 64px;
+        padding-bottom: 64px;
+    }
+
+    .avalanche-page .avalanche-technology,
+    .avalanche-page .avalanche-specs,
+    .avalanche-page .avalanche-applications {
+        padding-top: 72px;
+        padding-bottom: 72px;
+    }
+}
+
+@media (max-width: 700px) {
+    .avalanche-page .avalanche-overview {
+        padding-top: 52px;
+        padding-bottom: 52px;
+    }
+
+    .avalanche-page .avalanche-technology,
+    .avalanche-page .avalanche-specs,
+    .avalanche-page .avalanche-applications {
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+}
