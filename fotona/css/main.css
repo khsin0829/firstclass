@@ -289,6 +289,11 @@ body {
         width: 100%;
     }
 
+    .contact-item > a {
+        padding-top: 9px;
+        padding-bottom: 9px;
+    }
+
     .submenu a {
         min-height: 40px;
         padding: 10px 6px;
@@ -354,6 +359,11 @@ body {
         box-sizing: border-box;
         padding: 0 clamp(8px, 2vw, 14px);
         font-size: clamp(9px, 2.4vw, 12px);
+    }
+
+    .contact-item > a {
+        padding-top: 6px;
+        padding-bottom: 6px;
     }
 
     .submenu {
