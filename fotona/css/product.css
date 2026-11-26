@@ -161,3 +161,17 @@
         margin: 0;
     }
 }
+
+/* 세 제품 상세 페이지의 히어로 제품 이미지 카드 높이 통일 */
+@media (min-width: 701px) {
+    .avalanche-page .avalanche-intro-visual {
+        height: clamp(360px, 38vw, 500px);
+    }
+}
+
+@media (max-width: 700px) {
+    .avalanche-page .avalanche-intro-visual {
+        height: auto;
+        aspect-ratio: 1.25 / 1;
+    }
+}
