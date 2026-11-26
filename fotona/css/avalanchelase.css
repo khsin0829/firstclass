@@ -390,3 +390,39 @@
     .avalanche-cta h2 { font-size: 25px; }
     .avalanche-cta p:not(.avalanche-kicker) { font-size: 12px; }
 }
+
+/* 제품 목록의 AvalancheLase 대표 이미지처럼 인트로 이미지 영역을 꽉 채움 */
+.avalanche-page .avalanche-intro-visual img {
+    object-fit: cover;
+}
+
+.avalanche-page .avalanche-intro-visual {
+    border-radius: 0;
+}
+
+@media (min-width: 701px) {
+    .avalanche-page .avalanche-intro {
+        align-items: stretch;
+    }
+
+    .avalanche-page .avalanche-intro-visual {
+        align-self: stretch;
+        aspect-ratio: auto;
+        margin-top: -64px;
+        margin-bottom: -100px;
+    }
+}
+
+@media (min-width: 701px) and (max-width: 900px) {
+    .avalanche-page .avalanche-intro-visual {
+        margin-top: -52px;
+        margin-bottom: -76px;
+    }
+}
+
+@media (max-width: 700px) {
+    .avalanche-page .avalanche-intro-visual {
+        aspect-ratio: 1.25 / 1;
+        margin: 0;
+    }
+}
