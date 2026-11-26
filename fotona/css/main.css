@@ -289,9 +289,11 @@ body {
         width: 100%;
     }
 
-    .contact-item > a {
-        padding-top: 9px;
-        padding-bottom: 9px;
+    .nav-item.contact-item > a {
+        height: auto;
+        min-height: 0;
+        padding-top: 7px;
+        padding-bottom: 7px;
     }
 
     .submenu a {
@@ -361,9 +363,11 @@ body {
         font-size: clamp(9px, 2.4vw, 12px);
     }
 
-    .contact-item > a {
-        padding-top: 6px;
-        padding-bottom: 6px;
+    .nav-item.contact-item > a {
+        height: auto;
+        min-height: 0;
+        padding-top: 4px;
+        padding-bottom: 4px;
     }
 
     .submenu {
