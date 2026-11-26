@@ -114,6 +114,36 @@ body {
     background-color: transparent;
 }
 
+/* Header CTA */
+.contact-item {
+    align-items: center;
+    margin-left: 12px;
+}
+.contact-item > a {
+    min-height: auto;
+    padding: 13px 22px;
+    color: #fff;
+    background-color: var(--action-primary);
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+}
+.contact-item:hover,
+.contact-item:focus-within {
+    background-color: transparent;
+}
+.contact-item:hover > a,
+.contact-item:focus-within > a {
+    color: #fff;
+    background-color: var(--text-primary);
+}
+.contact-item > a:focus-visible {
+    outline: 2px solid var(--action-primary);
+    outline-offset: 3px;
+}
+
+
 /* 드롭다운 메뉴: 제품 소개 / 시술 안내에 마우스를 올리면 표시 */
 .submenu {
     position: absolute;
