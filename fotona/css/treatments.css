@@ -93,3 +93,29 @@
         font-size: 14px;
     }
 }
+
+/* 색소 토닝 상세 콘텐츠 구성 */
+.treatment-toning-content { padding-top: 0; }
+.toning-intro { display: grid; grid-template-columns: minmax(0, 1fr) minmax(260px, .8fr); align-items: center; gap: 48px; padding: 8px 0 64px; }
+.toning-intro img { display: block; width: 100%; max-height: 340px; object-fit: contain; }
+.toning-label { margin: 0 0 14px; color: #888; font-size: 11px; letter-spacing: .14em; }
+.toning-intro h3, .toning-section-heading h3 { margin: 0 0 18px; color: #171717; font-size: clamp(22px, 3vw, 32px); font-weight: 500; line-height: 1.35; }
+.toning-intro-copy > p:last-child, .toning-section-heading > p:last-child, .toning-safe-copy p, .toning-performance-grid p, .toning-device-list p, .toning-handpiece p { color: #555; font-size: 14px; line-height: 1.9; }
+.toning-wavelengths, .toning-safe, .toning-performance, .toning-devices { padding: 52px 0; border-top: 1px solid #d7d7d4; }
+.toning-section-heading { margin-bottom: 28px; }
+.toning-wavelength-grid, .toning-performance-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.toning-wavelength-grid article, .toning-performance-grid article, .toning-device-list article { padding: 26px; border: 1px solid #d7d7d4; }
+.toning-wavelength-grid span { display: block; margin-bottom: 12px; font-size: clamp(28px, 4vw, 42px); letter-spacing: -.04em; }
+.toning-wavelength-grid h4, .toning-performance-grid h4, .toning-device-list h4, .toning-handpiece h4 { margin: 0; font-size: 16px; font-weight: 500; }
+.toning-safe-copy { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; }
+.toning-safe-copy p, .toning-performance-grid p, .toning-device-list p, .toning-handpiece p { margin: 10px 0 0; }
+.toning-performance-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.toning-device-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.toning-handpiece { margin-top: 14px; padding: 26px; background: #ecece9; }
+@media (max-width: 700px) {
+ .toning-intro { grid-template-columns: 1fr; gap: 24px; padding-bottom: 40px; }
+ .toning-intro img { max-height: 260px; }
+ .toning-wavelengths, .toning-safe, .toning-performance, .toning-devices { padding: 36px 0; }
+ .toning-safe-copy, .toning-performance-grid, .toning-device-list { grid-template-columns: 1fr; gap: 12px; }
+ .toning-wavelength-grid article, .toning-performance-grid article, .toning-device-list article, .toning-handpiece { padding: 20px; }
+}
