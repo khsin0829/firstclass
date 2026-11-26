@@ -69,3 +69,10 @@
 .product-hub-page .avalanche-application-card {
     border-radius: 8px;
 }
+
+
+/* 현재 보고 있는 제품을 제품 메뉴에서 강조 */
+.product-anchor-inner a.is-active,
+.product-anchor-inner a[aria-current="page"] {
+    color: var(--action-primary);
+}
