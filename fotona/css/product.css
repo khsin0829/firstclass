@@ -118,3 +118,15 @@
         margin: 0;
     }
 }
+
+
+/* XS Dynamis 활용 분야 카드 너비를 AvalancheLase의 4열 기준과 통일 */
+.xs-dynamis-section .avalanche-application-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+@media (max-width: 900px) {
+    .xs-dynamis-section .avalanche-application-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
