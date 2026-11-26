@@ -175,3 +175,8 @@
         aspect-ratio: 1.25 / 1;
     }
 }
+
+/* 세 제품 히어로의 문구 영역을 이미지 카드 높이 기준으로 세로 중앙 정렬 */
+.avalanche-page .avalanche-intro-copy {
+    align-self: center;
+}
