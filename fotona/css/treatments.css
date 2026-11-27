@@ -119,3 +119,8 @@
  .toning-safe-copy, .toning-performance-grid, .toning-device-list { grid-template-columns: 1fr; gap: 12px; }
  .toning-wavelength-grid article, .toning-performance-grid article, .toning-device-list article, .toning-handpiece { padding: 20px; }
 }
+
+.toning-wavelength-visual { margin: 30px 0 22px; overflow: hidden; border-radius: 18px; background: #fff; }
+.toning-wavelength-visual img { display: block; width: 100%; height: auto; }
+.toning-wavelength-grid article p { margin: 10px 0 0; color: #555; font-size: 13px; line-height: 1.7; }
+@media (max-width: 700px) { .toning-wavelength-visual { margin: 22px 0 16px; border-radius: 12px; } }
