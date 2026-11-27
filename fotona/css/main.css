@@ -24,6 +24,8 @@
     --text-secondary: var(--gray-600);
     --text-inverse: var(--white-100);
     --text-inverse-muted: #C6C6C6;
+    --wavelength-1064: #4B3B70;
+    --wavelength-532: var(--red-700);
 
     --border-default: var(--gray-200);
     --border-treatment: #D7D7D4;
