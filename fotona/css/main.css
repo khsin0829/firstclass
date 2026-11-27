@@ -853,12 +853,6 @@ body {
     .treatments-section {
         padding: 48px 0;
     }
-    /* 모바일에서 카드 좌우 여백을 회색으로 구분해 슬라이드 영역을 강조 */
-    .treatment-track.swiper {
-        width: 100%;
-        padding: 12px 5% 18px;
-        background: #E4E6E8;
-    }
     .treatments-heading,
     .related-products {
         width: calc(100% - 40px);
