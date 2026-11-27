@@ -260,3 +260,54 @@
         grid-template-columns: 1fr;
     }
 }
+
+
+/* 시술 상세 섹션의 공통 간격과 정렬 */
+.treatment-toning-content {
+    padding-bottom: 0;
+}
+.treatment-toning-content > section {
+    padding-top: 54px;
+    padding-bottom: 54px;
+}
+.treatment-toning-content > .toning-intro {
+    padding-top: 8px;
+    padding-bottom: 58px;
+}
+.treatment-toning-content > section:last-child {
+    padding-bottom: 42px;
+}
+.toning-intro-text-only {
+    grid-template-columns: 1fr;
+}
+.toning-section-heading {
+    margin-bottom: 32px;
+}
+.toning-wavelength-grid,
+.toning-performance-grid,
+.toning-device-list,
+.toning-safe-layout {
+    gap: 16px;
+}
+.toning-handpiece {
+    margin-top: 32px;
+}
+@media (max-width: 700px) {
+    .treatment-toning-content > section {
+        padding-top: 38px;
+        padding-bottom: 38px;
+    }
+    .treatment-toning-content > .toning-intro {
+        padding-top: 4px;
+        padding-bottom: 40px;
+    }
+    .treatment-toning-content > section:last-child {
+        padding-bottom: 30px;
+    }
+    .toning-section-heading {
+        margin-bottom: 24px;
+    }
+    .toning-handpiece {
+        margin-top: 24px;
+    }
+}
