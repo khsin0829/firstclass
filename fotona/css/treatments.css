@@ -190,3 +190,52 @@
     color: var(--text-primary);
     font-weight: 600;
 }
+
+
+/* 색소 토닝: 핸드피스 모델 소개 */
+.toning-handpiece {
+    margin-top: 28px;
+    padding: 0;
+    background: transparent;
+}
+.toning-handpiece-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+}
+.toning-handpiece-card {
+    min-width: 0;
+    padding: 22px;
+    border: 1px solid #d7d7d4;
+    background: #f2f2ef;
+}
+.toning-handpiece-image {
+    display: grid;
+    place-items: center;
+    min-height: 180px;
+    margin-bottom: 22px;
+    background: #e5e5e1;
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+.toning-handpiece-card h4 {
+    margin: 0;
+    color: var(--text-primary);
+    font-size: 18px;
+    font-weight: 600;
+}
+.toning-handpiece-card p {
+    margin: 10px 0 0;
+    color: var(--text-secondary);
+    font-size: 14px;
+    line-height: 1.8;
+}
+@media (max-width: 700px) {
+    .toning-handpiece-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    .toning-handpiece-image {
+        min-height: 160px;
+    }
+}
