@@ -519,13 +519,20 @@
                 toning: "색소 토닝", hair: "제모", acne: "여드름",
                 tattoo: "문신", scar: "흉터", wart: "사마귀"
             };
-            const cards = [...track.querySelectorAll(".treatment-card")];
+            const originalSlides = [...track.querySelectorAll(".swiper-slide")];
+
+            // 무한 반복 구간을 넉넉하게 만들기 위해 원본 슬라이드를 한 세트 더 이어 붙입니다.
+            originalSlides.forEach((slide) => {
+                track.querySelector(".swiper-wrapper").appendChild(slide.cloneNode(true));
+            });
 
             function setActiveCard(card) {
                 if (!card) return;
                 const treatment = card.dataset.treatment;
                 if (!treatment) return;
-                cards.forEach((item) => item.classList.toggle("is-selected", item === card));
+                track.querySelectorAll(".treatment-card").forEach((item) => {
+                    item.classList.toggle("is-selected", item === card);
+                });
                 productsTitle.textContent = treatmentNames[treatment] + " 관련 제품";
                 productCards.forEach((product) => {
                     product.hidden = !product.dataset.products.split(" ").includes(treatment);
@@ -544,8 +551,12 @@
                     1024: { slidesPerView: 3.1, spaceBetween: 16 }
                 },
                 on: {
-                    init: function () { setActiveCard(cards[this.realIndex]); },
-                    slideChange: function () { setActiveCard(cards[this.realIndex]); }
+                    init: function () {
+                        setActiveCard(this.slides[this.activeIndex]?.querySelector(".treatment-card"));
+                    },
+                    slideChange: function () {
+                        setActiveCard(this.slides[this.activeIndex]?.querySelector(".treatment-card"));
+                    }
                 }
             });        })();
     </script>
