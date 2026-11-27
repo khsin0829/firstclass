@@ -1,6 +1,6 @@
 .treatments-page { background: #f7f7f5; color: var(--text-primary); }
 .treatments-container { width: min(1120px, calc(100% - 48px)); margin: 0 auto; }
-.treatments-hero { padding: clamp(76px, 11vw, 150px) 0 72px; background: #111; color: var(--text-inverse); }
+.treatments-hero { padding: clamp(76px, 11vw, 150px) 0 72px; background: linear-gradient(rgba(0, 0, 0, .68), rgba(0, 0, 0, .68)), url('../img/treatmentHero.jpg') center / cover no-repeat; color: var(--text-inverse); }
 .treatments-eyebrow { margin: 0 0 20px; font-size: 12px; letter-spacing: .16em; color: var(--text-secondary); }
 .treatments-hero h1 { margin: 0; font-size: clamp(42px, 7vw, 84px); font-weight: 500; letter-spacing: -.04em; }
 .treatments-hero p:last-child { max-width: 620px; margin: 24px 0 0; color: var(--text-inverse-muted); font-size: 16px; line-height: 1.8; }
