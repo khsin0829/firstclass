@@ -249,3 +249,14 @@
         height: 190px;
     }
 }
+
+
+/* 제모 핸드피스 카드: 색소 토닝 카드와 동일한 디자인, 2열 구성 */
+.hair-removal-handpiece-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+@media (max-width: 700px) {
+    .hair-removal-handpiece-grid {
+        grid-template-columns: 1fr;
+    }
+}
