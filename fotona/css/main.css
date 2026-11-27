@@ -701,7 +701,7 @@ body {
     background: var(--surface-default);
     color: var(--text-primary);
     text-align: left;
-    cursor: pointer;
+    cursor: default;
     transition: border-color .2s ease, transform .2s ease;
 }
 .treatment-card img {
