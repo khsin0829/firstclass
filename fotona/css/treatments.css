@@ -183,3 +183,10 @@
     color: var(--text-primary);
     line-height: 1.5;
 }
+
+
+/* 색소 토닝 관련 제품명 강조 */
+.toning-device-list h4 {
+    color: var(--text-primary);
+    font-weight: 600;
+}
