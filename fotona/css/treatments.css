@@ -1,14 +1,14 @@
-.treatments-page { background: #f7f7f5; color: #171717; }
+.treatments-page { background: #f7f7f5; color: var(--text-primary); }
 .treatments-container { width: min(1120px, calc(100% - 48px)); margin: 0 auto; }
-.treatments-hero { padding: clamp(76px, 11vw, 150px) 0 72px; background: #111; color: #fff; }
-.treatments-eyebrow { margin: 0 0 20px; font-size: 12px; letter-spacing: .16em; color: #aaa; }
+.treatments-hero { padding: clamp(76px, 11vw, 150px) 0 72px; background: #111; color: var(--text-inverse); }
+.treatments-eyebrow { margin: 0 0 20px; font-size: 12px; letter-spacing: .16em; color: var(--text-secondary); }
 .treatments-hero h1 { margin: 0; font-size: clamp(42px, 7vw, 84px); font-weight: 500; letter-spacing: -.04em; }
-.treatments-hero p:last-child { max-width: 620px; margin: 24px 0 0; color: #c6c6c6; font-size: 16px; line-height: 1.8; }
+.treatments-hero p:last-child { max-width: 620px; margin: 24px 0 0; color: var(--text-inverse-muted); font-size: 16px; line-height: 1.8; }
 .treatments-list { padding: 56px 0 100px; }
 .treatment-card { display: block; padding: 0; border-bottom: 1px solid #d7d7d4; scroll-margin-top: 100px; }
 .treatment-card h2 { margin: 0 0 14px; font-size: clamp(24px, 3vw, 36px); font-weight: 500; }
-.treatment-card p { max-width: 760px; margin: 0; color: #555; font-size: 15px; line-height: 1.9; }
-.treatments-disclaimer { margin: 36px 0 0; color: #777; font-size: 13px; line-height: 1.8; }
+.treatment-card p { max-width: 760px; margin: 0; color: var(--text-secondary); font-size: 15px; line-height: 1.9; }
+.treatments-disclaimer { margin: 36px 0 0; color: var(--text-secondary); font-size: 13px; line-height: 1.8; }
 @media (max-width: 600px) { .treatments-container { width: calc(100% - 36px); } .treatments-hero { padding: 76px 0 54px; } .treatments-list { padding: 32px 0 64px; } .treatment-card p { font-size: 14px; } }
 
 /* 시술 카드 클릭 시 상세 설명 펼치기 */
@@ -40,14 +40,14 @@
 .treatment-card-summary p {
     max-width: 760px;
     margin: 0;
-    color: #555;
+    color: var(--text-secondary);
     font-size: 15px;
     line-height: 1.9;
 }
 
 .treatment-card-icon {
     justify-self: end;
-    color: #777;
+    color: var(--text-secondary);
     font-size: 24px;
     line-height: 1;
     transition: transform .2s ease;
@@ -64,7 +64,7 @@
 
 .treatment-card-details {
     padding: 0 42px 36px;
-    color: #555;
+    color: var(--text-secondary);
     font-size: 15px;
     line-height: 1.9;
 }
@@ -98,9 +98,9 @@
 .treatment-toning-content { padding-top: 0; }
 .toning-intro { display: grid; grid-template-columns: minmax(0, 1fr) minmax(260px, .8fr); align-items: center; gap: 48px; padding: 8px 0 64px; }
 .toning-intro img { display: block; width: 100%; max-height: 340px; object-fit: contain; }
-.toning-label { margin: 0 0 14px; color: #888; font-size: 11px; letter-spacing: .14em; }
-.toning-intro h3, .toning-section-heading h3 { margin: 0 0 18px; color: #171717; font-size: clamp(22px, 3vw, 32px); font-weight: 500; line-height: 1.35; }
-.toning-intro-copy > p:last-child, .toning-section-heading > p:last-child, .toning-safe-copy p, .toning-performance-grid p, .toning-device-list p, .toning-handpiece p { color: #555; font-size: 14px; line-height: 1.9; }
+.toning-label { margin: 0 0 14px; color: var(--text-secondary); font-size: 11px; letter-spacing: .14em; }
+.toning-intro h3, .toning-section-heading h3 { margin: 0 0 18px; color: var(--text-primary); font-size: clamp(22px, 3vw, 32px); font-weight: 500; line-height: 1.35; }
+.toning-intro-copy > p:last-child, .toning-section-heading > p:last-child, .toning-safe-copy p, .toning-performance-grid p, .toning-device-list p, .toning-handpiece p { color: var(--text-secondary); font-size: 14px; line-height: 1.9; }
 .toning-wavelengths, .toning-safe, .toning-performance, .toning-devices { padding: 52px 0; border-top: 1px solid #d7d7d4; }
 .toning-section-heading { margin-bottom: 28px; }
 .toning-wavelength-grid, .toning-performance-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
@@ -122,7 +122,7 @@
 
 .toning-wavelength-visual { margin: 30px 0 22px; overflow: hidden; border-radius: 18px; background: #fff; }
 .toning-wavelength-visual img { display: block; width: 100%; height: auto; }
-.toning-wavelength-grid article p { margin: 10px 0 0; color: #555; font-size: 13px; line-height: 1.7; }
+.toning-wavelength-grid article p { margin: 10px 0 0; color: var(--text-secondary); font-size: 13px; line-height: 1.7; }
 @media (max-width: 700px) { .toning-wavelength-visual { margin: 22px 0 16px; border-radius: 12px; } }
 
 
@@ -142,7 +142,7 @@
 
 .toning-safe-item-heading h4 {
     margin: 0;
-    color: #171717;
+    color: var(--text-primary);
     font-size: 19px;
     font-weight: 500;
     line-height: 1.45;
@@ -150,7 +150,7 @@
 
 .toning-safe-item-content p {
     margin: 14px 0 0;
-    color: #555;
+    color: var(--text-secondary);
     font-size: 14px;
     line-height: 1.9;
 }
