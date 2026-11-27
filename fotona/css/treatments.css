@@ -205,31 +205,37 @@
 }
 .toning-handpiece-card {
     min-width: 0;
-    padding: 22px;
+    padding: 0 0 22px;
     border: 1px solid #d7d7d4;
     background: #f2f2ef;
 }
 .toning-handpiece-image {
-    display: grid;
-    place-items: center;
-    min-height: 180px;
+    display: block;
+    width: 100%;
+    height: 220px;
     margin-bottom: 22px;
+    overflow: hidden;
     background: #e5e5e1;
 }
 .toning-handpiece-image img {
     display: block;
     width: 100%;
-    height: 180px;
-    object-fit: contain;
+    height: 100%;
+    object-fit: cover;
+}
+.toning-handpiece-card h4,
+.toning-handpiece-card p {
+    margin-right: 22px;
+    margin-left: 22px;
 }
 .toning-handpiece-card h4 {
-    margin: 0;
+    margin-top: 0;
     color: var(--text-primary);
     font-size: 18px;
     font-weight: 600;
 }
 .toning-handpiece-card p {
-    margin: 10px 0 0;
+    margin-top: 10px;
     color: var(--text-secondary);
     font-size: 14px;
     line-height: 1.8;
@@ -240,6 +246,6 @@
         gap: 12px;
     }
     .toning-handpiece-image {
-        min-height: 160px;
+        height: 190px;
     }
 }
