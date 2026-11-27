@@ -105,7 +105,9 @@
 .toning-section-heading { margin-bottom: 28px; }
 .toning-wavelength-grid, .toning-performance-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
 .toning-wavelength-grid article, .toning-performance-grid article, .toning-device-list article { padding: 26px; border: 1px solid #d7d7d4; }
-.toning-wavelength-grid span { display: block; margin-bottom: 12px; font-size: clamp(28px, 4vw, 42px); letter-spacing: -.04em; }
+.toning-wavelength-grid article:nth-child(1) span { color: var(--wavelength-1064); }
+.toning-wavelength-grid article:nth-child(2) span { color: var(--wavelength-532); }
+.toning-wavelength-grid span { display: block; margin-bottom: 12px; font-size: clamp(28px, 4vw, 42px); font-weight: 600; letter-spacing: -.04em; }
 .toning-wavelength-grid h4, .toning-performance-grid h4, .toning-device-list h4, .toning-handpiece h4 { margin: 0; font-size: 16px; font-weight: 500; }
 .toning-safe-copy { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; }
 .toning-safe-copy p, .toning-performance-grid p, .toning-device-list p, .toning-handpiece p { margin: 10px 0 0; }
