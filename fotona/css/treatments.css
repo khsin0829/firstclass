@@ -124,3 +124,44 @@
 .toning-wavelength-visual img { display: block; width: 100%; height: auto; }
 .toning-wavelength-grid article p { margin: 10px 0 0; color: #555; font-size: 13px; line-height: 1.7; }
 @media (max-width: 700px) { .toning-wavelength-visual { margin: 22px 0 16px; border-radius: 12px; } }
+
+
+/* 색소 토닝: 안전성과 작동 원리 텍스트 블록 */
+.toning-safe-layout {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.toning-safe-item {
+    min-width: 0;
+    padding: 30px;
+    border: 1px solid #d7d7d4;
+    background: #f2f2ef;
+}
+
+.toning-safe-item-heading h4 {
+    margin: 0;
+    color: #171717;
+    font-size: 19px;
+    font-weight: 500;
+    line-height: 1.45;
+}
+
+.toning-safe-item-content p {
+    margin: 14px 0 0;
+    color: #555;
+    font-size: 14px;
+    line-height: 1.9;
+}
+
+@media (max-width: 700px) {
+    .toning-safe-layout {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .toning-safe-item {
+        padding: 22px;
+    }
+}
