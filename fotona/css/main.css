@@ -689,7 +689,7 @@ body {
     opacity: 0.45;
     transition: opacity 0.3s ease;
 }
-.treatment-track .swiper-slide-active {
+.treatment-track .swiper-slide.is-near-active {
     opacity: 1;
 }
 /* Swiper 슬라이드 너비에 맞춰 카드가 줄어들도록 설정합니다. */
