@@ -1180,15 +1180,15 @@ body {
 }
 .demo-request-content {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: flex-start;
+    justify-content: space-between;
     gap: 60px;
     width: 100%;
 }
 .demo-preview {
     position: relative;
-    flex: 0 0 380px;
-    width: 380px;
+    flex: 0 1 42%;
+    width: 42%;
     height: 590px;
     overflow: hidden;
     border: 1px solid var(--border-default);
