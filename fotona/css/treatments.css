@@ -97,7 +97,7 @@
 /* 색소 토닝 상세 콘텐츠 구성 */
 .treatment-toning-content { padding-top: 0; }
 .toning-intro { display: grid; grid-template-columns: minmax(0, 1fr) minmax(260px, .8fr); align-items: center; gap: 48px; padding: 8px 0 64px; }
-.toning-intro img { display: block; width: 100%; max-height: 340px; object-fit: contain; }
+.toning-intro img { display: block; width: 100%; max-height: 340px; object-fit: contain; border: 1px solid #d7d7d4; border-radius: 14px; box-sizing: border-box; }
 .toning-label { margin: 0 0 14px; color: var(--text-secondary); font-size: 11px; letter-spacing: .14em; }
 .toning-intro h3, .toning-section-heading h3 { margin: 0 0 18px; color: var(--text-primary); font-size: clamp(22px, 3vw, 32px); font-weight: 500; line-height: 1.35; }
 .toning-intro-copy > p:last-child, .toning-section-heading > p:last-child, .toning-safe-copy p, .toning-performance-grid p, .toning-device-list p, .toning-handpiece p { color: var(--text-secondary); font-size: 14px; line-height: 1.9; }
