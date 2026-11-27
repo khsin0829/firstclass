@@ -549,7 +549,8 @@
             const treatmentSwiper = new Swiper("#treatment-track", {
                 slidesPerView: 1.6,
                 spaceBetween: 10,
-                centeredSlides: false,
+                centeredSlides: true,
+                initialSlide: 1,
                 loop: false,
                 breakpoints: {
                     600: {
@@ -557,7 +558,7 @@
                         spaceBetween: 12
                     },
                     760: {
-                        slidesPerView: 4,
+                        slidesPerView: 4.1,
                         spaceBetween: 14
                     },
                     1024: {
