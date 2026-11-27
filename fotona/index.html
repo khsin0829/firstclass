@@ -537,15 +537,15 @@
                 spaceBetween: 10,
                 centeredSlides: true,
                 initialSlide: 1,
-                loop: false,
+                loop: true,
                 breakpoints: {
                     600: { slidesPerView: 2.5, spaceBetween: 12 },
                     760: { slidesPerView: 4.1, spaceBetween: 14 },
-                    1024: { slidesPerView: 6, spaceBetween: 16 }
+                    1024: { slidesPerView: 4.1, spaceBetween: 16 }
                 },
                 on: {
-                    init: function () { setActiveCard(cards[this.activeIndex]); },
-                    slideChange: function () { setActiveCard(cards[this.activeIndex]); }
+                    init: function () { setActiveCard(cards[this.realIndex]); },
+                    slideChange: function () { setActiveCard(cards[this.realIndex]); }
                 }
             });        })();
     </script>
