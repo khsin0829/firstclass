@@ -1187,8 +1187,8 @@ body {
 }
 .demo-preview {
     position: relative;
-    flex: 0 1 42%;
-    width: 42%;
+    flex: 0 1 48%;
+    width: 48%;
     height: 590px;
     overflow: hidden;
     border: 1px solid var(--border-default);
