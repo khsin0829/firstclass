@@ -179,13 +179,6 @@
     align-items: flex-start;
     min-width: 0;
 }
-.toning-performance-number {
-    display: block;
-    margin-bottom: 24px;
-    color: var(--text-secondary);
-    font-size: 12px;
-    letter-spacing: .12em;
-}
 .toning-performance-grid h4 {
     color: var(--text-primary);
     line-height: 1.5;
