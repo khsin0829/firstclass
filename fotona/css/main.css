@@ -670,10 +670,11 @@ body {
     background: var(--background-page);
 }
 .treatment-track.swiper {
-    width: 100%;
-    max-width: none;
-    margin: 0;
-    padding: 2px 0 14px;
+    width: 90%;
+    max-width: 1720px;
+    margin: 0 auto;
+    padding: 2px 20px 14px;
+    box-sizing: border-box;
     overflow: hidden;
 }
 .treatment-track .swiper-wrapper {
