@@ -20,11 +20,13 @@
     --surface-default: var(--white-100);
     --surface-brand-subtle: var(--red-100);
 
-    --text-primary: var(--gray-800);
+    --text-primary: var(--black-100);
     --text-secondary: var(--gray-600);
     --text-inverse: var(--white-100);
+    --text-inverse-muted: #C6C6C6;
 
     --border-default: var(--gray-200);
+    --border-treatment: #D7D7D4;
     --border-strong: var(--gray-800);
 
     --action-primary: var(--red-500);
