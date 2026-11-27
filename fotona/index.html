@@ -114,46 +114,46 @@
                     <div class="treatment-track swiper" id="treatment-track" aria-label="시술 종류">
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
-                                <button class="treatment-card" type="button" data-treatment="toning" aria-pressed="false">
+                                <div class="treatment-card" data-treatment="toning">
                                     <img src="img/pigmented.jpg" alt="" draggable="false">
                                     <span class="treatment-card-title">색소 토닝</span>
                                     <span class="treatment-card-description">피부 톤 · 잡티 · 색소 고민</span>
-                                </button>
+                                </div>
                             </div>
                             <div class="swiper-slide">
-                                <button class="treatment-card" type="button" data-treatment="hair" aria-pressed="false">
+                                <div class="treatment-card" data-treatment="hair">
                                     <img src="img/hair_removal.jpg" alt="" draggable="false">
                                     <span class="treatment-card-title">제모</span>
                                     <span class="treatment-card-description">불필요한 체모 · 매끄러운 피부</span>
-                                </button>
+                                </div>
                             </div>
                             <div class="swiper-slide">
-                                <button class="treatment-card" type="button" data-treatment="acne" aria-pressed="false">
+                                <div class="treatment-card" data-treatment="acne">
                                     <img src="img/acne_scar.jpg" alt="" draggable="false">
                                     <span class="treatment-card-title">여드름</span>
                                     <span class="treatment-card-description">트러블 · 피부 컨디션</span>
-                                </button>
+                                </div>
                             </div>
                             <div class="swiper-slide">
-                                <button class="treatment-card" type="button" data-treatment="tattoo" aria-pressed="false">
+                                <div class="treatment-card" data-treatment="tattoo">
                                     <img src="img/tatto_removal.jpg" alt="" draggable="false">
                                     <span class="treatment-card-title">문신</span>
                                     <span class="treatment-card-description">문신 색소 · 제거 시술</span>
-                                </button>
+                                </div>
                             </div>
                             <div class="swiper-slide">
-                                <button class="treatment-card" type="button" data-treatment="scar" aria-pressed="false">
+                                <div class="treatment-card" data-treatment="scar">
                                     <img src="img/scar_revision.jpg" alt="" draggable="false">
                                     <span class="treatment-card-title">흉터</span>
                                     <span class="treatment-card-description">여드름 흉터 · 피부 결</span>
-                                </button>
+                                </div>
                             </div>
                             <div class="swiper-slide">
-                                <button class="treatment-card" type="button" data-treatment="wart" aria-pressed="false">
+                                <div class="treatment-card" data-treatment="wart">
                                     <img src="img/warts-removal.png" alt="" draggable="false">
                                     <span class="treatment-card-title">사마귀</span>
                                     <span class="treatment-card-description">사마귀 · 피부 병변 · 피부 고민</span>
-                                </button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -516,36 +516,22 @@
             if (!track || !productsTitle) return;
 
             const treatmentNames = {
-                toning: "색소 토닝",
-                hair: "제모",
-                acne: "여드름",
-                tattoo: "문신",
-                scar: "흉터",
-                wart: "사마귀"
+                toning: "색소 토닝", hair: "제모", acne: "여드름",
+                tattoo: "문신", scar: "흉터", wart: "사마귀"
             };
-            const defaultTitle = "관련 제품";
             const cards = [...track.querySelectorAll(".treatment-card")];
-            let activeTreatment = null;
 
             function setActiveCard(card) {
                 if (!card) return;
                 const treatment = card.dataset.treatment;
-                if (!treatment || treatment === activeTreatment) return;
-                activeTreatment = treatment;
-
-                cards.forEach((item) => {
-                    const selected = item === card;
-                    item.classList.toggle("is-selected", selected);
-                    item.setAttribute("aria-pressed", String(selected));
-                });
-
+                if (!treatment) return;
+                cards.forEach((item) => item.classList.toggle("is-selected", item === card));
                 productsTitle.textContent = treatmentNames[treatment] + " 관련 제품";
                 productCards.forEach((product) => {
                     product.hidden = !product.dataset.products.split(" ").includes(treatment);
                 });
             }
 
-            // 학습한 swiper.html의 구조와 옵션을 적용해 시술 카드를 슬라이더로 만듭니다.
             const treatmentSwiper = new Swiper("#treatment-track", {
                 slidesPerView: 1.6,
                 spaceBetween: 10,
@@ -553,54 +539,15 @@
                 initialSlide: 1,
                 loop: false,
                 breakpoints: {
-                    600: {
-                        slidesPerView: 2.5,
-                        spaceBetween: 12
-                    },
-                    760: {
-                        slidesPerView: 4.1,
-                        spaceBetween: 14
-                    },
-                    1024: {
-                        slidesPerView: 6,
-                        spaceBetween: 16
-                    }
+                    600: { slidesPerView: 2.5, spaceBetween: 12 },
+                    760: { slidesPerView: 4.1, spaceBetween: 14 },
+                    1024: { slidesPerView: 6, spaceBetween: 16 }
+                },
+                on: {
+                    init: function () { setActiveCard(cards[this.activeIndex]); },
+                    slideChange: function () { setActiveCard(cards[this.activeIndex]); }
                 }
-            });
-
-            // 카드를 클릭하면 선택 상태와 관련 제품을 바꾸고, 선택한 카드를 가운데로 이동합니다.
-            track.addEventListener("click", (event) => {
-                const card = event.target.closest(".treatment-card");
-                if (!card) return;
-
-                if (card.dataset.treatment === activeTreatment) {
-                    // 선택된 카드를 다시 클릭하면 선택을 취소합니다.
-                    activeTreatment = null;
-                    cards.forEach((item) => {
-                        item.classList.remove("is-selected");
-                        item.setAttribute("aria-pressed", "false");
-                    });
-                    productsTitle.textContent = defaultTitle;
-                    productCards.forEach((product) => {
-                        product.hidden = true;
-                    });
-                } else {
-                    setActiveCard(card);
-                }
-
-                const slide = card.closest(".swiper-slide");
-                const slideIndex = [...track.querySelectorAll(".swiper-slide")].indexOf(slide);
-                if (slideIndex >= 0) {
-                    treatmentSwiper.slideTo(slideIndex);
-                }
-            });
-
-            productsTitle.textContent = defaultTitle;
-            productCards.forEach((product) => {
-                product.hidden = true;
-            });
-            setActiveCard(cards[0]);
-        })();
+            });        })();
     </script>
 
 
